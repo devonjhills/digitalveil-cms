@@ -1,0 +1,22 @@
+{
+  "commit": "",
+  "generated": "2025-02-23T04:54:59.921Z",
+  "metadata": [
+    {
+      "__outstatic": {
+        "commit": "",
+        "hash": "260948611",
+        "path": "outstatic/content/posts/test-post.mdx"
+      },
+      "author": {
+        "name": "J. Staros",
+        "picture": "/images/image_fx_-E1NT.jpg"
+      },
+      "collection": "posts",
+      "publishedAt": "2025-02-23T04:13:42.975Z",
+      "slug": "test-post",
+      "status": "published",
+      "title": "Test post"
+    }
+  ]
+}
