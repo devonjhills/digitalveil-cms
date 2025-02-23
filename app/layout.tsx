@@ -29,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
+        id="outstatic"
         className={`${geistSans.className} ${geistMono.className} antialiased flex flex-col min-h-screen`}>
         <Providers>
           <header className="py-4 border-b">
@@ -66,7 +67,8 @@ export default function RootLayout({
 
           <footer className="py-8 border-t mt-12">
             <div className="container text-center text-muted-foreground">
-              &copy; {new Date().getFullYear()} digital veil media. All rights reserved.
+              &copy; {new Date().getFullYear()} digital veil media. All rights
+              reserved.
               <div className="mt-2">
                 <Link
                   href="/privacy"
