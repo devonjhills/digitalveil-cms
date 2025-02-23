@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import Image from "next/image"; // Import Next.js Image component
 
-export default async function Home() {
+export default async function PostsHome() {
   const db = await load();
   const posts = await db
     .find({ collection: "posts" })

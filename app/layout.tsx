@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Providers } from "@/components/providers";
+import Link from "next/link";
+import { ModeToggle } from "@/components/ModeToggle";
+import { Code2 } from "lucide-react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +27,61 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+        className={`${geistSans.className} ${geistMono.className} antialiased flex flex-col min-h-screen`}>
+        <Providers>
+          <header className="py-4 border-b">
+            <div className="container flex items-center justify-between">
+              <Link href="/" className="flex items-center gap-2">
+                <Code2 className="h-8 w-8 text-primary" />
+                <span className="font-bold text-xl">digital veil</span>
+              </Link>
+              <nav>
+                <ul className="flex space-x-6">
+                  <li>
+                    <Link
+                      href="/posts"
+                      className="hover:text-primary transition-colors">
+                      Blog
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/about"
+                      className="hover:text-primary transition-colors">
+                      About
+                    </Link>
+                  </li>
+                  <li>
+                    {/* Dark Mode Toggle */}
+                    <ModeToggle />
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </header>
+
+          <main className="flex-grow">{children}</main>
+
+          <footer className="py-8 border-t mt-12">
+            <div className="container text-center text-muted-foreground">
+              &copy; {new Date().getFullYear()} digital veil media. All rights reserved.
+              <div className="mt-2">
+                <Link
+                  href="/privacy"
+                  className="hover:text-primary transition-colors mx-2">
+                  Privacy Policy
+                </Link>
+                <Link
+                  href="/terms"
+                  className="hover:text-primary transition-colors mx-2">
+                  Terms of Service
+                </Link>
+              </div>
+            </div>
+          </footer>
+        </Providers>
       </body>
     </html>
   );
