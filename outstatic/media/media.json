@@ -1,6 +1,6 @@
 {
-  "commit": "",
-  "generated": "Sun, 23 Feb 2025 04:44:24 GMT",
+  "commit": "815dd4ece678e9823c89eaaf2f962a2f1736510f",
+  "generated": "2025-02-23T04:45:17.981Z",
   "media": [
     {
       "__outstatic": {
@@ -22,6 +22,17 @@
       "alt": "",
       "filename": "globe.svg",
       "publishedAt": "2025-02-23T04:44:24.500Z",
+      "type": "image"
+    },
+    {
+      "__outstatic": {
+        "commit": "815dd4ece678e9823c89eaaf2f962a2f1736510f",
+        "hash": "1001864997",
+        "path": "public/image_fx_-E1NT.jpg"
+      },
+      "alt": "",
+      "filename": "image_fx_-E1NT.jpg",
+      "publishedAt": "2025-02-23T04:45:17.981Z",
       "type": "image"
     },
     {
