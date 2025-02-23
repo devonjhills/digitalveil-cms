@@ -1,22 +1,22 @@
 {
-  "commit": "",
-  "generated": "2025-02-23T04:54:59.921Z",
+  "commit": "a40819cb2f78f3b3d86036dda5ff059ee9014a92",
+  "generated": "2025-02-23T09:32:55.633Z",
   "metadata": [
     {
       "__outstatic": {
-        "commit": "",
-        "hash": "260948611",
+        "commit": "a40819cb2f78f3b3d86036dda5ff059ee9014a92",
+        "hash": "1431681134",
         "path": "outstatic/content/posts/test-post.mdx"
       },
       "author": {
         "name": "J. Staros",
-        "picture": "/images/image_fx_-E1NT.jpg"
+        "picture": "/images/avatar.jpg"
       },
       "collection": "posts",
-      "publishedAt": "2025-02-23T04:13:42.975Z",
+      "publishedAt": "2025-02-23T09:02:38.319Z",
       "slug": "test-post",
       "status": "published",
-      "title": "Test post"
+      "title": ""
     }
   ]
 }
