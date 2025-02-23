@@ -1,19 +1,95 @@
 import React from "react";
 import Markdown from "markdown-to-jsx";
 import { cn } from "@/lib/utils";
-import { Card } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
+import { Badge } from "@/components/ui/badge";
+import { Clock, ArrowRight } from "lucide-react";
 
 interface OstMarkdownProps {
   content: string;
   className?: string;
 }
 
-// Custom components for special blocks
-const ProductCard = ({ children }: { children: React.ReactNode }) => (
-  <Card className="p-6 my-8 bg-card border-2 border-primary/10 hover:border-primary/20 transition-all">
-    {children}
+// Custom components for affiliate elements
+const JohnsonBox = ({
+  title,
+  text,
+  button,
+  link,
+}: {
+  title: string;
+  text: string;
+  button: string;
+  link: string;
+}) => (
+  <Card className="p-6 my-8 bg-primary/10 border-2 border-primary/20 hover:border-primary transition-all text-center">
+    <h2 className="text-2xl font-bold mb-2">{title}</h2>
+    <p className="text-lg mb-4">{text}</p>
+    <Button asChild className="w-full sm:w-auto text-lg py-6 px-8">
+      <a href={link} target="_blank" rel="noopener noreferrer">
+        {button}
+      </a>
+    </Button>
+  </Card>
+);
+
+const DropdownChoices = ({ options }: { options: string[] }) => (
+  <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <Button variant="outline">Choose an option</Button>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent>
+      {options.map((option, index) => (
+        <DropdownMenuItem key={index}>{option}</DropdownMenuItem>
+      ))}
+    </DropdownMenuContent>
+  </DropdownMenu>
+);
+
+const ProductCard = ({
+  title,
+  image,
+  link,
+  children,
+}: {
+  title: string;
+  image?: string;
+  link: string;
+  children: React.ReactNode;
+}) => (
+  <Card className="my-8 bg-card border-2 border-primary/10 hover:border-primary/20 hover:shadow-lg transition-all group">
+    {image && (
+      <img
+        src={image}
+        alt={title}
+        className="w-full h-48 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300"
+      />
+    )}
+    <CardHeader>
+      <CardTitle>{title}</CardTitle>
+    </CardHeader>
+    <CardContent>{children}</CardContent>
+    <CardFooter>
+      <Button asChild className="w-full sm:w-auto">
+        <a href={link} target="_blank" rel="noopener noreferrer">
+          Learn More <ArrowRight className="ml-2 h-4 w-4" />
+        </a>
+      </Button>
+    </CardFooter>
   </Card>
 );
 
@@ -25,7 +101,7 @@ const CTAButton = ({
   children: React.ReactNode;
 }) => (
   <Button
-    className="w-full sm:w-auto my-4 text-lg py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all"
+    className="w-full sm:w-auto text-lg py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all"
     asChild>
     <a href={href} target="_blank" rel="noopener noreferrer">
       {children}
@@ -39,13 +115,46 @@ const Highlight = ({ children }: { children: React.ReactNode }) => (
   </Alert>
 );
 
+const TrustSignals = ({ logos }: { logos: string[] }) => (
+  <div className="flex justify-center gap-4 my-8">
+    {logos.map((logo, index) => (
+      <img key={index} src={logo} alt="Trust logo" className="h-8" />
+    ))}
+  </div>
+);
+
+const UrgencyBadge = ({ text }: { text: string }) => (
+  <Badge
+    variant="destructive"
+    className="mb-2 inline-flex items-center px-3 py-1 text-sm font-medium" // Adjusted styling
+  >
+    <Clock className="h-4 w-4 mr-1" /> {text}
+  </Badge>
+);
+
+const FAQSection = ({
+  faqs,
+}: {
+  faqs: { question: string; answer: string }[];
+}) => (
+  <div className="my-8">
+    {faqs.map((faq, index) => (
+      <details key={index} className="mb-4">
+        <summary className="font-bold text-lg cursor-pointer">
+          {faq.question}
+        </summary>
+        <p className="text-muted-foreground mt-2">{faq.answer}</p>
+      </details>
+    ))}
+  </div>
+);
+
 export function OstMarkdown({ content, className }: OstMarkdownProps) {
   return (
     <article className={cn("max-w-3xl mx-auto", className)}>
       <Markdown
         options={{
           overrides: {
-            // Headings with improved visual hierarchy
             h1: {
               props: {
                 className:
@@ -64,14 +173,12 @@ export function OstMarkdown({ content, className }: OstMarkdownProps) {
                   "scroll-m-20 text-2xl font-semibold tracking-tight mt-8 mb-4",
               },
             },
-            // Paragraphs with improved readability
             p: {
               props: {
                 className:
                   "leading-7 [&:not(:first-child)]:mt-6 text-lg text-muted-foreground",
               },
             },
-            // Enhanced links for better CTR
             a: {
               props: {
                 className:
@@ -80,7 +187,6 @@ export function OstMarkdown({ content, className }: OstMarkdownProps) {
                 rel: "noopener noreferrer",
               },
             },
-            // Lists with better spacing and bullets
             ul: {
               props: {
                 className:
@@ -93,7 +199,6 @@ export function OstMarkdown({ content, className }: OstMarkdownProps) {
                   "my-6 ml-6 list-decimal [&>li]:mt-2 text-muted-foreground",
               },
             },
-            // Better code blocks
             pre: {
               props: {
                 className:
@@ -106,22 +211,14 @@ export function OstMarkdown({ content, className }: OstMarkdownProps) {
                   "relative rounded border px-[0.3rem] py-[0.2rem] font-mono text-sm bg-muted",
               },
             },
-            // Blockquotes for testimonials or important callouts
             blockquote: {
               props: {
                 className:
                   "mt-6 border-l-2 border-primary pl-6 italic text-muted-foreground",
               },
             },
-            // Custom components
-            ProductCard,
-            CTAButton,
-            Highlight,
-            // Tables for product comparisons
             table: {
-              props: {
-                className: "w-full my-6 border-collapse text-sm",
-              },
+              props: { className: "w-full my-6 border-collapse text-sm" },
             },
             th: {
               props: {
@@ -129,15 +226,27 @@ export function OstMarkdown({ content, className }: OstMarkdownProps) {
               },
             },
             td: {
-              props: {
-                className: "border px-4 py-2 text-muted-foreground",
-              },
+              props: { className: "border px-4 py-2 text-muted-foreground" },
             },
-            // Images with optimized presentation
-            img: {
-              props: {
-                className: "rounded-lg border my-8 shadow-md",
-              },
+            img: { props: { className: "rounded-lg border my-8 shadow-md" } },
+
+            // New custom components
+            JohnsonBox,
+            DropdownChoices,
+            ProductCard,
+            CTAButton,
+            Highlight,
+            TrustSignals,
+            UrgencyBadge,
+            FAQSection,
+
+            // Fixed list items with icons
+            li: {
+              component: ({ children, ...props }) => (
+                <li className="flex items-center gap-2" {...props}>
+                  <span>{children}</span>
+                </li>
+              ),
             },
           },
         }}>
