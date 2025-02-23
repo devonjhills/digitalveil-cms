@@ -1,10 +1,10 @@
 {
-  "commit": "a40819cb2f78f3b3d86036dda5ff059ee9014a92",
-  "generated": "2025-02-23T09:32:55.633Z",
+  "commit": "",
+  "generated": "Sun, 23 Feb 2025 09:36:48 GMT",
   "metadata": [
     {
       "__outstatic": {
-        "commit": "a40819cb2f78f3b3d86036dda5ff059ee9014a92",
+        "commit": "fad35c6e3da2c4e014fa1daca81fdf9c1e23cc30",
         "hash": "1431681134",
         "path": "outstatic/content/posts/test-post.mdx"
       },
