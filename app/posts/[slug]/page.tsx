@@ -151,9 +151,7 @@ export default async function PostPage(props: PageProps) {
         <Separator className="my-6" />
 
         <CardContent>
-          <article className="prose prose-slate max-w-none dark:prose-invert">
-            <OstMarkdown content={post.content} />
-          </article>
+          <OstMarkdown content={post.content} />
         </CardContent>
       </Card>
     </main>

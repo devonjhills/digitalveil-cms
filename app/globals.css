@@ -83,3 +83,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+@supports (backdrop-filter: blur(12px)) {
+  .backdrop-blur-sm {
+    backdrop-filter: blur(12px);
+  }
+}
