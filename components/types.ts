@@ -1,96 +1,79 @@
-import { ReactNode } from "react";
-import { ButtonProps } from "./ui/button";
+// types.ts - Type definitions for OstMarkdown components
 
-export interface HeadingProps {
-    children: ReactNode;
-    id?: string;
-    className?: string;
-  }
-  
-  export interface LinkProps {
-    children: ReactNode;
-    href?: string;
-    className?: string;
-    target?: string;
-    rel?: string;
-  }
-  
-  export interface ListItemProps {
-    children: ReactNode;
-    className?: string;
-  }
-  
-  export interface PreProps {
-    children: ReactNode;
-    className?: string;
-  }
-  
-  export interface BlockquoteProps {
-    children: ReactNode;
-    className?: string;
-  }
-  
-  export interface TableProps {
-    children: ReactNode;
-    className?: string;
-  }
-  
-  export interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
-    src?: string;
-    alt?: string;
-  }
-  
-  export interface JohnsonBoxProps {
-    children: ReactNode;
-    title?: string;
-  }
-  
-  export interface ProductCardProps {
-    children: ReactNode;
-    title?: string;
-    badge?: string;
-  }
-  
-  export interface CTAButtonProps extends Omit<ButtonProps, 'variant'> {
-    href?: string;
-    children: ReactNode;
-    variant?: "default" | "secondary" | "outline" | "ghost";
-  }
-  
-  export interface HighlightProps {
-    children: ReactNode;
-    title?: string;
-  }
-  
-  export interface CardHeaderProps {
-    children: ReactNode;
-    subtitle?: string;
-  }
-  
-  export interface CardFooterProps {
-    children: ReactNode;
-    url?: string;
-  }
-  
-  export interface CalloutBoxProps {
-    children: ReactNode;
-    type?: "info" | "warning" | "success" | "error";
-  }
-  
-  export interface ImageGalleryProps {
-    images: { src: string; alt?: string }[];
-  }
+import React from "react";
 
-  export interface OstMarkdownProps {
-    content: string;
-    className?: string;
-    bottomCtaText?: string;
-    bottomCtaLink?: string;
-    bottomCtaDelay?: number; // in milliseconds
-  }
-  
-  export interface BottomBannerCTAProps {
-    text: string;
-    link: string;
-    onClose: () => void;
-  }
+export type HeadingProps = {
+  children: React.ReactNode;
+  className?: string;
+};
+
+export type LinkProps = {
+  children: React.ReactNode;
+  href: string;
+  className?: string;
+};
+
+export type ListItemProps = {
+  children: React.ReactNode;
+  className?: string;
+};
+
+export type BlockquoteProps = {
+  children: React.ReactNode;
+  className?: string;
+};
+
+export type TableProps = {
+  children: React.ReactNode;
+  className?: string;
+};
+
+export type ImageProps = {
+  src: string;
+  alt?: string;
+  className?: string;
+};
+
+export type JohnsonBoxProps = {
+  children: React.ReactNode;
+  title?: string;
+};
+
+export type ProductCardProps = {
+  children: React.ReactNode;
+  title?: string;
+  badge?: string;
+};
+
+export type CTAButtonProps = {
+  children: React.ReactNode;
+  href?: string;
+  variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
+} & (
+  | React.ButtonHTMLAttributes<HTMLButtonElement>
+  | React.AnchorHTMLAttributes<HTMLAnchorElement>
+);
+
+export type HighlightProps = {
+  children: React.ReactNode;
+  title?: string;
+};
+
+export type CalloutBoxProps = {
+  children: React.ReactNode;
+  type?: "info" | "warning" | "success" | "error";
+};
+
+export type BottomBannerCTAProps = {
+  text: string;
+  link: string;
+  onClose: () => void;
+};
+
+export type OstMarkdownProps = {
+  content: string;
+  className?: string;
+  bottomCtaText?: string;
+  bottomCtaLink?: string;
+  bottomCtaDelay?: number;
+};

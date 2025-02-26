@@ -3,13 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Markdown from "markdown-to-jsx";
 import { cn } from "@/lib/utils";
-import {
-  Card,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-  CardContent,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -33,8 +27,6 @@ import {
   BlockquoteProps,
   BottomBannerCTAProps,
   CalloutBoxProps,
-  CardFooterProps,
-  CardHeaderProps,
   CTAButtonProps,
   HeadingProps,
   HighlightProps,
@@ -54,15 +46,16 @@ const BottomBannerCTA: React.FC<BottomBannerCTAProps> = ({
 }) => {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-gradient-to-r from-primary to-primary/80 text-white shadow-lg animate-slide-up">
-      <div className="max-w-5xl mx-auto flex items-center justify-between">
+      <div className="max-w-5xl mx-auto flex items-center justify-between px-4">
         <div className="flex items-center gap-3">
           <BookOpen className="h-6 w-6" />
-          <p className="font-medium">{text}</p>
+          <p className="font-medium text-lg">{text}</p>
         </div>
         <div className="flex items-center gap-2">
           <Button
-            variant="secondary"
-            className="bg-white text-primary hover:bg-white/90"
+            variant="default"
+            size="lg"
+            className="bg-white text-primary hover:bg-primary/10 hover:text-primary-foreground transition-colors"
             onClick={() => window.open(link, "_blank")}>
             Learn More
             <ExternalLink className="ml-2 h-4 w-4" />
@@ -71,8 +64,9 @@ const BottomBannerCTA: React.FC<BottomBannerCTAProps> = ({
             variant="ghost"
             size="icon"
             className="text-white hover:bg-primary/20 hover:text-white"
-            onClick={onClose}>
-            <X className="h-5 w-5" />
+            onClick={onClose}
+            aria-label="Close">
+            <X className="ml-4 h-7 w-7" />
           </Button>
         </div>
       </div>
@@ -129,7 +123,7 @@ export function OstMarkdown({
     h3: {
       component: ({ children, ...props }: HeadingProps) => (
         <h3
-          className="scroll-m-20 text-2xl font-semibold tracking-tight mt-8 mb-4 flex items-center gap-2"
+          className="scroll-m-20 text-2xl font-semibold tracking-tight mt-8 mb-4"
           {...props}>
           {children}
         </h3>
@@ -167,12 +161,12 @@ export function OstMarkdown({
           <Tooltip>
             <TooltipTrigger asChild>
               <a
-                className="font-medium text-primary underline underline-offset-4 hover:text-primary/80 inline-flex items-center gap-1 transition-all align-middle"
+                className="font-medium text-primary underline underline-offset-4 hover:text-primary/80 inline-flex items-center gap-1 transition-all"
                 target="_blank"
                 rel="noopener noreferrer"
                 {...props}>
                 {children}
-                <ExternalLink className="h-4 w-4 ml-2 opacity-70 inline-block align-baseline" />
+                <ExternalLink className="h-4 w-4 ml-1 opacity-70" />
               </a>
             </TooltipTrigger>
             <TooltipContent>
@@ -202,17 +196,11 @@ export function OstMarkdown({
     blockquote: {
       component: ({ children, ...props }: BlockquoteProps) => (
         <blockquote
-          className="mt-6 border-l-2 border-primary pl-6 italic text-muted-foreground"
+          className="mt-6 border-l-2 border-primary pl-6 italic text-muted-foreground relative py-2"
           {...props}>
-          <div className="relative">
-            <div className="absolute -top-2 -left-8 text-primary/20 text-4xl">
-              <Quote className="[transform:scaleX(-1)]" />
-            </div>
-            {children}
-            <div className="absolute -bottom-4 -right-4 text-primary/20 text-4xl">
-              <Quote />
-            </div>
-          </div>
+          <Quote className="absolute -top-2 -left-8 text-primary/20 text-4xl [transform:scaleX(-1)]" />
+          {children}
+          <Quote className="absolute -bottom-4 -right-4 text-primary/20 text-4xl" />
         </blockquote>
       ),
     },
@@ -238,7 +226,7 @@ export function OstMarkdown({
         <div className="my-8 overflow-hidden rounded-lg border shadow-md transition-all hover:shadow-lg">
           <img
             src={src}
-            alt={alt}
+            alt={alt || ""}
             className="w-full object-cover transition-transform hover:scale-105"
             loading="lazy"
             {...props}
@@ -252,17 +240,21 @@ export function OstMarkdown({
       ),
     },
 
-    // Enhanced custom components
+    // Custom components
     JohnsonBox: {
       component: ({ children, title }: JohnsonBoxProps) => (
-        <Card className="p-6 my-8 bg-primary/10 border-2 border-primary/20 hover:border-primary/30 transition-all text-center backdrop-blur-sm">
+        <Card className="my-8 rounded-2xl overflow-hidden shadow-lg border-2 border-primary/20 hover:border-primary/30 transition-all">
           {title && (
-            <CardHeader className="pb-2 pt-2">
-              <CardTitle className="text-xl">{title}</CardTitle>
+            <CardHeader className="bg-primary/10 px-6 py-4 border-b border-primary/20">
+              <CardTitle className="text-2xl font-bold text-primary">
+                {title}
+              </CardTitle>
             </CardHeader>
           )}
-          <CardContent className="pt-0">
-            <ScrollArea className="h-full max-h-80">{children}</ScrollArea>
+          <CardContent className="px-6 py-8">
+            <ScrollArea className="max-h-96">
+              <div className="text-lg text-muted-foreground">{children}</div>
+            </ScrollArea>
           </CardContent>
         </Card>
       ),
@@ -270,8 +262,7 @@ export function OstMarkdown({
 
     ProductCard: {
       component: ({ children, title, badge }: ProductCardProps) => (
-        <Card className="my-8 bg-card border-2 border-primary/10 hover:border-primary/20 hover:shadow-lg transition-all group relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+        <Card className="my-8 border-2 border-primary/10 hover:border-primary/20 hover:shadow-lg transition-all overflow-hidden">
           {title && (
             <CardHeader className="bg-gradient-to-r from-primary/5 to-primary/10 flex flex-row items-center justify-between">
               <CardTitle className="text-2xl">{title}</CardTitle>
@@ -296,20 +287,24 @@ export function OstMarkdown({
         variant = "default",
         ...props
       }: CTAButtonProps) => {
+        const className =
+          "w-full sm:w-auto text-lg py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow";
+
         return href ? (
           <a
             href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block"
             {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}>
-            <Button
-              className="w-full sm:w-auto text-lg py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
-              variant={variant}>
+            <Button className={className} variant={variant}>
               {children}
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </a>
         ) : (
           <Button
-            className="w-full sm:w-auto text-lg py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+            className={className}
             variant={variant}
             {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}>
             {children}
@@ -321,10 +316,10 @@ export function OstMarkdown({
 
     Highlight: {
       component: ({ children, title }: HighlightProps) => (
-        <Alert className="my-6 border-2 border-primary/20 bg-primary/5 backdrop-blur-sm">
+        <Alert className="my-6 border-2 border-primary/20 bg-primary/5">
           {title && <AlertTitle className="text-primary">{title}</AlertTitle>}
           <AlertDescription className="flex items-start gap-2">
-            <div className="h-full w-1 bg-primary/50 rounded-full mt-1" />
+            <div className="h-full w-1 bg-primary/50 rounded-full mt-1 flex-shrink-0" />
             <div>{children}</div>
           </AlertDescription>
         </Alert>
@@ -333,19 +328,16 @@ export function OstMarkdown({
 
     FAQ: {
       component: ({ children }: { children: React.ReactNode }) => {
-        // Expect children to be a heading (question) followed by content (answer)
-        const [question, ...answerElements] = React.Children.toArray(children);
+        const childArray = React.Children.toArray(children);
+        const question = childArray[0];
+        const answerElements = childArray.slice(1);
 
         return (
           <details className="mb-4 group">
             <summary className="flex items-center cursor-pointer list-none p-4 bg-muted/50 hover:bg-muted transition-colors rounded-lg">
-              <span className="flex-1 font-medium">
-                {/* Render the question (which should be an h3) */}
-                {question}
-              </span>
+              <span className="flex-1 font-medium">{question}</span>
               <ArrowDown className="ml-2 h-5 w-5 transform transition-transform group-open:rotate-180" />
             </summary>
-            {/* Render the answer (which could be multiple elements) */}
             <div className="mt-2 px-4 pb-4 text-muted-foreground">
               {answerElements}
             </div>
@@ -354,55 +346,21 @@ export function OstMarkdown({
       },
     },
 
-    "card-header": {
-      component: ({ children, subtitle }: CardHeaderProps) => (
-        <CardHeader className="bg-gradient-to-r from-primary/5 to-primary/10">
-          <CardTitle className="text-2xl">{children}</CardTitle>
-          {subtitle && (
-            <p className="text-sm text-muted-foreground">{subtitle}</p>
-          )}
-        </CardHeader>
-      ),
-    },
-
-    "card-footer": {
-      component: ({ children, url }: CardFooterProps) => {
-        return (
-          <CardFooter className="flex justify-end pt-4 border-t">
-            {url ? (
-              <a href={url} target="_blank" rel="noopener noreferrer">
-                <Button className="group">
-                  {React.isValidElement(children) ? children : "Learn More"}
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </a>
-            ) : (
-              <Button className="group">
-                {React.isValidElement(children) ? children : "Learn More"}
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-            )}
-          </CardFooter>
-        );
-      },
-    },
-
-    // New component: CalloutBox
     CalloutBox: {
       component: ({ children, type = "info" }: CalloutBoxProps) => {
-        // Map the type to the corresponding tailwind classes.
-        const alertStyles = {
-          info: "bg-blue-50 border-blue-200 text-blue-800 dark:bg-blue-900 dark:border-blue-800 dark:text-blue-100",
+        // Map the type to the corresponding tailwind classes
+        const typeStyles = {
+          info: "border-blue-200 bg-blue-50 text-blue-800 dark:bg-blue-950 dark:border-blue-800 dark:text-blue-100",
           warning:
-            "bg-yellow-50 border-yellow-200 text-yellow-800 dark:bg-yellow-900 dark:border-yellow-800 dark:text-yellow-100",
+            "border-yellow-200 bg-yellow-50 text-yellow-800 dark:bg-yellow-950 dark:border-yellow-800 dark:text-yellow-100",
           success:
-            "bg-green-50 border-green-200 text-green-800 dark:bg-green-900 dark:border-green-800 dark:text-green-100",
+            "border-green-200 bg-green-50 text-green-800 dark:bg-green-950 dark:border-green-800 dark:text-green-100",
           error:
-            "bg-red-50 border-red-200 text-red-800 dark:bg-red-900 dark:border-red-800 dark:text-red-100",
+            "border-red-200 bg-red-50 text-red-800 dark:bg-red-950 dark:border-red-800 dark:text-red-100",
         };
 
         return (
-          <Alert className={`not-prose my-6 border-2 ${alertStyles[type]}`}>
+          <Alert className={`my-6 border-2 ${typeStyles[type]}`}>
             <AlertDescription>{children}</AlertDescription>
           </Alert>
         );
@@ -414,7 +372,7 @@ export function OstMarkdown({
     <>
       <article
         className={cn(
-          "max-w-3xl mx-auto relative prose prose-slate dark:prose-invert",
+          "max-w-3xl mx-auto prose prose-slate dark:prose-invert",
           className
         )}>
         <Markdown options={{ overrides: markdownOverrides }}>
@@ -433,93 +391,123 @@ export function OstMarkdown({
   );
 }
 
-/* USAGE 
-Quick Instruction Set for OstMarkdown & Custom Components
-Overall Structure & Rendering
-Article Container:
-Wrap the entire markdown content in an article element.
-The OstMarkdown component applies the classes "max-w-3xl mx-auto relative prose prose-slate dark:prose-invert", so simply output the markdown content normally.
+/* 
+## OstMarkdown Component Guide
 
-Automatic Bottom CTA:
-Do not include any manual bottom call-to-action; OstMarkdown automatically renders a banner (via BottomBannerCTA) after a delay (default 3000 ms) using the bottomCtaText and bottomCtaLink props.
+The OstMarkdown component renders Markdown content with enhanced styling and custom components using shadcn/ui and Tailwind CSS.
 
-Standard Markdown Elements (Handled via Overrides)
-Headings:
-H1: Use # Heading Title
-Renders with an extra-bold, gradient text style and a separator below.
+### Basic Usage
 
-H2: Use ## Heading Title
-Renders with a bottom border and larger, prominent text.
+```jsx
+import { OstMarkdown } from "@/components/OstMarkdown";
 
-H3: Use ### Heading Title
-Renders with a flex layout and spacing.
+export default function Page() {
+  const content = `# My Markdown Content
+  
+This is a paragraph with some **bold** and *italic* text.`;
 
-Paragraphs:
-Write paragraphs in normal markdown syntax.
-The renderer will automatically decide between a <p> (for pure text) or a <div> (if there are mixed children).
+  return <OstMarkdown content={content} />;
+}
+```
 
-Links:
-Use standard markdown link syntax: [Link Text](https://example.com)
-Links are automatically rendered with an underline, a tooltip (“Opens in a new tab”), and an external link icon.
+### Component Props
 
-Lists:
-Unordered lists (- or *) and ordered lists (1.) are styled with proper indentation and spacing.
-List items (li) wrap their content in a span styled with a primary accent.
+- `content`: (required) The markdown content as a string
+- `className`: (optional) Additional CSS classes for the container
+- `bottomCtaText`: (optional) Text for the call-to-action banner (default: "Want to learn more about our products?")
+- `bottomCtaLink`: (optional) URL for the CTA banner (default: "#")
+- `bottomCtaDelay`: (optional) Delay in milliseconds before showing the CTA (default: 3000)
 
-Blockquotes:
-Use > to start a blockquote.
-Blockquotes render with decorative quote icons on both sides.
+### Standard Markdown Elements
 
-Tables:
-Write tables in the standard markdown table syntax.
-Tables render inside a scrollable container; header cells (th) and data cells (td) are styled with borders and padding.
+All standard markdown elements (headings, paragraphs, lists, etc.) are styled consistently with the design system.
 
-Images:
-Use standard image syntax: ![Alt Text](image_url)
-Images are rendered in a bordered, rounded container with a hover zoom effect. If an alt text is provided, it appears as a caption.
-Custom Component Overrides (Embed as Custom HTML Tags in Markdown)
+#### Headings
 
-JohnsonBox:
-Usage: <JohnsonBox title="Optional Title">Your content here</JohnsonBox>
-Renders a card with an optional header and a scrollable content area.
+- `# Heading 1` - Gradient text with separator
+- `## Heading 2` - Border-bottom style with primary color
+- `### Heading 3` - Larger text with proper spacing
 
-ProductCard:
-Usage: <ProductCard title="Product Title" badge="Badge Text">Product details here</ProductCard>
-Renders a styled card with a header (and optional badge) and content.
+#### Text Formatting
 
-CTAButton:
-Usage: <CTAButton href="https://example.com">Call to Action</CTAButton>
-Renders a large, responsive button with an arrow icon. If href is omitted, it renders as a standard button.
+- Paragraphs - Properly spaced with muted foreground color
+- **Bold text** - `**bold**`
+- *Italic text* - `*italic*`
+- [Links](https://example.com) - `[text](url)` - Shows with external link icon and tooltip
+- Lists - Unordered (`- item`) and ordered (`1. item`) with proper spacing
 
-Highlight:
-Usage: <Highlight title="Optional Title">Important highlight message</Highlight>
-Renders an alert-like box emphasizing the content.
+#### Block Elements
 
-FAQ:
-Usage:
+- > Blockquotes - With decorative quote icons
+- Code blocks - ``` ``` - Syntax highlighting
+- Tables - Standard markdown tables with responsive container
+- Images - `![alt](src)` - Rounded containers with hover effects and optional captions
+
+### Custom Components
+
+#### JohnsonBox
+
+A card-like container with an optional title and scrollable content.
+
+```md
+<JohnsonBox title="Optional Title">
+Your content here
+</JohnsonBox>
+```
+
+#### ProductCard
+
+A styled card for product information with optional badge.
+
+```md
+<ProductCard title="Product Title" badge="New">
+Product details here
+</ProductCard>
+```
+
+#### CTAButton
+
+A prominent call-to-action button.
+
+```md
+<CTAButton href="https://example.com">
+Call to Action
+</CTAButton>
+```
+
+#### Highlight
+
+An alert-style box to emphasize important content.
+
+```md
+<Highlight title="Important Note">
+This is highlighted information
+</Highlight>
+```
+
+#### FAQ
+
+An expandable details/summary component for FAQs.
+
+```md
 <FAQ>
-  <h3>Question goes here</h3>
+  <h3>Question goes here?</h3>
   <p>Answer content goes here...</p>
 </FAQ>
-Expects the first child to be the question (typically an <h3>) and subsequent elements as the answer. Renders as an expandable/collapsible details block.
+```
 
-card-header & card-footer:
-Usage:
-<card-header subtitle="Optional Subtitle">Header Text</card-header>
-<card-footer url="https://example.com">Footer Text</card-footer>
-These render parts of a card, with the footer optionally linking to an external URL.
+#### CalloutBox
 
-CalloutBox:
-Usage: <CalloutBox type="info">Your callout message</CalloutBox>
-Supports type values of "info", "warning", "success", or "error" to adjust the styling of the alert.
+A colored alert box with different semantic types.
 
-Best Practices & Tips
-Consistency:
-Use standard markdown for common elements; the overrides will ensure a consistent, styled output.
-Component Tag Names:
-When embedding custom components, ensure that the tag names (e.g., <FAQ>, <Highlight>) exactly match those defined in the overrides so that the proper component is rendered.
-Focus on Content:
-Concentrate on the content and structure. The component logic (styling, interactivity, responsiveness) is already encapsulated in the overrides.
-No Manual CTA:
-Do not attempt to manually insert the bottom call-to-action—this is managed automatically by OstMarkdown.
+```md
+<CalloutBox type="info">
+Information message
+</CalloutBox>
+```
+
+Supported types: "info" (default), "warning", "success", "error"
+
+### Bottom CTA Banner
+
 */
