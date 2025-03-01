@@ -1,22 +1,45 @@
 {
-  "commit": "e592b9970558ff34df5b5e5842d5e1204b0a56bc",
-  "generated": "2025-02-23T09:43:22.773Z",
+  "commit": "",
+  "generated": "Sat, 01 Mar 2025 12:09:22 GMT",
   "metadata": [
     {
       "__outstatic": {
-        "commit": "e592b9970558ff34df5b5e5842d5e1204b0a56bc",
-        "hash": "3932635692",
+        "commit": "702e6a1cf7e44c83e33d7990c220772e1fbdc271",
+        "hash": "639591378",
         "path": "outstatic/content/posts/test-post.mdx"
       },
-      "author": {
-        "name": "J. Staros",
-        "picture": "/media/avatar.jpg"
-      },
+      "author": "ChatGPT",
       "collection": "posts",
-      "publishedAt": "2025-02-23T09:02:38.319Z",
-      "slug": "test-post",
-      "status": "published",
-      "title": "Test post"
+      "date": "2025-02-28",
+      "slug": "test-postx",
+      "title": "Markdown Elements Test"
+    },
+    {
+      "__outstatic": {
+        "commit": "d40454cd9e9f5a12209c553b5f98949f57bc03f5",
+        "hash": "406601818",
+        "path": "outstatic/content/posts/ergonomic-home-office-setup.mdx"
+      },
+      "author": "J. Staros",
+      "categories": [
+        "Home Office",
+        "Ergonomics",
+        "Productivity"
+      ],
+      "collection": "posts",
+      "description": "Transform your home office with our comprehensive ergonomic setup guide. Learn how to optimize your workspace for comfort, productivity, and long-term health.",
+      "featured_image": "https://images.unsplash.com/photo-1594732832278-abd644401426?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTYxNTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDA4MjgwNzd8&ixlib=rb-4.0.3&q=80&w=1080",
+      "slug": "ergonomic-home-office-setupx",
+      "tags": [
+        "ergonomic setup",
+        "home office",
+        "workspace optimization",
+        "ergonomic chair",
+        "standing desk",
+        "proper posture",
+        "work from home"
+      ],
+      "title": "Ergonomic Home Office Setup: The Ultimate Guide to Creating a Comfortable and Productive Workspace"
     }
   ]
 }
