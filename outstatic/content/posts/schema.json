@@ -1,5 +1,18 @@
 {
   "title": "posts",
   "type": "object",
-  "properties": {}
+  "properties": {
+    "featuredImage": {
+      "required": false,
+      "fieldType": "Text",
+      "dataType": "string",
+      "title": "featured_image"
+    },
+    "coverImage": {
+      "required": false,
+      "fieldType": "Text",
+      "dataType": "string",
+      "title": "cover_image"
+    }
+  }
 }
