@@ -19,6 +19,13 @@
       "fieldType": "Text",
       "dataType": "string",
       "title": "Featured_image"
+    },
+    "categories": {
+      "required": false,
+      "fieldType": "Tags",
+      "dataType": "array",
+      "title": "Categories",
+      "values": []
     }
   }
 }
