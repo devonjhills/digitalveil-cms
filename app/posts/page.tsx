@@ -9,7 +9,7 @@ export default async function PostsHome() {
   const db = await load();
   const posts = await db
     .find({ collection: "posts" })
-    .project(["title", "description", "slug", "publishedAt", "coverImage"]) // Fetch coverImage
+    .project(["title", "description", "slug", "publishedAt", "coverImage "]) // Fetch coverImage 
     .sort({ publishedAt: -1 })
     .limit(3) // Limit to 3 featured posts, adjust as needed.
     .toArray();
@@ -36,10 +36,10 @@ export default async function PostsHome() {
                 Read More
               </Link>
             </div>
-            {heroPost.coverImage && (
+            {heroPost.coverImage  && (
               <div className="relative aspect-w-16 aspect-h-9">
                 <Image
-                  src={heroPost.coverImage}
+                  src={heroPost.coverImage }
                   alt={heroPost.title}
                   fill
                   className="object-cover rounded-lg"
@@ -61,10 +61,10 @@ export default async function PostsHome() {
                 key={post.slug}
                 className="hover:shadow-lg transition-shadow">
                 <Link href={`/posts/${post.slug}`}>
-                  {post.coverImage && (
+                  {post.coverImage  && (
                     <div className="relative aspect-w-16 aspect-h-9">
                       <Image
-                        src={post.coverImage}
+                        src={post.coverImage }
                         alt={post.title}
                         fill
                         className="object-cover rounded-t-lg"

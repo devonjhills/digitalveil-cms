@@ -14,11 +14,11 @@
       "dataType": "string",
       "title": "Description"
     },
-    "featuredImage": {
+    "publishedAt": {
       "required": false,
       "fieldType": "Text",
       "dataType": "string",
-      "title": "Featured_image"
+      "title": "published_at"
     },
     "categories": {
       "required": false,

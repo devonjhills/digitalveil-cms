@@ -38,7 +38,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const db = await load();
   const post = await db
     .find({ collection: "posts", slug: params.slug })
-    .project(["title", "description", "coverImage", "author"])
+    .project(["title", "description", "coverImage ", "author"])
     .first();
 
   if (!post) {
@@ -51,11 +51,11 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     authors: [{ name: post.author?.name }],
   };
 
-  if (post.coverImage) {
+  if (post.coverImage ) {
     metadata.openGraph = {
       title: post.title,
       description: post.description,
-      images: [{ url: post.coverImage }],
+      images: [{ url: post.coverImage  }],
     };
   }
   return metadata;
@@ -74,7 +74,7 @@ export default async function PostPage(props: PageProps) {
       "title",
       "publishedAt",
       "content",
-      "coverImage",
+      "coverImage ",
       "description",
       "author",
     ])
@@ -84,6 +84,8 @@ export default async function PostPage(props: PageProps) {
     notFound();
   }
 
+  console.log(post.publishedAt);
+
   const formattedDate = format(new Date(post.publishedAt), "MMMM d, yyyy");
   const formattedTime = format(new Date(post.publishedAt), "h:mm a");
 
@@ -91,10 +93,10 @@ export default async function PostPage(props: PageProps) {
     <main className="container max-w-4xl py-6 lg:py-10">
       <Card className="border-none shadow-none">
         <CardHeader className="space-y-6">
-          {post.coverImage && (
+          {post.coverImage  && (
             <div className="relative aspect-video overflow-hidden rounded-lg">
               <Image
-                src={post.coverImage}
+                src={post.coverImage }
                 alt={post.title}
                 fill
                 className="object-cover"
