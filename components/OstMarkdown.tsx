@@ -65,7 +65,7 @@ const BottomBannerCTA: React.FC<BottomBannerCTAProps> = ({
 export function OstMarkdown({
   content,
   className,
-  bottomCtaText = "Check out our latest brutalist designs! Limited edition drops available now.",
+  bottomCtaText = "Thanks for stopping by.",
   bottomCtaLink = "#",
   bottomCtaDelay = 3000,
 }: OstMarkdownProps) {

@@ -9,16 +9,12 @@
         "path": "outstatic/content/posts/ergonomic-home-office-setup.mdx"
       },
       "author": "J. Staros",
-      "categories": [
-        "Home Office",
-        "Ergonomics",
-        "Workplace Wellness"
-      ],
+      "categories": ["Home Office", "Ergonomics", "Workplace Wellness"],
       "collection": "posts",
       "cover_image": "https://images.unsplash.com/photo-1594732832278-abd644401426?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTYxNTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDA4MjgwNzd8&ixlib=rb-4.0.3&q=80&w=1080",
       "description": "Create your ideal ergonomic home office setup with expert tips on chair height, desk positioning, monitor placement, and accessories to prevent pain and boost productivity.",
       "published_at": "2025-02-28T11:58Z",
-      "slug": "ergonomic-home-office-setupx",
+      "slug": "ergonomic-home-office-setup",
       "tags": [
         "ergonomic setup",
         "home office",

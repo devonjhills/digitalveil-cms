@@ -1,24 +1,22 @@
-// app/page.tsx
-
 import { load } from "outstatic/server";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
-import Image from "next/image"; // Import Next.js Image component
+import Image from "next/image";
 
 export default async function PostsHome() {
   const db = await load();
   const posts = await db
     .find({ collection: "posts" })
-    .project(["title", "description", "slug", "publishedAt", "coverImage "]) // Fetch coverImage 
+    .project(["title", "description", "slug", "publishedAt", "coverImage"])
     .sort({ publishedAt: -1 })
-    .limit(3) // Limit to 3 featured posts, adjust as needed.
+    .limit(3)
     .toArray();
 
-  const heroPost = posts[0]; // Get most recent post for hero
-  const featuredPosts = posts.slice(1); // remaining posts for featured section
+  const heroPost = posts[0];
+  const featuredPosts = posts.slice(1);
 
   return (
-    <main className="container">
+    <main className="container py-12">
       {/* Hero Section */}
       {heroPost && (
         <section className="py-16 md:py-24">
@@ -36,13 +34,13 @@ export default async function PostsHome() {
                 Read More
               </Link>
             </div>
-            {heroPost.coverImage  && (
-              <div className="relative aspect-w-16 aspect-h-9">
+            {heroPost.coverImage && (
+              <div className="relative w-full h-72 rounded-lg overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform duration-200 hover:scale-105">
                 <Image
-                  src={heroPost.coverImage }
+                  src={heroPost.coverImage}
                   alt={heroPost.title}
                   fill
-                  className="object-cover rounded-lg"
+                  className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
@@ -61,20 +59,22 @@ export default async function PostsHome() {
                 key={post.slug}
                 className="hover:shadow-lg transition-shadow">
                 <Link href={`/posts/${post.slug}`}>
-                  {post.coverImage  && (
-                    <div className="relative aspect-w-16 aspect-h-9">
+                  {post.coverImage && (
+                    <div className="relative w-full h-48 rounded-t-lg overflow-hidden">
                       <Image
-                        src={post.coverImage }
+                        src={post.coverImage}
                         alt={post.title}
                         fill
-                        className="object-cover rounded-t-lg"
+                        className="object-cover"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
                   )}
                   <div className="p-4">
                     <h3 className="text-xl font-semibold">{post.title}</h3>
-                    <p className="text-muted-foreground">{post.description}</p>
+                    <p className="text-muted-foreground mt-2">
+                      {post.description}
+                    </p>
                     <p className="text-sm text-muted-foreground mt-2">
                       Published: {post.publishedAt}
                     </p>
@@ -86,7 +86,7 @@ export default async function PostsHome() {
         </section>
       )}
 
-      {/*  Optional: Call to Action / More Posts Link */}
+      {/* Call to Action */}
       <section className="py-12 text-center">
         <Link
           href="/posts"

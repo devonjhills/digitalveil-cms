@@ -1,161 +1,187 @@
-// app/posts/[slug]/page.tsx
-
-import { load } from "outstatic/server";
-import { notFound } from "next/navigation";
-import { OstMarkdown } from "@/components/OstMarkdown";
-import Image from "next/image";
 import { Metadata } from "next";
-import { format } from "date-fns";
-import { Calendar, Clock } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import { getDocumentBySlug, getDocumentPaths } from "outstatic/server";
+import { OstMarkdown } from "@/components/OstMarkdown";
+import { Badge } from "@/components/ui/badge";
+import { CalendarIcon, TagIcon } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
+export const dynamic = "force-static";
+
+// Post type definition based on Outstatic schema
+type Post = {
+  title: string;
+  description: string;
+  content: string;
+  slug: string;
+  cover_image: string;
+  published_at: string;
+  author: string;
+  categories: string[];
+  tags: string[];
+};
+
+// Generate static routes at build time
+export async function generateStaticParams() {
+  const paths = await getDocumentPaths("posts");
+  return paths;
+}
+
+// Define the Params type as a Promise that resolves to an object with slug
 type Params = Promise<{ slug: string }>;
 
-interface PageProps {
+// Generate metadata for SEO using the awaited params
+export async function generateMetadata({
+  params,
+}: {
   params: Params;
-}
+}): Promise<Metadata> {
+  const { slug } = await params;
 
-export async function generateStaticParams() {
-  const db = await load();
-  const posts = await db
-    .find({ collection: "posts" })
-    .project(["slug"])
-    .toArray();
-
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
-}
-
-export async function generateMetadata(props: PageProps): Promise<Metadata> {
-  const params = await props.params;
-  if (!params?.slug) {
-    return {};
-  }
-
-  const db = await load();
-  const post = await db
-    .find({ collection: "posts", slug: params.slug })
-    .project(["title", "description", "coverImage ", "author"])
-    .first();
+  const post = (await getDocumentBySlug("posts", slug, [
+    "title",
+    "description",
+    "cover_image",
+    "published_at",
+  ])) as Post | null;
 
   if (!post) {
     return {};
   }
 
-  const metadata: Metadata = {
+  return {
     title: post.title,
     description: post.description,
-    authors: [{ name: post.author?.name }],
-  };
-
-  if (post.coverImage ) {
-    metadata.openGraph = {
+    openGraph: {
       title: post.title,
       description: post.description,
-      images: [{ url: post.coverImage  }],
-    };
-  }
-  return metadata;
+      type: "article",
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}/posts/${slug}`,
+      images: [
+        {
+          url: post.cover_image,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [post.cover_image],
+    },
+  };
 }
 
-export default async function PostPage(props: PageProps) {
-  const params = await props.params;
-  if (!params?.slug) {
-    notFound();
-  }
+// Format date helper function
+function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
 
-  const db = await load();
-  const post = await db
-    .find({ collection: "posts", slug: params.slug })
-    .project([
-      "title",
-      "publishedAt",
-      "content",
-      "coverImage ",
-      "description",
-      "author",
-    ])
-    .first();
+// Beautified Blog Post Page using Tailwind, shadcn components, and best practice layout
+export default async function PostPage({ params }: { params: Params }) {
+  const { slug } = await params;
+
+  const post = (await getDocumentBySlug("posts", slug, [
+    "title",
+    "description",
+    "content",
+    "cover_image",
+    "published_at",
+    "author",
+    "categories",
+    "tags",
+  ])) as Post | null;
 
   if (!post) {
     notFound();
   }
 
-  console.log(post.publishedAt);
-
-  const formattedDate = format(new Date(post.publishedAt), "MMMM d, yyyy");
-  const formattedTime = format(new Date(post.publishedAt), "h:mm a");
-
   return (
-    <main className="container max-w-4xl py-6 lg:py-10">
-      <Card className="border-none shadow-none">
-        <CardHeader className="space-y-6">
-          {post.coverImage  && (
-            <div className="relative aspect-video overflow-hidden rounded-lg">
-              <Image
-                src={post.coverImage }
-                alt={post.title}
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 50vw"
-              />
-            </div>
-          )}
-
-          <div className="space-y-4">
-            <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
-              {post.title}
-            </h1>
-
-            {post.description && (
-              <p className="text-lg text-muted-foreground">
-                {post.description}
-              </p>
-            )}
+    <main className="container py-12">
+      <div className="neobrutalist-card p-8">
+        {/* Cover Image */}
+        {post.cover_image && (
+          <div className="relative w-full h-96 mb-8 rounded overflow-hidden brutal-border brutal-shadow">
+            <Image
+              src={post.cover_image}
+              alt={post.title}
+              fill
+              priority
+              unoptimized
+              className="object-cover transition-transform duration-200 hover:scale-105"
+            />
           </div>
+        )}
 
-          <div className="flex items-center space-x-4">
-            {post.author && (
-              <div className="flex items-center space-x-2">
-                <Avatar className="h-10 w-10">
-                  <AvatarImage
-                    src={post.author.picture}
-                    alt={post.author.name}
-                  />
-                  {post.author.name && (
-                    <AvatarFallback>
-                      {post.author.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </AvatarFallback>
-                  )}
-                </Avatar>
-                <div className="flex flex-col">
-                  <span className="font-medium">{post.author.name}</span>
-                  <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                    <Calendar className="h-4 w-4" />
-                    <time dateTime={post.publishedAt}>{formattedDate}</time>
-                    <span>•</span>
-                    <Clock className="h-4 w-4" />
-                    <time dateTime={post.publishedAt}>{formattedTime}</time>
-                  </div>
-                </div>
+        {/* Header: Title, Meta, and Author */}
+        <header className="mb-6">
+          <h1 className="text-4xl font-extrabold mb-2">{post.title}</h1>
+          <p className="text-lg text-muted-foreground mb-4">
+            {post.description}
+          </p>
+          <div className="flex items-center gap-4">
+            {/* Author Avatar */}
+            <Avatar className="w-10 h-10">
+              <AvatarImage src="/media/avatar.jpg" alt={post.author} />
+              <AvatarFallback>{post.author[0]}</AvatarFallback>
+            </Avatar>
+            <div>
+              <p className="font-bold">{post.author}</p>
+              <div className="flex items-center text-sm text-muted-foreground">
+                <CalendarIcon className="w-4 h-4 mr-1" />
+                <time dateTime={post.published_at}>
+                  {formatDate(post.published_at)}
+                </time>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        {/* Post Content */}
+        <article className="prose dark:prose-invert max-w-none">
+          <OstMarkdown content={post.content} />
+        </article>
+
+        {/* Footer Section for Categories and Tags */}
+        {(post.categories.length > 0 || post.tags.length > 0) && (
+          <footer className="mt-10 pt-6 border-t border-black">
+            {post.categories.length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-4">
+                {post.categories.map((category) => (
+                  <Badge
+                    key={category}
+                    variant="secondary"
+                    className="text-xs py-1 px-2">
+                    {category}
+                  </Badge>
+                ))}
               </div>
             )}
-          </div>
-        </CardHeader>
-
-        <Separator className="my-6" />
-
-        <CardContent>
-          <OstMarkdown content={post.content} />
-        </CardContent>
-      </Card>
+            {post.tags.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {post.tags.map((tag) => (
+                  <Badge
+                    key={tag}
+                    variant="outline"
+                    className="text-xs py-1 px-2 flex items-center gap-1">
+                    <TagIcon className="w-3 h-3" />
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+            )}
+          </footer>
+        )}
+      </div>
     </main>
   );
 }
