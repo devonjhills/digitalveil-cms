@@ -13,6 +13,12 @@
       "fieldType": "Text",
       "dataType": "string",
       "title": "Description"
+    },
+    "featuredImage": {
+      "required": false,
+      "fieldType": "Text",
+      "dataType": "string",
+      "title": "Featured_image"
     }
   }
 }
