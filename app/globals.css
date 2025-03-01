@@ -6,51 +6,76 @@
 
 @layer base {
   :root {
-    /*  Outstatic inspired colors (adjust as needed) */
-    --background: 0 0% 98%;       /* Light Gray Background */
-    --foreground: 0 0% 15%;       /* Dark Gray Text */
-    --card: 0 0% 100%;            /* White Card Background */
-    --card-foreground: 0 0% 15%;  /* Dark Gray Card Text */
-    --popover: 0 0% 100%;         /* White Popover */
-    --popover-foreground: 0 0% 15%; /* Dark Gray Popover Text */
-    --primary: 220 70% 50%;       /*  Blue (from Outstatic's logo/buttons) */
-    --primary-foreground: 0 0% 98%; /* White Text on Primary */
-    --secondary: 210 10% 90%;     /* Light Grayish Blue */
-    --secondary-foreground: 0 0% 15%; /* Dark Gray on Secondary */
-    --muted: 210 10% 95%;         /* Slightly Lighter Gray */
-    --muted-foreground: 0 0% 40%;  /* Medium Gray for less important text */
-    --accent: 220 70% 50%;       /*  Blue (same as primary for now) */
-    --accent-foreground: 0 0% 98%;/* White Text on Accent */
-    --destructive: 0 84.2% 60.2%; /* Shadcn default red */
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 85%;          /* Light Gray Border */
-    --input: 0 0% 90%;           /* Light Gray Input Background */
-    --ring: 220 70% 50%;        /* Blue Ring (same as primary) */
-    --radius: 0.5rem;           /* Rounded Corners */
-    /* No Chart in a blog context */
+    /* Neobrutalist theme - bold colors with high contrast */
+    --background: 40 10% 97%;       /* Warm off-white background */
+    --foreground: 0 0% 12%;         /* Near-black text */
+    --card: 0 0% 100%;              /* Pure white cards */
+    --card-foreground: 0 0% 12%;    /* Near-black card text */
+    --popover: 0 0% 100%;           /* White popover */
+    --popover-foreground: 0 0% 12%; /* Near-black popover text */
+
+    /* Soft Green primary color */
+    --primary: 140 60% 50%;          /* Adjusted for a softer green */
+    --primary-foreground: 0 0% 100%;
+
+    /* Bold secondary color - vivid pink */
+    --secondary: 350 100% 65%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Brutalist accent - vivid yellow */
+    --accent: 45 100% 60%;
+    --accent-foreground: 0 0% 12%;
+
+    /* Muted tones - still visible but softened */
+    --muted: 40 10% 92%;
+    --muted-foreground: 0 0% 40%;
+
+    /* Bold destructive red */
+    --destructive: 0 90% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Structural elements */
+    --border: 0 0% 82%;
+    --input: 40 10% 92%;
+    --ring: 140 60% 50%; /* Changed to match the new primary */
+
+    /* Squared brutalist corners */
+    --radius: 0.125rem;
   }
 
   .dark {
-    /* Dark Mode Colors (adjust as needed) */
-     --background: 0 0% 10%;           /* Dark Background */
-    --foreground: 0 0% 95%;           /* Light Text */
-    --card: 0 0% 15%;                /* Darker Card */
-    --card-foreground: 0 0% 90%;      /* Light Card Text */
-    --popover: 0 0% 15%;             /* Dark Popover */
-    --popover-foreground: 0 0% 90%;   /* Light Popover Text */
-    --primary: 220 70% 60%;          /* Slightly Lighter Blue for Dark Mode */
-    --primary-foreground: 0 0% 10%;   /* Darker Text on Primary */
-    --secondary: 210 10% 20%;          /* Dark Grayish Blue */
-    --secondary-foreground: 0 0% 90%;  /* Light Text on Secondary */
-    --muted: 210 10% 25%;            /* Darker Muted */
-    --muted-foreground: 0 0% 65%;     /* Lighter Gray for Muted Text */
-    --accent: 220 70% 60%;          /*  Blue */
-    --accent-foreground: 0 0% 10%;
-    --destructive: 0 62.8% 40.6%;  /* Adjusted Red for Dark Mode */
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 25%;              /* Darker Border */
-    --input: 0 0% 20%;               /* Darker Input */
-    --ring: 220 70% 60%;            /*  Blue Ring */
+    /* Dark neobrutalist theme */
+    --background: 0 0% 12%;         /* Near-black background */
+    --foreground: 40 10% 97%;       /* Off-white text */
+    --card: 0 0% 15%;               /* Dark gray cards */
+    --card-foreground: 40 10% 97%;  /* Off-white card text */
+    --popover: 0 0% 15%;            /* Dark gray popover */
+    --popover-foreground: 40 10% 97%; /* Off-white popover text */
+
+    /* Dark Soft Green primary color - slightly brighter than light green*/
+    --primary: 140 70% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Bold secondary - brighter pink */
+    --secondary: 350 100% 70%;
+    --secondary-foreground: 0 0% 12%;
+
+    /* Brutalist accent - brighter yellow */
+    --accent: 45 100% 65%;
+    --accent-foreground: 0 0% 12%;
+
+    /* Muted but still visible */
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
+
+    /* Bold destructive */
+    --destructive: 0 90% 65%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Structural elements */
+    --border: 0 0% 30%;
+    --input: 0 0% 20%;
+    --ring: 140 70% 60%; /* Changed to match the new primary */
   }
 }
 
@@ -58,30 +83,103 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
-    font-feature-settings:
-      "rlig" 1,
-      "calt" 1;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Neobrutalist typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-extrabold tracking-tight;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Bold button styling */
+  button, .button {
+    @apply font-bold transition-transform active:scale-95;
+  }
+}
+
+@layer components {
+  /* Neobrutalist card styling */
+  .neobrutalist-card {
+    @apply bg-card text-card-foreground border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
+    hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-shadow duration-200;
+  }
+
+  /* Neobrutalist button */
+  .neobrutalist-button {
+    @apply bg-primary text-primary-foreground px-6 py-3 border-2 border-black
+    shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]
+    hover:translate-x-[2px] hover:translate-y-[2px] active:shadow-none active:translate-x-[4px]
+    active:translate-y-[4px] transition-all font-bold tracking-wide;
+  }
+
+  /* Neobrutalist input */
+  .neobrutalist-input {
+    @apply border-2 border-black bg-background p-3 focus:ring-4 focus:ring-accent/50
+    focus:border-accent transition-all;
+  }
+
+  /* Neobrutalist blockquote */
+  .neobrutalist-blockquote {
+    @apply border-l-4 border-accent pl-4 py-1 italic bg-accent/10;
   }
 }
 
 @layer utilities {
-    .container {
-        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-     /*  Responsive and Centered Container */
-    }
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* High-contrast focus styles for accessibility */
+  .focus-visible {
+    @apply outline-none ring-4 ring-primary transition-all;
+  }
+
+  /* Text underline for links */
+  .text-underline {
+    @apply underline underline-offset-4 decoration-2;
+  }
+
+  /* Brutalist drop shadow */
+  .brutal-shadow {
+    @apply shadow-[4px_4px_0px_0px_rgba(0,0,0,1)];
+  }
+
+  .brutal-shadow-hover {
+    @apply hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-shadow duration-200;
+  }
 }
 
-
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
+/* Ticker tape animation for CTA banner */
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
   }
-  body {
-    @apply bg-background text-foreground;
+  100% {
+    transform: translateX(-100%);
   }
+}
+
+.animate-ticker {
+  animation: ticker 20s linear infinite;
+}
+
+/* Neobrutalist accent box */
+.accent-box {
+  @apply relative border-2 border-black bg-accent p-6 brutal-shadow;
+}
+
+.accent-box::before {
+  content: "";
+  @apply absolute inset-0 bg-accent/20 -translate-x-2 -translate-y-2 -z-10 border-2 border-black;
+}
+
+/* Add brutalist border utility */
+.brutal-border {
+  @apply border-2 border-black;
 }
 
 @supports (backdrop-filter: blur(12px)) {

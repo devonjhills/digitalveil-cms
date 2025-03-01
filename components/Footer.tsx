@@ -16,11 +16,11 @@ export function Footer() {
         </div>
         <div className="mt-4 flex justify-center space-x-4">
           <Link
-            href="/privacy"
+            href="/privacy-policy"
             className="hover:text-primary transition-colors">
             Privacy Policy
           </Link>
-          <Link href="/terms" className="hover:text-primary transition-colors">
+          <Link href="/terms-of-service" className="hover:text-primary transition-colors">
             Terms of Service
           </Link>
         </div>

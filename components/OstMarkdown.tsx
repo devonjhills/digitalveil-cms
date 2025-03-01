@@ -1,72 +1,59 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ReactNode, ReactElement } from "react";
 import Markdown from "markdown-to-jsx";
 import { cn } from "@/lib/utils";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import {
-  ArrowRight,
-  X,
-  ExternalLink,
-  BookOpen,
-  Quote,
-  ArrowDown,
-} from "lucide-react";
+import { ExternalLink, BookOpen, Quote, X, ArrowRight } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Separator } from "@/components/ui/separator";
-import { Badge } from "@/components/ui/badge";
 import {
-  BlockquoteProps,
   BottomBannerCTAProps,
-  CalloutBoxProps,
-  CTAButtonProps,
   HeadingProps,
-  HighlightProps,
-  ImageProps,
-  JohnsonBoxProps,
   LinkProps,
-  ListItemProps,
   OstMarkdownProps,
-  ProductCardProps,
-  TableProps,
 } from "./types";
 
+// BottomBannerCTA Component with Neobrutalist styling
 const BottomBannerCTA: React.FC<BottomBannerCTAProps> = ({
   text,
   link,
   onClose,
 }) => {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-gradient-to-r from-primary to-primary/80 text-white shadow-lg animate-slide-up">
-      <div className="max-w-5xl mx-auto flex items-center justify-between px-4">
-        <div className="flex items-center gap-3">
-          <BookOpen className="h-6 w-6" />
-          <p className="font-medium text-lg">{text}</p>
+    <div
+      className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-accent text-accent-foreground 
+                    border-t-2 border-black brutal-border animate-slide-up">
+      <div className="container mx-auto flex items-center justify-between px-4">
+        <div className="flex items-center gap-3 overflow-hidden">
+          <BookOpen className="h-6 w-6 flex-shrink-0" />
+          <div className="relative overflow-hidden w-full">
+            <p className="font-bold text-lg whitespace-nowrap animate-ticker">
+              {text}
+            </p>
+          </div>
         </div>
         <div className="flex items-center gap-2">
-          <Button
-            variant="default"
-            size="lg"
-            className="bg-white text-primary hover:bg-primary/10 hover:text-primary-foreground transition-colors"
-            onClick={() => window.open(link, "_blank")}>
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="neobrutalist-button bg-black text-white flex items-center">
             Learn More
-            <ExternalLink className="ml-2 h-4 w-4" />
-          </Button>
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </a>
           <Button
-            variant="ghost"
+            variant="outline"
             size="icon"
-            className="text-white hover:bg-primary/20 hover:text-white"
             onClick={onClose}
-            aria-label="Close">
-            <X className="ml-4 h-7 w-7" />
+            aria-label="Close"
+            className="brutal-border h-10 w-10 bg-white text-black hover:bg-primary hover:text-white transition-colors">
+            <X className="h-6 w-6" />
           </Button>
         </div>
       </div>
@@ -74,10 +61,11 @@ const BottomBannerCTA: React.FC<BottomBannerCTAProps> = ({
   );
 };
 
+// Main Markdown Component with Neobrutalist styling
 export function OstMarkdown({
   content,
   className,
-  bottomCtaText = "Want to learn more about our products?",
+  bottomCtaText = "Check out our latest brutalist designs! Limited edition drops available now.",
   bottomCtaLink = "#",
   bottomCtaDelay = 3000,
 }: OstMarkdownProps) {
@@ -85,7 +73,6 @@ export function OstMarkdown({
   const [hasDismissedCta, setHasDismissedCta] = useState(false);
 
   useEffect(() => {
-    // Show the bottom CTA after the specified delay, unless it's been dismissed
     const timer = setTimeout(() => {
       if (!hasDismissedCta) {
         setShowBottomCta(true);
@@ -100,30 +87,35 @@ export function OstMarkdown({
     setHasDismissedCta(true);
   };
 
+  // Neobrutalist markdown overrides
   const markdownOverrides = {
     h1: {
       component: ({ children, ...props }: HeadingProps) => (
         <h1
-          className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-8 mt-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70"
+          className="scroll-m-20 text-4xl font-black tracking-tight lg:text-5xl mb-8 mt-12 
+                    relative pl-4 py-2 inline-block brutal-border bg-accent text-accent-foreground
+                    brutal-shadow"
           {...props}>
           {children}
-          <Separator className="mt-4 bg-gradient-to-r from-primary/20 to-transparent" />
+          <Separator className="mt-4 h-1 bg-black" />
         </h1>
       ),
     },
     h2: {
       component: ({ children, ...props }: HeadingProps) => (
         <h2
-          className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight mt-12 mb-6 text-primary/90"
+          className="scroll-m-20 text-3xl font-extrabold tracking-tight mt-12 mb-6 pb-2
+                    border-b-4 border-primary text-primary relative"
           {...props}>
-          {children}
+          <span className="bg-primary/10 px-2">{children}</span>
         </h2>
       ),
     },
     h3: {
       component: ({ children, ...props }: HeadingProps) => (
         <h3
-          className="scroll-m-20 text-2xl font-semibold tracking-tight mt-8 mb-4"
+          className="scroll-m-20 text-2xl font-bold tracking-tight mt-8 mb-4 
+                    text-secondary relative pl-4 border-l-4 border-secondary"
           {...props}>
           {children}
         </h3>
@@ -134,8 +126,8 @@ export function OstMarkdown({
         children,
         ...props
       }: {
-        children: React.ReactNode;
-        className?: string;
+        children: ReactNode;
+        [key: string]: unknown;
       }) => {
         // Convert children to an array
         const childArray = React.Children.toArray(children);
@@ -147,29 +139,30 @@ export function OstMarkdown({
         const Tag = allText ? "p" : "div";
         return (
           <Tag
-            className="leading-7 [&:not(:first-child)]:mt-6 text-lg text-muted-foreground"
+            className="leading-7 [&:not(:first-child)]:mt-6 text-lg"
             {...props}>
             {children}
           </Tag>
         );
       },
     },
-
     a: {
-      component: ({ children, ...props }: LinkProps) => (
+      component: ({ children, href, ...props }: LinkProps) => (
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
               <a
-                className="font-medium text-primary underline underline-offset-4 hover:text-primary/80 inline-flex items-center gap-1 transition-all"
+                href={href}
+                className="font-bold text-primary text-underline decoration-primary
+                          hover:bg-primary hover:text-primary-foreground px-1 py-0.5 transition-all"
                 target="_blank"
                 rel="noopener noreferrer"
                 {...props}>
                 {children}
-                <ExternalLink className="h-4 w-4 ml-1 opacity-70" />
+                <ExternalLink className="h-4 w-4 ml-1 inline-block" />
               </a>
             </TooltipTrigger>
-            <TooltipContent>
+            <TooltipContent className="brutal-border bg-black text-white">
               <p>Opens in a new tab</p>
             </TooltipContent>
           </Tooltip>
@@ -178,36 +171,71 @@ export function OstMarkdown({
     },
     ul: {
       props: {
-        className: "my-6 ml-6 list-disc [&>li]:mt-2 text-muted-foreground",
+        className: "my-6 ml-6 list-none space-y-3",
       },
+      component: ({
+        children,
+        ...props
+      }: {
+        children: ReactNode;
+        [key: string]: unknown;
+      }) => (
+        <ul {...props}>
+          {React.Children.map(children, (child) => {
+            if (!React.isValidElement(child)) return child;
+            return React.cloneElement(
+              child as ReactElement<{
+                className?: string;
+                [key: string]: unknown;
+              }>,
+              {
+                ...(child.props as Record<string, unknown>),
+                className: cn(
+                  (child.props as { className?: string }).className,
+                  "pl-4 border-l-4 border-primary"
+                ),
+              }
+            );
+          })}
+        </ul>
+      ),
     },
     ol: {
       props: {
-        className: "my-6 ml-6 list-decimal [&>li]:mt-2 text-muted-foreground",
+        className:
+          "my-6 ml-6 list-decimal space-y-3 marker:font-bold marker:text-primary",
       },
     },
     li: {
-      component: ({ children, ...props }: ListItemProps) => (
-        <li className="text-muted-foreground" {...props}>
-          <span className="text-primary/80 font-medium">{children}</span>
-        </li>
-      ),
+      props: {
+        className: "text-foreground font-medium",
+      },
     },
     blockquote: {
-      component: ({ children, ...props }: BlockquoteProps) => (
-        <blockquote
-          className="mt-6 border-l-2 border-primary pl-6 italic text-muted-foreground relative py-2"
-          {...props}>
-          <Quote className="absolute -top-2 -left-8 text-primary/20 text-4xl [transform:scaleX(-1)]" />
-          {children}
-          <Quote className="absolute -bottom-4 -right-4 text-primary/20 text-4xl" />
+      component: ({
+        children,
+        ...props
+      }: {
+        children: ReactNode;
+        [key: string]: unknown;
+      }) => (
+        <blockquote className="mt-6 accent-box italic" {...props}>
+          <Quote className="absolute top-2 left-2 text-accent-foreground/30 text-4xl [transform:scaleX(-1)]" />
+          <div className="ml-6 relative z-10">{children}</div>
+          <Quote className="absolute bottom-2 right-2 text-accent-foreground/30 text-4xl" />
         </blockquote>
       ),
     },
     table: {
-      component: ({ children, ...props }: TableProps) => (
-        <div className="my-6 w-full overflow-y-auto">
-          <table className="w-full border-collapse text-sm" {...props}>
+      component: ({
+        children,
+        ...props
+      }: {
+        children: ReactNode;
+        [key: string]: unknown;
+      }) => (
+        <div className="w-full overflow-auto my-6 brutal-border brutal-shadow">
+          <table className="w-full border-collapse text-sm bg-card" {...props}>
             {children}
           </table>
         </div>
@@ -215,15 +243,27 @@ export function OstMarkdown({
     },
     th: {
       props: {
-        className: "border px-4 py-2 text-left font-bold bg-muted",
+        className:
+          "border-2 border-black px-4 py-3 text-left font-black bg-primary text-primary-foreground",
       },
     },
     td: {
-      props: { className: "border px-4 py-2 text-muted-foreground" },
+      props: {
+        className: "border-2 border-black px-4 py-3 text-foreground",
+      },
     },
     img: {
-      component: ({ src, alt, ...props }: ImageProps) => (
-        <div className="my-8 overflow-hidden rounded-lg border shadow-md transition-all hover:shadow-lg">
+      component: ({
+        src,
+        alt,
+        ...props
+      }: {
+        src?: string;
+        alt?: string;
+        [key: string]: unknown;
+      }) => (
+        <div className="my-8 brutal-border brutal-shadow overflow-hidden bg-white relative">
+          <div className="absolute inset-0 bg-secondary/5 -z-10 translate-x-2 translate-y-2 brutal-border"></div>
           <img
             src={src}
             alt={alt || ""}
@@ -232,139 +272,50 @@ export function OstMarkdown({
             {...props}
           />
           {alt && (
-            <div className="bg-muted/50 px-4 py-2 text-sm text-muted-foreground text-center">
+            <div className="brutal-border-t bg-accent px-4 py-2 text-sm font-bold text-accent-foreground">
               {alt}
             </div>
           )}
         </div>
       ),
     },
-
-    // Custom components
-    JohnsonBox: {
-      component: ({ children, title }: JohnsonBoxProps) => (
-        <Card className="my-8 rounded-2xl overflow-hidden shadow-lg border-2 border-primary/20 hover:border-primary/30 transition-all">
-          {title && (
-            <CardHeader className="bg-primary/10 px-6 py-4 border-b border-primary/20">
-              <CardTitle className="text-2xl font-bold text-primary">
-                {title}
-              </CardTitle>
-            </CardHeader>
-          )}
-          <CardContent className="px-6 py-8">
-            <ScrollArea className="max-h-96">
-              <div className="text-lg text-muted-foreground">{children}</div>
-            </ScrollArea>
-          </CardContent>
-        </Card>
-      ),
-    },
-
-    ProductCard: {
-      component: ({ children, title, badge }: ProductCardProps) => (
-        <Card className="my-8 border-2 border-primary/10 hover:border-primary/20 hover:shadow-lg transition-all overflow-hidden">
-          {title && (
-            <CardHeader className="bg-gradient-to-r from-primary/5 to-primary/10 flex flex-row items-center justify-between">
-              <CardTitle className="text-2xl">{title}</CardTitle>
-              {badge && (
-                <Badge
-                  variant="secondary"
-                  className="bg-primary/20 text-primary-foreground">
-                  {badge}
-                </Badge>
-              )}
-            </CardHeader>
-          )}
-          <CardContent className="pt-6">{children}</CardContent>
-        </Card>
-      ),
-    },
-
-    CTAButton: {
+    // Bold code block styling
+    pre: {
       component: ({
-        href,
         children,
-        variant = "default",
         ...props
-      }: CTAButtonProps) => {
-        const className =
-          "w-full sm:w-auto text-lg py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow";
-
-        return href ? (
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block"
-            {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}>
-            <Button className={className} variant={variant}>
-              {children}
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </a>
-        ) : (
-          <Button
-            className={className}
-            variant={variant}
-            {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}>
+      }: {
+        children: ReactNode;
+        [key: string]: unknown;
+      }) => (
+        <div className="my-6 brutal-border brutal-shadow bg-muted overflow-hidden">
+          <div className="flex items-center justify-between px-4 py-2 bg-black text-white font-mono text-xs">
+            <div className="flex space-x-2">
+              <div className="h-3 w-3 rounded-full bg-red-500"></div>
+              <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+              <div className="h-3 w-3 rounded-full bg-green-500"></div>
+            </div>
+            <div>code</div>
+          </div>
+          <pre className="p-4 overflow-x-auto font-mono text-sm" {...props}>
             {children}
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Button>
-        );
-      },
-    },
-
-    Highlight: {
-      component: ({ children, title }: HighlightProps) => (
-        <Alert className="my-6 border-2 border-primary/20 bg-primary/5">
-          {title && <AlertTitle className="text-primary">{title}</AlertTitle>}
-          <AlertDescription className="flex items-start gap-2">
-            <div className="h-full w-1 bg-primary/50 rounded-full mt-1 flex-shrink-0" />
-            <div>{children}</div>
-          </AlertDescription>
-        </Alert>
+          </pre>
+        </div>
       ),
     },
-
-    FAQ: {
-      component: ({ children }: { children: React.ReactNode }) => {
-        const childArray = React.Children.toArray(children);
-        const question = childArray[0];
-        const answerElements = childArray.slice(1);
-
-        return (
-          <details className="mb-4 group">
-            <summary className="flex items-center cursor-pointer list-none p-4 bg-muted/50 hover:bg-muted transition-colors rounded-lg">
-              <span className="flex-1 font-medium">{question}</span>
-              <ArrowDown className="ml-2 h-5 w-5 transform transition-transform group-open:rotate-180" />
-            </summary>
-            <div className="mt-2 px-4 pb-4 text-muted-foreground">
-              {answerElements}
-            </div>
-          </details>
-        );
+    code: {
+      props: {
+        className:
+          "font-mono bg-muted px-1.5 py-0.5 brutal-border text-secondary font-bold",
       },
     },
-
-    CalloutBox: {
-      component: ({ children, type = "info" }: CalloutBoxProps) => {
-        // Map the type to the corresponding tailwind classes
-        const typeStyles = {
-          info: "border-blue-200 bg-blue-50 text-blue-800 dark:bg-blue-950 dark:border-blue-800 dark:text-blue-100",
-          warning:
-            "border-yellow-200 bg-yellow-50 text-yellow-800 dark:bg-yellow-950 dark:border-yellow-800 dark:text-yellow-100",
-          success:
-            "border-green-200 bg-green-50 text-green-800 dark:bg-green-950 dark:border-green-800 dark:text-green-100",
-          error:
-            "border-red-200 bg-red-50 text-red-800 dark:bg-red-950 dark:border-red-800 dark:text-red-100",
-        };
-
-        return (
-          <Alert className={`my-6 border-2 ${typeStyles[type]}`}>
-            <AlertDescription>{children}</AlertDescription>
-          </Alert>
-        );
-      },
+    hr: {
+      component: () => (
+        <div className="my-8 relative">
+          <Separator className="h-1 bg-black" />
+          <div className="absolute right-0 -top-2 h-5 w-5 bg-accent brutal-border transform rotate-45"></div>
+        </div>
+      ),
     },
   };
 
@@ -372,7 +323,7 @@ export function OstMarkdown({
     <>
       <article
         className={cn(
-          "max-w-3xl mx-auto prose prose-slate dark:prose-invert",
+          "max-w-3xl mx-auto prose prose-stone dark:prose-invert",
           className
         )}>
         <Markdown options={{ overrides: markdownOverrides }}>
@@ -390,124 +341,3 @@ export function OstMarkdown({
     </>
   );
 }
-
-/* 
-## OstMarkdown Component Guide
-
-The OstMarkdown component renders Markdown content with enhanced styling and custom components using shadcn/ui and Tailwind CSS.
-
-### Basic Usage
-
-```jsx
-import { OstMarkdown } from "@/components/OstMarkdown";
-
-export default function Page() {
-  const content = `# My Markdown Content
-  
-This is a paragraph with some **bold** and *italic* text.`;
-
-  return <OstMarkdown content={content} />;
-}
-```
-
-### Component Props
-
-- `content`: (required) The markdown content as a string
-- `className`: (optional) Additional CSS classes for the container
-- `bottomCtaText`: (optional) Text for the call-to-action banner (default: "Want to learn more about our products?")
-- `bottomCtaLink`: (optional) URL for the CTA banner (default: "#")
-- `bottomCtaDelay`: (optional) Delay in milliseconds before showing the CTA (default: 3000)
-
-### Standard Markdown Elements
-
-All standard markdown elements (headings, paragraphs, lists, etc.) are styled consistently with the design system.
-
-#### Headings
-
-- `# Heading 1` - Gradient text with separator
-- `## Heading 2` - Border-bottom style with primary color
-- `### Heading 3` - Larger text with proper spacing
-
-#### Text Formatting
-
-- Paragraphs - Properly spaced with muted foreground color
-- **Bold text** - `**bold**`
-- *Italic text* - `*italic*`
-- [Links](https://example.com) - `[text](url)` - Shows with external link icon and tooltip
-- Lists - Unordered (`- item`) and ordered (`1. item`) with proper spacing
-
-#### Block Elements
-
-- > Blockquotes - With decorative quote icons
-- Code blocks - ``` ``` - Syntax highlighting
-- Tables - Standard markdown tables with responsive container
-- Images - `![alt](src)` - Rounded containers with hover effects and optional captions
-
-### Custom Components
-
-#### JohnsonBox
-
-A card-like container with an optional title and scrollable content.
-
-```md
-<JohnsonBox title="Optional Title">
-Your content here
-</JohnsonBox>
-```
-
-#### ProductCard
-
-A styled card for product information with optional badge.
-
-```md
-<ProductCard title="Product Title" badge="New">
-Product details here
-</ProductCard>
-```
-
-#### CTAButton
-
-A prominent call-to-action button.
-
-```md
-<CTAButton href="https://example.com">
-Call to Action
-</CTAButton>
-```
-
-#### Highlight
-
-An alert-style box to emphasize important content.
-
-```md
-<Highlight title="Important Note">
-This is highlighted information
-</Highlight>
-```
-
-#### FAQ
-
-An expandable details/summary component for FAQs.
-
-```md
-<FAQ>
-  <h3>Question goes here?</h3>
-  <p>Answer content goes here...</p>
-</FAQ>
-```
-
-#### CalloutBox
-
-A colored alert box with different semantic types.
-
-```md
-<CalloutBox type="info">
-Information message
-</CalloutBox>
-```
-
-Supported types: "info" (default), "warning", "success", "error"
-
-### Bottom CTA Banner
-
-*/
