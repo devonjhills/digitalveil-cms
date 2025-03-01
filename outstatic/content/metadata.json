@@ -1,45 +1,34 @@
 {
-  "commit": "70527e347f079675b864355658578d171c8edead",
-  "generated": "2025-03-01T12:53:52.948Z",
+  "commit": "",
+  "generated": "Sat, 01 Mar 2025 13:05:00 GMT",
   "metadata": [
     {
       "__outstatic": {
-        "commit": "702e6a1cf7e44c83e33d7990c220772e1fbdc271",
-        "hash": "639591378",
-        "path": "outstatic/content/posts/test-post.mdx"
-      },
-      "author": "ChatGPT",
-      "collection": "posts",
-      "date": "2025-02-28",
-      "slug": "test-postx",
-      "title": "Markdown Elements Test"
-    },
-    {
-      "__outstatic": {
-        "commit": "d40454cd9e9f5a12209c553b5f98949f57bc03f5",
-        "hash": "406601818",
+        "commit": "30bcd372289c9e5fbc3a9c7399dc907189e72f7c",
+        "hash": "3564106808",
         "path": "outstatic/content/posts/ergonomic-home-office-setup.mdx"
       },
       "author": "J. Staros",
       "categories": [
         "Home Office",
         "Ergonomics",
-        "Productivity"
+        "Workplace Wellness"
       ],
       "collection": "posts",
-      "description": "Transform your home office with our comprehensive ergonomic setup guide. Learn how to optimize your workspace for comfort, productivity, and long-term health.",
-      "featured_image": "https://images.unsplash.com/photo-1594732832278-abd644401426?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTYxNTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDA4MjgwNzd8&ixlib=rb-4.0.3&q=80&w=1080",
+      "cover_image": "https://images.unsplash.com/photo-1594732832278-abd644401426?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTYxNTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDA4MjgwNzd8&ixlib=rb-4.0.3&q=80&w=1080",
+      "description": "Create your ideal ergonomic home office setup with expert tips on chair height, desk positioning, monitor placement, and accessories to prevent pain and boost productivity.",
+      "published_at": "2025-02-28T11:58Z",
       "slug": "ergonomic-home-office-setupx",
       "tags": [
         "ergonomic setup",
         "home office",
-        "workspace optimization",
-        "ergonomic chair",
-        "standing desk",
-        "proper posture",
-        "work from home"
+        "remote work",
+        "office furniture",
+        "productivity",
+        "workplace health",
+        "posture"
       ],
-      "title": "Ergonomic Home Office Setup: The Ultimate Guide to Creating a Comfortable and Productive Workspace"
+      "title": "Ergonomic Home Office Setup: The Complete Guide to Comfort and Productivity"
     }
   ]
 }
