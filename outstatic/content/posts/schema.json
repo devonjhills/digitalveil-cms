@@ -2,12 +2,6 @@
   "title": "posts",
   "type": "object",
   "properties": {
-    "featuredImage": {
-      "required": false,
-      "fieldType": "Text",
-      "dataType": "string",
-      "title": "featured_image"
-    },
     "coverImage": {
       "required": false,
       "fieldType": "Text",
