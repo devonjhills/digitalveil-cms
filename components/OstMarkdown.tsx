@@ -7,12 +7,6 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink, BookOpen, Quote, X, ArrowRight } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import {
   BottomBannerCTAProps,
   HeadingProps,
   LinkProps,
@@ -148,25 +142,16 @@ export function OstMarkdown({
     },
     a: {
       component: ({ children, href, ...props }: LinkProps) => (
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <a
-                href={href}
-                className="font-bold text-primary text-underline decoration-primary
-                          hover:bg-primary hover:text-primary-foreground px-1 py-0.5 transition-all"
-                target="_blank"
-                rel="noopener noreferrer"
-                {...props}>
-                {children}
-                <ExternalLink className="h-4 w-4 ml-1 inline-block" />
-              </a>
-            </TooltipTrigger>
-            <TooltipContent className="brutal-border bg-black text-white">
-              <p>Opens in a new tab</p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+        <a
+          href={href}
+          className="font-bold text-primary text-underline decoration-primary
+                    hover:bg-primary hover:text-primary-foreground px-1 py-0.5 transition-all"
+          {...props}
+          target="_self"
+        >
+          {children}
+          <ExternalLink className="h-3 w-3 ml-1 inline-block" />
+        </a>
       ),
     },
     ul: {
