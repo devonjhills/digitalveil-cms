@@ -1,7 +1,34 @@
 {
   "commit": "",
-  "generated": "Mon, 03 Mar 2025 06:47:39 GMT",
+  "generated": "Mon, 03 Mar 2025 06:59:34 GMT",
   "metadata": [
+    {
+      "__outstatic": {
+        "commit": "6a3f508816ef96075e57fe4b3a341420140bf3ec",
+        "hash": "3028855958",
+        "path": "outstatic/content/posts/why-ergonomics-matter.mdx"
+      },
+      "author": "J. Staros",
+      "categories": [
+        "Remote Work",
+        "Health and Wellness"
+      ],
+      "collection": "posts",
+      "cover_image": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?q=80&w=1080",
+      "description": "Discover why ergonomics matter for remote workers and how proper setup can prevent pain, boost productivity, and improve your long-term health while working from home.",
+      "published_at": "2025-03-03T06:34:39.736Z",
+      "slug": "why-ergonomics-matterx",
+      "tags": [
+        "ergonomics",
+        "remote work",
+        "home office",
+        "posture",
+        "workplace health",
+        "productivity",
+        "work from home"
+      ],
+      "title": "Why Ergonomics Matter for Remote Workers"
+    },
     {
       "__outstatic": {
         "commit": "30bcd372289c9e5fbc3a9c7399dc907189e72f7c",
@@ -29,32 +56,6 @@
         "posture"
       ],
       "title": "Ergonomic Home Office Setup: The Complete Guide to Comfort and Productivity"
-    },
-    {
-      "__outstatic": {
-        "commit": "5ac972ff0d310431731f66e5c3315b98f2c1efdb",
-        "hash": "2120861563",
-        "path": "outstatic/content/posts/why-ergonomics-matter.mdx"
-      },
-      "categories": [
-        "Remote Work",
-        "Health and Wellness"
-      ],
-      "collection": "posts",
-      "cover_image": "https://images.unsplash.com/photo-1532334664543-a1ac9d95137d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTYxNTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDA5ODM2Nzl8&ixlib=rb-4.0.3&q=80&w=1080",
-      "description": "Discover why ergonomics matter for remote workers and how proper setup can prevent pain, boost productivity, and improve your long-term health while working from home.",
-      "published_at": "2025-03-03T06:34:39.736Z",
-      "slug": "why-ergonomics-matterx",
-      "tags": [
-        "ergonomics",
-        "remote work",
-        "home office",
-        "posture",
-        "workplace health",
-        "productivity",
-        "work from home"
-      ],
-      "title": "Why Ergonomics Matter for Remote Workers"
     }
   ]
 }
