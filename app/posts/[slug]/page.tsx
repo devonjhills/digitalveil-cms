@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { getDocumentBySlug, getDocumentPaths } from "outstatic/server";
+import { getDocumentBySlug, getDocumentSlugs } from "outstatic/server";
 import { OstMarkdown } from "@/components/OstMarkdown";
 import { Badge } from "@/components/ui/badge";
 import { CalendarIcon, TagIcon } from "lucide-react";
@@ -22,24 +22,27 @@ type Post = {
   tags: string[];
 };
 
-// Generate static routes at build time
-export async function generateStaticParams() {
-  const paths = await getDocumentPaths("posts");
-  return paths;
-}
-
-// Define the Params type as a Promise that resolves to an object with slug
+// Define Params type as a Promise for Next.js 15
 type Params = Promise<{ slug: string }>;
 
-// Generate metadata for SEO using the awaited params
+// Generate static routes at build time
+export async function generateStaticParams() {
+  // Use getDocumentSlugs instead of getDocumentPaths for the app router
+  const slugs = getDocumentSlugs("posts");
+  // Return an array of objects with the slug property
+  return slugs.map((slug) => ({ slug }));
+}
+
+// Generate metadata for SEO
 export async function generateMetadata({
   params,
 }: {
   params: Params;
 }): Promise<Metadata> {
+  // Await params before accessing slug
   const { slug } = await params;
 
-  const post = (await getDocumentBySlug("posts", slug, [
+  const post = (getDocumentBySlug("posts", slug, [
     "title",
     "description",
     "cover_image",
@@ -88,6 +91,7 @@ function formatDate(dateString: string): string {
 
 // Beautified Blog Post Page using Tailwind, shadcn components, and best practice layout
 export default async function PostPage({ params }: { params: Params }) {
+  // Await params before accessing slug
   const { slug } = await params;
 
   const post = (await getDocumentBySlug("posts", slug, [

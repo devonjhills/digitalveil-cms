@@ -1,32 +1,34 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardFooter,
-} from "@/components/ui/card";
+import { ArrowRightIcon } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-background">
+    <div className="min-h-screen bg-background">
+      {/* Hero Section - Enhanced with animation and stronger CTA */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-background to-background/90">
         <div className="container flex flex-col md:flex-row items-center gap-12">
           <div className="md:w-1/2 space-y-6">
+            <div className="inline-block mb-4 px-4 py-2 bg-primary/10 text-primary rounded-full font-medium">
+              Modern Living Redefined
+            </div>
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-foreground">
               Mindful Living in a Digital World
             </h1>
             <p className="text-xl text-muted-foreground">
-              Discover practical tips and insights on creating healthy and
-              productive remote workspaces and ergonomic home offices that
-              support your well-being.
+              Discover practical tips and insights for creating balanced,
+              healthy, and productive digital spaces that enhance your wellbeing
+              and creativity.
             </p>
-            <Button className="neobrutalist-button text-lg">
-              <Link href="/posts">Explore Now</Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <Button className="group neobrutalist-button text-lg px-6 py-6 flex items-center">
+                <Link href="/posts" className="flex items-center">
+                  Explore Articles
+                  <ArrowRightIcon className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
+            </div>
           </div>
 
           <div className="md:w-1/2 relative w-full aspect-video brutal-border brutal-shadow brutal-shadow-hover transition-all rounded-xl overflow-hidden">
@@ -41,112 +43,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Section: Key Areas of Focus */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-12 text-foreground">
-            Key Areas of Focus
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Card 1 */}
-            <Card className="neobrutalist-card overflow-hidden">
-              <div className="relative w-full aspect-square overflow-hidden brutal-border rounded-lg">
-                <Image
-                  src="/ergonomic.jpg"
-                  alt="Ergonomic setup"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <CardHeader>
-                <CardTitle className="text-xl">Ergonomic Setups</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Optimize your workspace for comfort and prevent pain and
-                  strain. Learn about posture, chair selection, and desk setups.
-                </p>
-              </CardContent>
-              <CardFooter>
-                <Button
-                  variant="link"
-                  className="font-bold text-primary text-underline p-0">
-                  <Link href="/ergonomics">Learn More</Link>
-                </Button>
-              </CardFooter>
-            </Card>
-
-            {/* Card 2 */}
-            <Card className="neobrutalist-card overflow-hidden">
-              <div className="relative w-full aspect-square overflow-hidden brutal-border rounded-lg">
-                <Image
-                  src="/remote-work.jpg"
-                  alt="Remote work"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <CardHeader>
-                <CardTitle className="text-xl">
-                  Remote Work Strategies
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Master the art of working remotely, enhancing productivity,
-                  and maintaining a healthy work-life balance.
-                </p>
-              </CardContent>
-              <CardFooter>
-                <Button
-                  variant="link"
-                  className="font-bold text-primary text-underline p-0">
-                  <Link href="/remote-work">Learn More</Link>
-                </Button>
-              </CardFooter>
-            </Card>
-
-            {/* Card 3 */}
-            <Card className="neobrutalist-card overflow-hidden">
-              <div className="relative w-full aspect-square overflow-hidden brutal-border rounded-lg">
-                <Image
-                  src="/digital-wellness.jpg"
-                  alt="Digital wellness"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <CardHeader>
-                <CardTitle className="text-xl">Digital Wellness</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Protect your mental and physical health in the digital age.
-                  Discover tips for reducing screen time and managing stress.
-                </p>
-              </CardContent>
-              <CardFooter>
-                <Button
-                  variant="link"
-                  className="font-bold text-primary text-underline p-0">
-                  <Link href="/digital-wellness">Learn More</Link>
-                </Button>
-              </CardFooter>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="bg-primary py-16 text-primary-foreground">
-        <div className="container text-center">
-          <h2 className="text-3xl font-extrabold mb-8">
+      {/* Call to Action - Enhanced with stronger visual design */}
+      <section className="bg-primary py-16 md:py-20 text-primary-foreground">
+        <div className="container text-center max-w-3xl">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
             Ready to Transform Your Digital Life?
           </h2>
-          <Button className="neobrutalist-button bg-background text-foreground hover:bg-background/90 text-lg">
-            <Link href="/posts">Explore All Articles</Link>
-          </Button>
+          <p className="text-primary-foreground/80 mb-8 text-lg">
+            Explore our comprehensive guides and start creating a more balanced,
+            healthy relationship with technology today.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button className="neobrutalist-button bg-background text-foreground hover:bg-background/90 text-lg px-8 py-6">
+              <Link href="/posts">Explore All Articles</Link>
+            </Button>
+          </div>
         </div>
       </section>
     </div>
