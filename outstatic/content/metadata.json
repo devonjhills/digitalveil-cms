@@ -1,10 +1,10 @@
 {
-  "commit": "e09c1356cd6ad4b44b438262367bce80644c65ee",
-  "generated": "Tue, 04 Mar 2025 04:51:44 GMT",
+  "commit": "6ed42b7919d2945ea019e6bcc6c8cf9218eb30f1",
+  "generated": "Tue, 04 Mar 2025 04:53:59 GMT",
   "metadata": [
     {
       "__outstatic": {
-        "commit": "e09c1356cd6ad4b44b438262367bce80644c65ee",
+        "commit": "6ed42b7919d2945ea019e6bcc6c8cf9218eb30f1",
         "hash": "bba5648a3af6f8de4556948726c03ecc",
         "path": "outstatic/content/posts/ergonomic-home-office-setup.mdx"
       },
@@ -32,7 +32,7 @@
     },
     {
       "__outstatic": {
-        "commit": "e09c1356cd6ad4b44b438262367bce80644c65ee",
+        "commit": "6ed42b7919d2945ea019e6bcc6c8cf9218eb30f1",
         "hash": "6db3e6c188d6341b1d8fbad76940d436",
         "path": "outstatic/content/posts/why-ergonomics-matter.mdx"
       },
@@ -59,7 +59,7 @@
     },
     {
       "__outstatic": {
-        "commit": "e09c1356cd6ad4b44b438262367bce80644c65ee",
+        "commit": "6ed42b7919d2945ea019e6bcc6c8cf9218eb30f1",
         "hash": "5d78db7965972b9656e404c6ab0e9173",
         "path": "outstatic/content/posts/measure-desk-chair-height.mdx"
       },
@@ -86,8 +86,8 @@
     },
     {
       "__outstatic": {
-        "commit": "e09c1356cd6ad4b44b438262367bce80644c65ee",
-        "hash": "8b2bc85acf8979e8fd5f7351947e59c5",
+        "commit": "6ed42b7919d2945ea019e6bcc6c8cf9218eb30f1",
+        "hash": "0d71ec55431b2ef46876a231a8ac0f08",
         "path": "outstatic/content/posts/reduce-neck-strain-work.mdx"
       },
       "title": "How to Reduce Neck Strain While Working",
