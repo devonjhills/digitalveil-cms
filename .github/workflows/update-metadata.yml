@@ -3,11 +3,13 @@ name: Update Metadata JSON
 on:
   push:
     branches:
-      - main # Adjust this to your main branch name if different
+      - main
 
 jobs:
   update_metadata:
     runs-on: ubuntu-latest
+    permissions: 
+      contents: write # Grant write permission for contents (code, files)
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -15,15 +17,15 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18' # Or your preferred Node.js version
+          node-version: '18'
 
       - name: Install dependencies
-        run: npm install gray-matter md5  # Install necessary npm packages
+        run: npm install gray-matter md5
 
       - name: Run metadata update script
         run: node .github/workflows/scripts/update-metadata.mjs
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Pass token for commit
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit and push metadata.json
         uses: stefanzweifel/git-auto-commit-action@v5
