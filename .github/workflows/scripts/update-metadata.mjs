@@ -80,6 +80,7 @@ async function updateMetadata() {
     }
 
     // 5. Write updated metadata.json
+    console.log("Writing metadata.json to path:", metadataFile);
     fs.writeFileSync(metadataFile, JSON.stringify(metadataJson, null, 2));
     console.log("metadata.json updated successfully.");
   } catch (error) {
