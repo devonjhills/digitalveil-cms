@@ -33,7 +33,7 @@ export function Header() {
               <li>
                 <Button variant="secondary">
                   <Coffee className="h-4 w-4 mr-1" />
-                  <Link href="#">Buy Me a Coffee</Link>
+                  <Link href="https://buymeacoffee.com/digitalvei6">Buy Me a Coffee</Link>
                 </Button>
               </li>
             </ul>
