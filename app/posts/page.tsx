@@ -26,10 +26,28 @@ function formatDate(dateString: string): string {
   });
 }
 
-// Get estimated reading time
 function getReadingTime(text: string): number {
-  const wordsPerMinute = 200;
-  const numberOfWords = text.split(/\s/g).length;
+  // Remove Markdown syntax
+  let textWithoutMarkdown = text
+    .replace(/```[\s\S]*?```/g, "") // Remove code blocks
+    .replace(/`[^`]*?`/g, "") // Remove inline code
+    .replace(/\[.*?\]\(.*?\)/g, "") // Remove links
+    .replace(/!\[.*?\]\(.*?\)/g, "") // Remove images
+    .replace(/[*_-]+/g, "") // Remove bold, italic, underlines
+    .replace(/#+/g, "") // Remove headers
+    .replace(/>/g, "") // Remove blockquotes (>)
+    .replace(/\n+/g, " "); // Replace multiple newlines with single space
+
+  // Remove JSX syntax (basic tags - might need refinement)
+  textWithoutMarkdown = textWithoutMarkdown
+    .replace(/<[A-Z][a-zA-Z0-9]*(\s+[^>]*)?\/>/g, "") // Remove self-closing JSX tags (e.g., <Component />)
+    .replace(/<[A-Z][a-zA-Z0-9]*(\s+[^>]*)?>.*?<\/[A-Z][a-zA-Z0-9]*>/g, "") // Remove JSX tags with content (e.g., <Component>...</Component>)
+    .replace(/<[a-z][a-zA-Z0-9]*(\s+[^>]*)?\/>/g, "") // Remove self-closing lowercase JSX tags (e.g., <div />)
+    .replace(/<[a-z][a-zA-Z0-9]*(\s+[^>]*)?>.*?<\/[a-z][a-zA-Z0-9]*>/g, "") // Remove lowercase JSX tags with content (e.g., <div>...</div>)
+    .replace(/\{.*?\}/g, ""); // Remove JSX expressions (e.g., {variable})
+
+  const wordsPerMinute = 238;
+  const numberOfWords = textWithoutMarkdown.split(/\s/g).length;
   return Math.ceil(numberOfWords / wordsPerMinute);
 }
 
