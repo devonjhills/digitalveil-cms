@@ -14,44 +14,26 @@ import {
   BookOpenIcon,
   ClockIcon,
 } from "lucide-react";
+import { formatDate } from "@/lib/utils";
 
-// Format date helper function
-function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
-
+// --- Utility Function (Improved Regex and Clarity) ---
 function getReadingTime(text: string): number {
-  // Remove Markdown syntax
-  let textWithoutMarkdown = text
-    .replace(/```[\s\S]*?```/g, "") // Remove code blocks
-    .replace(/`[^`]*?`/g, "") // Remove inline code
-    .replace(/\[.*?\]\(.*?\)/g, "") // Remove links
-    .replace(/!\[.*?\]\(.*?\)/g, "") // Remove images
-    .replace(/[*_-]+/g, "") // Remove bold, italic, underlines
-    .replace(/#+/g, "") // Remove headers
-    .replace(/>/g, "") // Remove blockquotes (>)
-    .replace(/\n+/g, " "); // Replace multiple newlines with single space
-
-  // Remove JSX syntax (basic tags - might need refinement)
-  textWithoutMarkdown = textWithoutMarkdown
-    .replace(/<[A-Z][a-zA-Z0-9]*(\s+[^>]*)?\/>/g, "") // Remove self-closing JSX tags (e.g., <Component />)
-    .replace(/<[A-Z][a-zA-Z0-9]*(\s+[^>]*)?>.*?<\/[A-Z][a-zA-Z0-9]*>/g, "") // Remove JSX tags with content (e.g., <Component>...</Component>)
-    .replace(/<[a-z][a-zA-Z0-9]*(\s+[^>]*)?\/>/g, "") // Remove self-closing lowercase JSX tags (e.g., <div />)
-    .replace(/<[a-z][a-zA-Z0-9]*(\s+[^>]*)?>.*?<\/[a-z][a-zA-Z0-9]*>/g, "") // Remove lowercase JSX tags with content (e.g., <div>...</div>)
-    .replace(/\{.*?\}/g, ""); // Remove JSX expressions (e.g., {variable})
+  const cleanText = text
+    .replace(
+      /```[\s\S]*?```|`[^`]*?`|\[.*?\]\(.*?\)|!\[.*?\]\(.*?\)|[*_-]+|#+|>/g,
+      ""
+    ) // Markdown
+    .replace(
+      /<[A-Za-z][A-Za-z0-9]*(\s+[^>]*)?\/?>|<\/[A-Za-z][A-Za-z0-9]*>|\{.*?\}/g,
+      ""
+    ); // JSX
 
   const wordsPerMinute = 238;
-  const numberOfWords = textWithoutMarkdown.split(/\s/g).length;
+  const numberOfWords = cleanText.split(/\s+/).length; // More robust word splitting
   return Math.ceil(numberOfWords / wordsPerMinute);
 }
 
-// Define an interface that matches what we get from Outstatic
+// --- Interface for Post Data ---
 interface PostData {
   title: string;
   description: string;
@@ -63,9 +45,193 @@ interface PostData {
   content?: string;
 }
 
+// --- Reusable Post Card Component ---
+interface PostCardProps {
+  post: PostData;
+  variant?: "featured" | "recent" | "hero";
+}
+
+const PostCard: React.FC<PostCardProps> = ({ post, variant = "recent" }) => {
+  const isHero = variant === "hero";
+  const isFeatured = variant === "featured";
+
+  const imageSize = isHero
+    ? { width: "100%", height: "500px" }
+    : isFeatured
+    ? { width: "100%", height: "256px" }
+    : { width: "100%", height: "192px" };
+
+  const cardClasses = `overflow-hidden transition-all duration-300 ${
+    isHero
+      ? "border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,0.8)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,0.8)]"
+      : isFeatured
+      ? "border-2 border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,0.8)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,0.8)]"
+      : "border border-black/60 hover:border-black shadow-md hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.6)]"
+  } flex flex-col`; // Added flex and flex-col here
+
+  const titleClasses = isHero
+    ? "text-3xl md:text-4xl font-bold tracking-tight mb-4"
+    : isFeatured
+    ? "text-xl font-bold"
+    : "font-semibold mb-2 line-clamp-2";
+
+  // Category display logic
+  const displayCategories = post.categories?.slice(0, 3) || [];
+
+  return (
+    <Card className={cardClasses}>
+      {/* Outer Link wraps ONLY the image and the main title. */}
+      <Link href={`/posts/${post.slug}`}>
+        {post.cover_image && (
+          <div className="relative" style={imageSize}>
+            <Image
+              src={post.cover_image}
+              alt={post.title}
+              fill
+              className="object-cover"
+              sizes={
+                isHero || isFeatured
+                  ? "(max-width: 768px) 100vw, 50vw"
+                  : "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              }
+            />
+          </div>
+        )}
+      </Link>
+
+      {/* Content is OUTSIDE the main Link, but still inside the Card. */}
+      {isHero ? ( // Hero is already flex-col
+        <div className="p-8 md:p-10 flex flex-col h-full">
+          {/* Display up to 3 categories */}
+          {displayCategories.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-4">
+              {displayCategories.map((category, index) => (
+                <Badge
+                  key={index}
+                  className="text-xs px-3 py-1 bg-primary/90 hover:bg-primary">
+                  {category}
+                </Badge>
+              ))}
+            </div>
+          )}
+
+          {/*Title is wrapped by the main Link. */}
+          <Link href={`/posts/${post.slug}`}>
+            <h1 className={titleClasses}>{post.title}</h1>
+          </Link>
+
+          <p className="text-muted-foreground mb-6">{post.description}</p>
+          <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
+            <DateAndReadTime post={post} />
+          </div>
+          {/* Separate Link for "Read full article". */}
+          <ReadFullArticleLink slug={post.slug} />
+        </div>
+      ) : (
+        // Added flex, flex-col, and h-full to the wrapping <div> for non-hero cards
+        <div className="flex flex-col h-full">
+          <CardHeader>
+            {(isFeatured || isHero) && (
+              <div className="flex gap-2 mb-2 flex-wrap">
+                {/* Display up to 3 categories */}
+                {displayCategories.map((category, index) => (
+                  <Badge key={index} variant="outline" className="text-xs">
+                    {category}
+                  </Badge>
+                ))}
+                <ReadTime post={post} iconSize={isFeatured ? 3 : 4} />
+              </div>
+            )}
+            {/*Title is wrapped by the main Link. */}
+            <Link href={`/posts/${post.slug}`}>
+              <h3 className={titleClasses}>{post.title}</h3>
+            </Link>
+          </CardHeader>
+          {isFeatured && (
+            <CardContent className="flex-grow">
+              <p className="text-muted-foreground line-clamp-2">
+                {post.description}
+              </p>
+            </CardContent>
+          )}
+          <CardFooter
+            className={`pt-0 flex justify-between mt-auto ${
+              // mt-auto is essential
+              isFeatured ? "" : "items-center"
+            }`}>
+            {!isFeatured && (
+              <>
+                <FormattedDate date={post.published_at} />
+                <ReadTime post={post} iconSize={3} useBookIcon />
+              </>
+            )}
+
+            {isFeatured && (
+              <>
+                <FormattedDate date={post.published_at} />
+                {/* Separate span for "Read more" (no nested <a>). */}
+                <Link
+                  href={`/posts/${post.slug}`}
+                  className="text-sm font-medium flex items-center gap-1">
+                  Read more <ArrowRightIcon className="w-3 h-3" />
+                </Link>
+              </>
+            )}
+          </CardFooter>
+        </div>
+      )}
+    </Card>
+  );
+};
+
+const ReadFullArticleLink: React.FC<{ slug: string }> = ({ slug }) => (
+  <Link
+    href={`/posts/${slug}`} // Corrected href
+    className="flex items-center gap-2 font-medium group mt-auto">
+    Read full article
+    <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+  </Link>
+);
+
+// --- Helper Components (for DRYing up the PostCard) ---
+
+const FormattedDate: React.FC<{ date: string }> = ({ date }) => (
+  <div className="text-sm text-muted-foreground flex items-center">
+    <CalendarIcon className="w-3 h-3 mr-1" />
+    <time dateTime={date}>{formatDate(date)}</time>
+  </div>
+);
+
+const ReadTime: React.FC<{
+  post: PostData;
+  iconSize: number;
+  useBookIcon?: boolean;
+}> = ({ post, iconSize, useBookIcon }) => (
+  <div className="text-xs text-muted-foreground flex items-center">
+    {useBookIcon ? (
+      <BookOpenIcon className={`w-${iconSize} h-${iconSize} mr-1`} />
+    ) : (
+      <ClockIcon className={`w-${iconSize} h-${iconSize} mr-1`} />
+    )}
+    <span>{getReadingTime(post.content || "")} min</span>
+  </div>
+);
+
+const DateAndReadTime: React.FC<{ post: PostData }> = ({ post }) => (
+  <>
+    <div className="flex items-center">
+      <CalendarIcon className="w-4 h-4 mr-1" />
+      <time dateTime={post.published_at}>{formatDate(post.published_at)}</time>
+    </div>
+    <ReadTime post={post} iconSize={4} />
+  </>
+);
+
+// --- Main Component ---
+
 export default async function PostsHome() {
   const db = await load();
-  const posts = await db
+  const posts = (await db
     .find({ collection: "posts" })
     .project([
       "title",
@@ -75,134 +241,36 @@ export default async function PostsHome() {
       "cover_image",
       "author",
       "categories",
-      "content", // Include content to calculate reading time
+      "content",
     ])
     .sort({ published_at: -1 })
-    .limit(6) // Increased to show more posts
-    .toArray();
+    .limit(6)
+    .toArray()) as unknown as PostData[];
 
-  // Convert the posts to our expected format
-  const typedPosts = posts as unknown as PostData[];
-
-  const heroPost = typedPosts[0];
-  const featuredPosts = typedPosts.slice(1, 3);
-  const recentPosts = typedPosts.slice(3);
+  const [heroPost, ...otherPosts] = posts;
+  const featuredPosts = otherPosts.slice(0, 2);
+  const recentPosts = otherPosts.slice(2);
 
   return (
     <main className="container py-12">
       {/* Hero Section */}
       {heroPost && (
         <section className="mb-16">
-          <Card className="overflow-hidden border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,0.8)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,0.8)] transition-all duration-300">
-            <div className="grid grid-cols-1 md:grid-cols-2 items-center">
-              {heroPost.cover_image && (
-                <div className="relative w-full h-96 md:h-[500px]">
-                  <Image
-                    src={heroPost.cover_image}
-                    alt={heroPost.title}
-                    fill
-                    priority
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-              )}
-              <div className="p-8 md:p-10">
-                {heroPost.categories && heroPost.categories.length > 0 && (
-                  <Badge className="mb-4 text-xs px-3 py-1 bg-primary/90 hover:bg-primary">
-                    {String(heroPost.categories[0])}
-                  </Badge>
-                )}
-                <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-                  {heroPost.title}
-                </h1>
-                <p className="text-muted-foreground mb-6">
-                  {heroPost.description}
-                </p>
-                <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
-                  <div className="flex items-center">
-                    <CalendarIcon className="w-4 h-4 mr-1" />
-                    <time dateTime={heroPost.published_at}>
-                      {formatDate(heroPost.published_at)}
-                    </time>
-                  </div>
-                  <div className="flex items-center">
-                    <ClockIcon className="w-4 h-4 mr-1" />
-                    <span>
-                      {getReadingTime(heroPost.content || "")} min read
-                    </span>
-                  </div>
-                </div>
-                <Link
-                  href={`/posts/${heroPost.slug}`}
-                  className="flex items-center gap-2 font-medium group">
-                  Read full article
-                  <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </div>
-          </Card>
+          <div className="grid grid-cols-1 items-center">
+            <PostCard post={heroPost} variant="hero" />
+          </div>
         </section>
       )}
 
       {/* Featured Posts Section */}
       {featuredPosts.length > 0 && (
         <section className="mb-16">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold">Featured Posts</h2>
-            <Link
-              href="/posts"
-              className="text-sm font-medium flex items-center gap-1 hover:underline">
-              View all <ArrowRightIcon className="w-3 h-3" />
-            </Link>
-          </div>
+          <h2 className="text-2xl md:text-3xl font-bold mb-8">
+            Featured Posts
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {featuredPosts.map((post) => (
-              <Card
-                key={post.slug}
-                className="overflow-hidden border-2 border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,0.8)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,0.8)] transition-all duration-300">
-                <Link href={`/posts/${post.slug}`} className="block h-full">
-                  {post.cover_image && (
-                    <div className="relative w-full h-64">
-                      <Image
-                        src={post.cover_image}
-                        alt={post.title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
-                    </div>
-                  )}
-                  <CardHeader>
-                    <div className="flex gap-2 mb-2">
-                      {post.categories && post.categories.length > 0 && (
-                        <Badge variant="outline" className="text-xs">
-                          {String(post.categories[0])}
-                        </Badge>
-                      )}
-                      <div className="text-xs text-muted-foreground flex items-center">
-                        <ClockIcon className="w-3 h-3 mr-1" />
-                        {getReadingTime(post.content || "")} min
-                      </div>
-                    </div>
-                    <h3 className="text-xl font-bold">{post.title}</h3>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground line-clamp-2">
-                      {post.description}
-                    </p>
-                  </CardContent>
-                  <CardFooter className="pt-0 flex justify-between">
-                    <div className="text-sm text-muted-foreground flex items-center">
-                      <CalendarIcon className="w-3 h-3 mr-1" />
-                      {formatDate(post.published_at)}
-                    </div>
-                    <span className="text-sm font-medium flex items-center gap-1">
-                      Read more <ArrowRightIcon className="w-3 h-3" />
-                    </span>
-                  </CardFooter>
-                </Link>
-              </Card>
+              <PostCard key={post.slug} post={post} variant="featured" />
             ))}
           </div>
         </section>
@@ -214,37 +282,7 @@ export default async function PostsHome() {
           <h2 className="text-2xl md:text-3xl font-bold mb-8">Recent Posts</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {recentPosts.map((post) => (
-              <Card
-                key={post.slug}
-                className="overflow-hidden border border-black/60 hover:border-black shadow-md hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.6)] transition-all duration-300">
-                <Link href={`/posts/${post.slug}`} className="block h-full">
-                  {post.cover_image && (
-                    <div className="relative w-full h-48">
-                      <Image
-                        src={post.cover_image}
-                        alt={post.title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      />
-                    </div>
-                  )}
-                  <CardContent className="p-4">
-                    <h3 className="font-semibold mb-2 line-clamp-2">
-                      {post.title}
-                    </h3>
-                    <div className="flex justify-between items-center text-xs text-muted-foreground">
-                      <time dateTime={post.published_at}>
-                        {formatDate(post.published_at)}
-                      </time>
-                      <div className="flex items-center gap-1">
-                        <BookOpenIcon className="w-3 h-3" />
-                        {getReadingTime(post.content || "")} min
-                      </div>
-                    </div>
-                  </CardContent>
-                </Link>
-              </Card>
+              <PostCard key={post.slug} post={post} variant="recent" />
             ))}
           </div>
         </section>
