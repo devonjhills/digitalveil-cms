@@ -173,6 +173,7 @@ export function OstMarkdown({
         return (
           <LinkPreview
             url={fullUrl}
+            forceCacheReset={true} // Force cache reset for link previews
             className="font-bold text-primary text-underline decoration-primary
                       hover:bg-primary hover:text-primary-foreground px-1 py-0.5 transition-all">
             {children}

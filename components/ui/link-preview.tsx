@@ -12,6 +12,7 @@ import {
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
+// Updated type definition with forceCacheReset
 type LinkPreviewProps = {
   children: React.ReactNode;
   url: string;
@@ -20,6 +21,7 @@ type LinkPreviewProps = {
   height?: number;
   quality?: number;
   layout?: string;
+  forceCacheReset?: boolean; // Added optional prop
 } & (
   | { isStatic: true; imageSrc: string }
   | { isStatic?: false; imageSrc?: never }
@@ -35,6 +37,7 @@ export const LinkPreview = ({
   layout = "fixed",
   isStatic = false,
   imageSrc = "",
+  forceCacheReset = false, // Default to false
 }: LinkPreviewProps) => {
   let src;
   if (!isStatic) {
@@ -48,6 +51,7 @@ export const LinkPreview = ({
       "viewport.deviceScaleFactor": 1,
       "viewport.width": width * 3,
       "viewport.height": height * 3,
+      force: forceCacheReset ? true : undefined, // Conditionally add force=true
     });
     src = `https://api.microlink.io/?${params}`;
   } else {
@@ -55,7 +59,6 @@ export const LinkPreview = ({
   }
 
   const [isOpen, setOpen] = React.useState(false);
-
   const [isMounted, setIsMounted] = React.useState(false);
 
   React.useEffect(() => {
@@ -64,14 +67,13 @@ export const LinkPreview = ({
 
   const springConfig = { stiffness: 100, damping: 15 };
   const x = useMotionValue(0);
-
   const translateX = useSpring(x, springConfig);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  //eslint-disable-next-line
   const handleMouseMove = (event: any) => {
     const targetRect = event.target.getBoundingClientRect();
     const eventOffsetX = event.clientX - targetRect.left;
-    const offsetFromCenter = (eventOffsetX - targetRect.width / 2) / 2; // Reduce the effect to make it subtle
+    const offsetFromCenter = (eventOffsetX - targetRect.width / 2) / 2;
     x.set(offsetFromCenter);
   };
 
