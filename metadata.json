@@ -1,10 +1,10 @@
 {
-  "commit": "2f1ccc2ccb97c2b0670dbbb58f4c84aa1c72eb27",
-  "generated": "Tue, 04 Mar 2025 01:34:54 GMT",
+  "commit": "e417ae3b16cbb2860c22e52e815c07118c29c419",
+  "generated": "Tue, 04 Mar 2025 01:39:33 GMT",
   "metadata": [
     {
       "__outstatic": {
-        "commit": "2f1ccc2ccb97c2b0670dbbb58f4c84aa1c72eb27",
+        "commit": "e417ae3b16cbb2860c22e52e815c07118c29c419",
         "hash": "bba5648a3af6f8de4556948726c03ecc",
         "path": "outstatic/content/posts/ergonomic-home-office-setup.mdx"
       },
@@ -32,7 +32,7 @@
     },
     {
       "__outstatic": {
-        "commit": "2f1ccc2ccb97c2b0670dbbb58f4c84aa1c72eb27",
+        "commit": "e417ae3b16cbb2860c22e52e815c07118c29c419",
         "hash": "6db3e6c188d6341b1d8fbad76940d436",
         "path": "outstatic/content/posts/why-ergonomics-matter.mdx"
       },
@@ -54,6 +54,32 @@
         "workplace health",
         "productivity",
         "work from home"
+      ],
+      "collection": "posts"
+    },
+    {
+      "__outstatic": {
+        "commit": "e417ae3b16cbb2860c22e52e815c07118c29c419",
+        "hash": "7b8d7759192f138e06d1869ee5483b52",
+        "path": "outstatic/content/posts/measure-desk-chair-height.mdx"
+      },
+      "title": "How to Measure Your Ideal Desk and Chair Height",
+      "slug": "/measure-desk-chair-height",
+      "description": "Learn how to measure your ideal desk and chair height for optimal ergonomics. Follow our step-by-step guide to reduce pain and improve comfort in your workspace.",
+      "cover_image": "https://images.unsplash.com/photo-1605858447293-8b2432084eb2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTYxNTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDEwNTIyODN8&ixlib=rb-4.0.3&q=80&w=1080",
+      "published_at": "2025-03-04T01:38:03.562Z",
+      "categories": [
+        "Ergonomics",
+        "Home Office"
+      ],
+      "tags": [
+        "Desk Height",
+        "Chair Height",
+        "Ergonomics",
+        "Home Office",
+        "Workspace Setup",
+        "Posture",
+        "Comfort"
       ],
       "collection": "posts"
     }
