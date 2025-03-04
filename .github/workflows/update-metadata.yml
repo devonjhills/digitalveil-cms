@@ -1,0 +1,32 @@
+name: Update Metadata JSON
+
+on:
+  push:
+    branches:
+      - main # Adjust this to your main branch name if different
+
+jobs:
+  update_metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # Or your preferred Node.js version
+
+      - name: Install dependencies
+        run: npm install gray-matter md5  # Install necessary npm packages
+
+      - name: Run metadata update script
+        run: node .github/workflows/scripts/update-metadata.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Pass token for commit
+
+      - name: Commit and push metadata.json
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: Update metadata.json for new articles'
+          file_pattern: metadata.json
