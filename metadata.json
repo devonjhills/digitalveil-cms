@@ -1,0 +1,87 @@
+{
+  "commit": "e417ae3b16cbb2860c22e52e815c07118c29c419",
+  "generated": "Tue, 04 Mar 2025 01:39:33 GMT",
+  "metadata": [
+    {
+      "__outstatic": {
+        "commit": "e417ae3b16cbb2860c22e52e815c07118c29c419",
+        "hash": "bba5648a3af6f8de4556948726c03ecc",
+        "path": "outstatic/content/posts/ergonomic-home-office-setup.mdx"
+      },
+      "title": "Ergonomic Home Office Setup: The Complete Guide to Comfort and Productivity",
+      "slug": "ergonomic-home-office-setup",
+      "description": "Create your ideal ergonomic home office setup with expert tips on chair height, desk positioning, monitor placement, and accessories to prevent pain and boost productivity.",
+      "cover_image": "https://images.unsplash.com/photo-1594732832278-abd644401426?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTYxNTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDA4MjgwNzd8&ixlib=rb-4.0.3&q=80&w=1080",
+      "published_at": "2025-02-28T11:58Z",
+      "author": "J. Staros",
+      "categories": [
+        "Home Office",
+        "Ergonomics",
+        "Workplace Wellness"
+      ],
+      "tags": [
+        "ergonomic setup",
+        "home office",
+        "remote work",
+        "office furniture",
+        "productivity",
+        "workplace health",
+        "posture"
+      ],
+      "collection": "posts"
+    },
+    {
+      "__outstatic": {
+        "commit": "e417ae3b16cbb2860c22e52e815c07118c29c419",
+        "hash": "6db3e6c188d6341b1d8fbad76940d436",
+        "path": "outstatic/content/posts/why-ergonomics-matter.mdx"
+      },
+      "title": "Why Ergonomics Matter for Remote Workers",
+      "slug": "why-ergonomics-matter",
+      "description": "Discover why ergonomics matter for remote workers and how proper setup can prevent pain, boost productivity, and improve your long-term health while working from home.",
+      "cover_image": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?q=80&w=1080",
+      "published_at": "2025-03-03T06:34:39.736Z",
+      "author": "J. Staros",
+      "categories": [
+        "Remote Work",
+        "Health and Wellness"
+      ],
+      "tags": [
+        "ergonomics",
+        "remote work",
+        "home office",
+        "posture",
+        "workplace health",
+        "productivity",
+        "work from home"
+      ],
+      "collection": "posts"
+    },
+    {
+      "__outstatic": {
+        "commit": "e417ae3b16cbb2860c22e52e815c07118c29c419",
+        "hash": "7b8d7759192f138e06d1869ee5483b52",
+        "path": "outstatic/content/posts/measure-desk-chair-height.mdx"
+      },
+      "title": "How to Measure Your Ideal Desk and Chair Height",
+      "slug": "/measure-desk-chair-height",
+      "description": "Learn how to measure your ideal desk and chair height for optimal ergonomics. Follow our step-by-step guide to reduce pain and improve comfort in your workspace.",
+      "cover_image": "https://images.unsplash.com/photo-1605858447293-8b2432084eb2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTYxNTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDEwNTIyODN8&ixlib=rb-4.0.3&q=80&w=1080",
+      "published_at": "2025-03-04T01:38:03.562Z",
+      "categories": [
+        "Ergonomics",
+        "Home Office"
+      ],
+      "tags": [
+        "Desk Height",
+        "Chair Height",
+        "Ergonomics",
+        "Home Office",
+        "Workspace Setup",
+        "Posture",
+        "Comfort"
+      ],
+      "collection": "posts"
+    }
+  ]
+}
