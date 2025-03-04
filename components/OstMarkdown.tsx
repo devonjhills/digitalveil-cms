@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, BookOpen, Quote, X, ArrowRight } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { LinkPreview } from "@/components/ui/link-preview"; // Import from Aceternity UI
 import {
   BottomBannerCTAProps,
   HeadingProps,
@@ -33,14 +34,14 @@ const BottomBannerCTA: React.FC<BottomBannerCTAProps> = ({
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <a
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Button
+            asChild
             className="neobrutalist-button bg-black text-white flex items-center">
-            Learn More
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </a>
+            <a href={link} target="_blank" rel="noopener noreferrer">
+              Learn More
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
           <Button
             variant="outline"
             size="icon"
@@ -81,7 +82,7 @@ export function OstMarkdown({
     setHasDismissedCta(true);
   };
 
-  // Neobrutalist markdown overrides
+  // Enhanced markdown overrides with shadcn and Aceternity components
   const markdownOverrides = {
     h1: {
       component: ({ children, ...props }: HeadingProps) => (
@@ -141,23 +142,45 @@ export function OstMarkdown({
       },
     },
     a: {
-      component: ({ children, href, ...props }: LinkProps) => (
-        <a
-          href={href}
-          className="font-bold text-primary text-underline decoration-primary
-                    hover:bg-primary hover:text-primary-foreground px-1 py-0.5 transition-all"
-          {...props}
-          target="_self"
-        >
-          {children}
-          <ExternalLink className="h-3 w-3 ml-1 inline-block" />
-        </a>
-      ),
+      component: ({ children, href, ...props }: LinkProps) => {
+        // Check if it's an external link
+        const isExternal = href?.startsWith("http");
+
+        if (isExternal && href) {
+          // Regular external link with icon
+          return (
+            <a
+              href={href}
+              className="font-bold text-primary text-underline decoration-primary
+                        hover:bg-primary hover:text-primary-foreground px-1 py-0.5 transition-all"
+              {...props}
+              target="_blank"
+              rel="noopener noreferrer">
+              {children}
+              <ExternalLink className="h-3 w-3 ml-1 inline-block" />
+            </a>
+          );
+        }
+
+        // Convert relative path to full URL for internal links
+        const fullUrl = href
+          ? `https://www.thedigitalveil.com${
+              href.startsWith("/") ? href : `/${href}`
+            }`
+          : "https://www.thedigitalveil.com";
+
+        // Use LinkPreview for internal links with full URL
+        return (
+          <LinkPreview
+            url={fullUrl}
+            className="font-bold text-primary text-underline decoration-primary
+                      hover:bg-primary hover:text-primary-foreground px-1 py-0.5 transition-all">
+            {children}
+          </LinkPreview>
+        );
+      },
     },
     ul: {
-      props: {
-        className: "my-6 ml-6 list-none space-y-3",
-      },
       component: ({
         children,
         ...props
@@ -165,7 +188,7 @@ export function OstMarkdown({
         children: ReactNode;
         [key: string]: unknown;
       }) => (
-        <ul {...props}>
+        <ul className="my-6 ml-6 list-none space-y-3" {...props}>
           {React.Children.map(children, (child) => {
             if (!React.isValidElement(child)) return child;
             return React.cloneElement(
@@ -204,7 +227,7 @@ export function OstMarkdown({
         children: ReactNode;
         [key: string]: unknown;
       }) => (
-        <blockquote className="mt-6 accent-box italic" {...props}>
+        <blockquote className="mt-6 accent-box italic relative" {...props}>
           <Quote className="absolute top-2 left-2 text-accent-foreground/30 text-4xl [transform:scaleX(-1)]" />
           <div className="ml-6 relative z-10">{children}</div>
           <Quote className="absolute bottom-2 right-2 text-accent-foreground/30 text-4xl" />
@@ -247,12 +270,12 @@ export function OstMarkdown({
         alt?: string;
         [key: string]: unknown;
       }) => (
-        <div className="my-8 brutal-border brutal-shadow overflow-hidden bg-white relative">
+        <div className="my-8 brutal-border brutal-shadow overflow-hidden bg-white relative group">
           <div className="absolute inset-0 bg-secondary/5 -z-10 translate-x-2 translate-y-2 brutal-border"></div>
           <img
             src={src}
             alt={alt || ""}
-            className="w-full object-cover transition-transform hover:scale-105"
+            className="w-full object-cover transition-transform group-hover:scale-105 duration-300"
             loading="lazy"
             {...props}
           />
@@ -264,7 +287,6 @@ export function OstMarkdown({
         </div>
       ),
     },
-    // Bold code block styling
     pre: {
       component: ({
         children,

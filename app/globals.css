@@ -6,76 +6,73 @@
 
 @layer base {
   :root {
-    /* Neobrutalist theme - bold colors with high contrast */
-    --background: 40 10% 97%;       /* Warm off-white background */
-    --foreground: 0 0% 12%;         /* Near-black text */
-    --card: 0 0% 100%;              /* Pure white cards */
-    --card-foreground: 0 0% 12%;    /* Near-black card text */
-    --popover: 0 0% 100%;           /* White popover */
-    --popover-foreground: 0 0% 12%; /* Near-black popover text */
+    /* Enhanced Light Theme */
+    --background: 40 15% 97%;       /* Slightly warmer background */
+    --foreground: 0 0% 8%;          /* Higher contrast text */
+    --card: 0 0% 100%;              
+    --card-foreground: 0 0% 8%;     
+    --popover: 0 0% 100%;           
+    --popover-foreground: 0 0% 8%;  
 
-    /* Soft Green primary color */
-    --primary: 140 60% 50%;          /* Adjusted for a softer green */
+    /* Adjusted Primary - Darker Green */
+    --primary: 142 76% 36%;         /* WCAG AA compliant with white text */
     --primary-foreground: 0 0% 100%;
 
-    /* Bold secondary color - vivid pink */
-    --secondary: 350 100% 65%;
+    /* Secondary - Deeper Pink */
+    --secondary: 340 82% 52%;       /* Better contrast ratio */
     --secondary-foreground: 0 0% 100%;
 
-    /* Brutalist accent - vivid yellow */
-    --accent: 45 100% 60%;
-    --accent-foreground: 0 0% 12%;
+    /* Accent - Darker Gold/Yellow */
+    --accent: 38 92% 52%;           /* More accessible against light bg */
+    --accent-foreground: 0 0% 8%;
 
-    /* Muted tones - still visible but softened */
+    /* Enhanced Muted Colors */
     --muted: 40 10% 92%;
-    --muted-foreground: 0 0% 40%;
+    --muted-foreground: 0 0% 30%;   /* Higher contrast muted text */
 
-    /* Bold destructive red */
-    --destructive: 0 90% 60%;
+    /* Destructive - Darker Red */
+    --destructive: 0 84% 48%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Structural elements */
-    --border: 0 0% 82%;
+    /* Structural Elements */
+    --border: 0 0% 75%;            /* Darker borders for better visibility */
     --input: 40 10% 92%;
-    --ring: 140 60% 50%; /* Changed to match the new primary */
-
-    /* Squared brutalist corners */
-    --radius: 0.125rem;
+    --ring: 142 76% 36%;
   }
 
   .dark {
-    /* Dark neobrutalist theme */
-    --background: 0 0% 12%;         /* Near-black background */
-    --foreground: 40 10% 97%;       /* Off-white text */
-    --card: 0 0% 15%;               /* Dark gray cards */
-    --card-foreground: 40 10% 97%;  /* Off-white card text */
-    --popover: 0 0% 15%;            /* Dark gray popover */
-    --popover-foreground: 40 10% 97%; /* Off-white popover text */
+    /* Enhanced Dark Theme */
+    --background: 0 0% 8%;          /* Deeper black */
+    --foreground: 40 15% 97%;       
+    --card: 0 0% 12%;               
+    --card-foreground: 40 15% 97%;  
+    --popover: 0 0% 12%;            
+    --popover-foreground: 40 15% 97%;
 
-    /* Dark Soft Green primary color - slightly brighter than light green*/
-    --primary: 140 70% 60%;
+    /* Brighter Primary */
+    --primary: 142 76% 48%;         /* More vibrant against dark bg */
     --primary-foreground: 0 0% 100%;
 
-    /* Bold secondary - brighter pink */
-    --secondary: 350 100% 70%;
-    --secondary-foreground: 0 0% 12%;
+    /* Secondary - Brighter Pink */
+    --secondary: 340 82% 65%;
+    --secondary-foreground: 0 0% 100%;  /* Fixed contrast issue */
 
-    /* Brutalist accent - brighter yellow */
-    --accent: 45 100% 65%;
-    --accent-foreground: 0 0% 12%;
+    /* Accent - Brighter Gold */
+    --accent: 38 92% 62%;
+    --accent-foreground: 0 0% 8%;
 
-    /* Muted but still visible */
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 70%;
+    /* Improved Muted Colors */
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 75%;   /* Brighter muted text */
 
-    /* Bold destructive */
-    --destructive: 0 90% 65%;
+    /* Destructive - More Vibrant */
+    --destructive: 0 84% 58%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Structural elements */
-    --border: 0 0% 30%;
-    --input: 0 0% 20%;
-    --ring: 140 70% 60%; /* Changed to match the new primary */
+    /* Structural Elements */
+    --border: 0 0% 25%;            /* Better visibility */
+    --input: 0 0% 18%;
+    --ring: 142 76% 48%;
   }
 }
 

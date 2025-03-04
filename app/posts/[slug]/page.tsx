@@ -4,7 +4,7 @@ import Image from "next/image";
 import { getDocumentBySlug, getDocumentSlugs } from "outstatic/server";
 import { OstMarkdown } from "@/components/OstMarkdown";
 import { Badge } from "@/components/ui/badge";
-import { CalendarIcon, TagIcon } from "lucide-react";
+import { CalendarIcon, TagIcon, FolderIcon } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 export const dynamic = "force-static";
@@ -42,20 +42,23 @@ export async function generateMetadata({
   // Await params before accessing slug
   const { slug } = await params;
 
-  const post = (getDocumentBySlug("posts", slug, [
+  const post = getDocumentBySlug("posts", slug, [
     "title",
     "description",
     "cover_image",
     "published_at",
-  ])) as Post | null;
+    "author",
+  ]) as Post | null;
 
   if (!post) {
     return {};
   }
 
+  // Create a rich metadata object with enhanced properties
   return {
     title: post.title,
     description: post.description,
+    authors: [{ name: post.author }],
     openGraph: {
       title: post.title,
       description: post.description,
@@ -69,12 +72,16 @@ export async function generateMetadata({
           alt: post.title,
         },
       ],
+      publishedTime: post.published_at,
+      authors: [post.author],
+      siteName: process.env.NEXT_PUBLIC_SITE_NAME || "My Blog",
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
       images: [post.cover_image],
+      creator: `@${process.env.NEXT_PUBLIC_TWITTER_HANDLE || "yourusername"}`,
     },
   };
 }
@@ -89,7 +96,30 @@ function formatDate(dateString: string): string {
   });
 }
 
-// Beautified Blog Post Page using Tailwind, shadcn components, and best practice layout
+// Get first paragraph of content for excerpt
+function getExcerpt(content: string, maxLength: number = 150): string {
+  // Remove markdown formatting and get first paragraph
+  const text = content
+    .replace(/#+\s(.*)/g, "") // Remove headings
+    .replace(/\*\*(.*?)\*\*/g, "$1") // Remove bold
+    .replace(/\*(.*?)\*/g, "$1") // Remove italic
+    .replace(/\[(.*?)\]\(.*?\)/g, "$1") // Remove links
+    .replace(/!\[(.*?)\]\(.*?\)/g, "") // Remove images
+    .replace(/```[\s\S]*?```/g, "") // Remove code blocks
+    .trim();
+
+  // Get first paragraph
+  const firstParagraph = text.split("\n\n")[0];
+
+  // Truncate if needed
+  if (firstParagraph.length <= maxLength) {
+    return firstParagraph;
+  }
+
+  return firstParagraph.substring(0, maxLength) + "...";
+}
+
+// Beautified Blog Post Page with improved layout for link previews
 export default async function PostPage({ params }: { params: Params }) {
   // Await params before accessing slug
   const { slug } = await params;
@@ -109,9 +139,67 @@ export default async function PostPage({ params }: { params: Params }) {
     notFound();
   }
 
+  const excerpt = getExcerpt(post.content);
+
   return (
     <main className="container py-12">
       <div className="neobrutalist-card p-8">
+        {/* Header: Title, Description, and Metadata Bar */}
+        <header className="mb-8">
+          <h1 className="text-4xl font-extrabold mb-2">{post.title}</h1>
+          <p className="text-lg text-muted-foreground mb-6">
+            {post.description}
+          </p>
+
+          {/* Metadata Bar: Author, Date, Categories in a single line */}
+          <div className="flex flex-wrap items-center gap-6 py-3 px-4 bg-muted rounded-md mb-6">
+            {/* Author */}
+            <div className="flex items-center gap-2">
+              <Avatar className="w-8 h-8">
+                <AvatarImage src="/media/avatar.jpg" alt={post.author} />
+                <AvatarFallback>{post.author[0]}</AvatarFallback>
+              </Avatar>
+              <span className="font-medium">{post.author}</span>
+            </div>
+
+            {/* Date */}
+            <div className="flex items-center text-sm">
+              <CalendarIcon className="w-4 h-4 mr-1" />
+              <time dateTime={post.published_at}>
+                {formatDate(post.published_at)}
+              </time>
+            </div>
+
+            {/* Categories - limited to first 2 in top bar */}
+            {post.categories.length > 0 && (
+              <div className="flex items-center gap-2">
+                <FolderIcon className="w-4 h-4" />
+                <div className="flex gap-1">
+                  {post.categories.slice(0, 2).map((category, index) => (
+                    <Badge
+                      key={category}
+                      variant="secondary"
+                      className="text-xs py-0.5 px-2">
+                      {category}
+                      {index < Math.min(post.categories.length, 2) - 1 && ", "}
+                    </Badge>
+                  ))}
+                  {post.categories.length > 2 && (
+                    <span className="text-xs text-muted-foreground">
+                      +{post.categories.length - 2} more
+                    </span>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Excerpt preview */}
+          <div className="border-l-4 pl-4 py-2 bg-muted/30 italic text-muted-foreground rounded-r">
+            {excerpt}
+          </div>
+        </header>
+
         {/* Cover Image */}
         {post.cover_image && (
           <div className="relative w-full h-96 mb-8 rounded overflow-hidden brutal-border brutal-shadow">
@@ -126,65 +214,68 @@ export default async function PostPage({ params }: { params: Params }) {
           </div>
         )}
 
-        {/* Header: Title, Meta, and Author */}
-        <header className="mb-6">
-          <h1 className="text-4xl font-extrabold mb-2">{post.title}</h1>
-          <p className="text-lg text-muted-foreground mb-4">
-            {post.description}
-          </p>
-          <div className="flex items-center gap-4">
-            {/* Author Avatar */}
-            <Avatar className="w-10 h-10">
-              <AvatarImage src="/media/avatar.jpg" alt={post.author} />
-              <AvatarFallback>{post.author[0]}</AvatarFallback>
-            </Avatar>
-            <div>
-              <p className="font-bold">{post.author}</p>
-              <div className="flex items-center text-sm text-muted-foreground">
-                <CalendarIcon className="w-4 h-4 mr-1" />
-                <time dateTime={post.published_at}>
-                  {formatDate(post.published_at)}
-                </time>
-              </div>
-            </div>
-          </div>
-        </header>
-
         {/* Post Content */}
-        <article className="prose dark:prose-invert max-w-none">
+        <article className="prose dark:prose-invert max-w-none mb-10">
           <OstMarkdown content={post.content} />
         </article>
 
-        {/* Footer Section for Categories and Tags */}
-        {(post.categories.length > 0 || post.tags.length > 0) && (
-          <footer className="mt-10 pt-6 border-t border-black">
+        {/* Footer with full categories and tags */}
+        <footer className="mt-6 pt-6 border-t border-black">
+          {/* Full Categories and Tags Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Categories */}
             {post.categories.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-4">
-                {post.categories.map((category) => (
-                  <Badge
-                    key={category}
-                    variant="secondary"
-                    className="text-xs py-1 px-2">
-                    {category}
-                  </Badge>
-                ))}
+              <div>
+                <h3 className="text-sm font-semibold uppercase tracking-wider mb-3 flex items-center gap-2">
+                  <FolderIcon className="w-4 h-4" />
+                  Categories
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {post.categories.map((category) => (
+                    <Badge
+                      key={category}
+                      variant="secondary"
+                      className="py-1 px-3 text-sm">
+                      {category}
+                    </Badge>
+                  ))}
+                </div>
               </div>
             )}
+
+            {/* Tags */}
             {post.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2">
-                {post.tags.map((tag) => (
-                  <Badge
-                    key={tag}
-                    variant="outline"
-                    className="text-xs py-1 px-2 flex items-center gap-1">
-                    <TagIcon className="w-3 h-3" />
-                    {tag}
-                  </Badge>
-                ))}
+              <div>
+                <h3 className="text-sm font-semibold uppercase tracking-wider mb-3 flex items-center gap-2">
+                  <TagIcon className="w-4 h-4" />
+                  Tags
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {post.tags.map((tag) => (
+                    <Badge
+                      key={tag}
+                      variant="outline"
+                      className="py-1 px-3 text-sm">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
               </div>
             )}
-          </footer>
-        )}
+          </div>
+
+          {/* Author Signature - could add social links here */}
+          <div className="flex justify-between items-center flex-wrap gap-4 mt-6 pt-6 border-t border-muted">
+            <p className="text-sm text-muted-foreground">
+              Published on {formatDate(post.published_at)}
+            </p>
+
+            {/* Share links could go here */}
+            <div className="flex gap-2">
+              {/* Add your share buttons here */}
+            </div>
+          </div>
+        </footer>
       </div>
     </main>
   );
