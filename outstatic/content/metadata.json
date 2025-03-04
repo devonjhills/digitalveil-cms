@@ -1,10 +1,10 @@
 {
-  "commit": "0b1d7dc9ae822446c4c4610d329a15d71cc1b786",
-  "generated": "Tue, 04 Mar 2025 08:29:44 GMT",
+  "commit": "2554e79625c8934c3ad8632c06466a3d65e228eb",
+  "generated": "Tue, 04 Mar 2025 09:22:05 GMT",
   "metadata": [
     {
       "__outstatic": {
-        "commit": "0b1d7dc9ae822446c4c4610d329a15d71cc1b786",
+        "commit": "2554e79625c8934c3ad8632c06466a3d65e228eb",
         "hash": "bba5648a3af6f8de4556948726c03ecc",
         "path": "outstatic/content/posts/ergonomic-home-office-setup.mdx"
       },
@@ -32,7 +32,7 @@
     },
     {
       "__outstatic": {
-        "commit": "0b1d7dc9ae822446c4c4610d329a15d71cc1b786",
+        "commit": "2554e79625c8934c3ad8632c06466a3d65e228eb",
         "hash": "6db3e6c188d6341b1d8fbad76940d436",
         "path": "outstatic/content/posts/why-ergonomics-matter.mdx"
       },
@@ -59,7 +59,7 @@
     },
     {
       "__outstatic": {
-        "commit": "0b1d7dc9ae822446c4c4610d329a15d71cc1b786",
+        "commit": "2554e79625c8934c3ad8632c06466a3d65e228eb",
         "hash": "5d78db7965972b9656e404c6ab0e9173",
         "path": "outstatic/content/posts/measure-desk-chair-height.mdx"
       },
@@ -86,7 +86,7 @@
     },
     {
       "__outstatic": {
-        "commit": "0b1d7dc9ae822446c4c4610d329a15d71cc1b786",
+        "commit": "2554e79625c8934c3ad8632c06466a3d65e228eb",
         "hash": "0d71ec55431b2ef46876a231a8ac0f08",
         "path": "outstatic/content/posts/reduce-neck-strain-work.mdx"
       },
@@ -113,7 +113,7 @@
     },
     {
       "__outstatic": {
-        "commit": "0b1d7dc9ae822446c4c4610d329a15d71cc1b786",
+        "commit": "2554e79625c8934c3ad8632c06466a3d65e228eb",
         "hash": "1136cbb98ae5d9d8498d291b9d001886",
         "path": "outstatic/content/posts/productivity-techniques-remote-work.mdx"
       },
