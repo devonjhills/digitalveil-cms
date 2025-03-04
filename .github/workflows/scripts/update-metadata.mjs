@@ -47,10 +47,16 @@ async function updateMetadata() {
           },
         };
 
+        let articleSlug = articleMetadata.slug; // Get the slug value
+        if (articleSlug && articleSlug.startsWith("/")) {
+          articleSlug = articleSlug.substring(1); // Remove leading slash
+        }
+
         // 4. Create the complete metadata object
         const newMetadataEntry = {
           ...outstaticMetadata,
           ...articleMetadata,
+          slug: articleSlug, // Use the modified slug
           collection: "posts", // Assuming collection is always 'posts'
         };
 
