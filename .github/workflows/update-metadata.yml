@@ -21,7 +21,7 @@ jobs:
         run: npm install gray-matter md5  # Install necessary npm packages
 
       - name: Run metadata update script
-        run: node .github/workflows/scripts/update-metadata.js
+        run: node .github/workflows/scripts/update-metadata.mjs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Pass token for commit
 
