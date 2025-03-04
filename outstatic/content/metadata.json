@@ -1,10 +1,10 @@
 {
-  "commit": "094867c62d9268374fe3dd14403f7ecb072b0a2a",
-  "generated": "Tue, 04 Mar 2025 05:09:26 GMT",
+  "commit": "0b1d7dc9ae822446c4c4610d329a15d71cc1b786",
+  "generated": "Tue, 04 Mar 2025 08:29:44 GMT",
   "metadata": [
     {
       "__outstatic": {
-        "commit": "094867c62d9268374fe3dd14403f7ecb072b0a2a",
+        "commit": "0b1d7dc9ae822446c4c4610d329a15d71cc1b786",
         "hash": "bba5648a3af6f8de4556948726c03ecc",
         "path": "outstatic/content/posts/ergonomic-home-office-setup.mdx"
       },
@@ -32,7 +32,7 @@
     },
     {
       "__outstatic": {
-        "commit": "094867c62d9268374fe3dd14403f7ecb072b0a2a",
+        "commit": "0b1d7dc9ae822446c4c4610d329a15d71cc1b786",
         "hash": "6db3e6c188d6341b1d8fbad76940d436",
         "path": "outstatic/content/posts/why-ergonomics-matter.mdx"
       },
@@ -59,7 +59,7 @@
     },
     {
       "__outstatic": {
-        "commit": "094867c62d9268374fe3dd14403f7ecb072b0a2a",
+        "commit": "0b1d7dc9ae822446c4c4610d329a15d71cc1b786",
         "hash": "5d78db7965972b9656e404c6ab0e9173",
         "path": "outstatic/content/posts/measure-desk-chair-height.mdx"
       },
@@ -86,7 +86,7 @@
     },
     {
       "__outstatic": {
-        "commit": "094867c62d9268374fe3dd14403f7ecb072b0a2a",
+        "commit": "0b1d7dc9ae822446c4c4610d329a15d71cc1b786",
         "hash": "0d71ec55431b2ef46876a231a8ac0f08",
         "path": "outstatic/content/posts/reduce-neck-strain-work.mdx"
       },
@@ -108,6 +108,34 @@
         "workplace health",
         "pain prevention",
         "productivity"
+      ],
+      "collection": "posts"
+    },
+    {
+      "__outstatic": {
+        "commit": "0b1d7dc9ae822446c4c4610d329a15d71cc1b786",
+        "hash": "1136cbb98ae5d9d8498d291b9d001886",
+        "path": "outstatic/content/posts/productivity-techniques-remote-work.mdx"
+      },
+      "title": "Productivity Techniques for Remote Work",
+      "slug": "productivity-techniques-remote-work",
+      "description": "Discover proven productivity techniques for remote work that boost focus, manage time effectively, and maintain work-life balance in a home office environment.",
+      "cover_image": "https://images.unsplash.com/photo-1528297506728-9533d2ac3fa4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTYxNTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDEwNzY3OTZ8&ixlib=rb-4.0.3&q=80&w=1080",
+      "published_at": "2025-03-04T08:26:36.816Z",
+      "author": "J. Staros",
+      "categories": [
+        "Remote Work",
+        "Productivity",
+        "Work-Life Balance"
+      ],
+      "tags": [
+        "remote work productivity",
+        "time management",
+        "home office",
+        "focus techniques",
+        "digital tools",
+        "work from home",
+        "productivity systems"
       ],
       "collection": "posts"
     }
