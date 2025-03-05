@@ -1,10 +1,10 @@
 {
-  "commit": "900bf542b754fad90e97e0b51bda569896b58f3f",
-  "generated": "Wed, 05 Mar 2025 01:03:13 GMT",
+  "commit": "63cc48754a31224262f7d3b80fa3353d76979413",
+  "generated": "Wed, 05 Mar 2025 01:10:30 GMT",
   "metadata": [
     {
       "__outstatic": {
-        "commit": "900bf542b754fad90e97e0b51bda569896b58f3f",
+        "commit": "63cc48754a31224262f7d3b80fa3353d76979413",
         "hash": "bba5648a3af6f8de4556948726c03ecc",
         "path": "outstatic/content/posts/ergonomic-home-office-setup.mdx"
       },
@@ -32,7 +32,7 @@
     },
     {
       "__outstatic": {
-        "commit": "900bf542b754fad90e97e0b51bda569896b58f3f",
+        "commit": "63cc48754a31224262f7d3b80fa3353d76979413",
         "hash": "6db3e6c188d6341b1d8fbad76940d436",
         "path": "outstatic/content/posts/why-ergonomics-matter.mdx"
       },
@@ -59,7 +59,7 @@
     },
     {
       "__outstatic": {
-        "commit": "900bf542b754fad90e97e0b51bda569896b58f3f",
+        "commit": "63cc48754a31224262f7d3b80fa3353d76979413",
         "hash": "5d78db7965972b9656e404c6ab0e9173",
         "path": "outstatic/content/posts/measure-desk-chair-height.mdx"
       },
@@ -86,7 +86,7 @@
     },
     {
       "__outstatic": {
-        "commit": "900bf542b754fad90e97e0b51bda569896b58f3f",
+        "commit": "63cc48754a31224262f7d3b80fa3353d76979413",
         "hash": "0d71ec55431b2ef46876a231a8ac0f08",
         "path": "outstatic/content/posts/reduce-neck-strain-work.mdx"
       },
@@ -113,7 +113,7 @@
     },
     {
       "__outstatic": {
-        "commit": "900bf542b754fad90e97e0b51bda569896b58f3f",
+        "commit": "63cc48754a31224262f7d3b80fa3353d76979413",
         "hash": "1136cbb98ae5d9d8498d291b9d001886",
         "path": "outstatic/content/posts/productivity-techniques-remote-work.mdx"
       },
@@ -141,10 +141,30 @@
     },
     {
       "__outstatic": {
-        "commit": "900bf542b754fad90e97e0b51bda569896b58f3f",
-        "hash": "8e7c6aff445d87ce6f8aae3f08ca50fd",
+        "commit": "63cc48754a31224262f7d3b80fa3353d76979413",
+        "hash": "3d5975174e35d507a37e2d55c6c1f631",
         "path": "outstatic/content/posts/distraction-free-workspace.mdx"
       },
+      "title": "How to Set Up a Distraction-Free Workspace",
+      "slug": "distraction-free-workspace",
+      "description": "Transform your productivity with our expert guide on creating a distraction-free workspace. Learn practical tips for designing a focused environment that boosts concentration and efficiency.",
+      "cover_image": "https://images.unsplash.com/photo-1447797732940-b9a11dc5aa53?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTYxNTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDExMzY0Nzh8&ixlib=rb-4.0.3&q=80&w=1080",
+      "published_at": "2025-03-05T01:01:18.582Z",
+      "author": "J. Staros",
+      "categories": [
+        "Productivity",
+        "Workspace Design",
+        "Remote Work"
+      ],
+      "tags": [
+        "distraction-free workspace",
+        "focus environment",
+        "productivity setup",
+        "home office",
+        "workspace design",
+        "concentration tips",
+        "minimalist workspace"
+      ],
       "collection": "posts"
     }
   ]
