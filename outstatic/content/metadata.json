@@ -1,10 +1,10 @@
 {
-  "commit": "2554e79625c8934c3ad8632c06466a3d65e228eb",
-  "generated": "Tue, 04 Mar 2025 09:22:05 GMT",
+  "commit": "900bf542b754fad90e97e0b51bda569896b58f3f",
+  "generated": "Wed, 05 Mar 2025 01:03:13 GMT",
   "metadata": [
     {
       "__outstatic": {
-        "commit": "2554e79625c8934c3ad8632c06466a3d65e228eb",
+        "commit": "900bf542b754fad90e97e0b51bda569896b58f3f",
         "hash": "bba5648a3af6f8de4556948726c03ecc",
         "path": "outstatic/content/posts/ergonomic-home-office-setup.mdx"
       },
@@ -32,7 +32,7 @@
     },
     {
       "__outstatic": {
-        "commit": "2554e79625c8934c3ad8632c06466a3d65e228eb",
+        "commit": "900bf542b754fad90e97e0b51bda569896b58f3f",
         "hash": "6db3e6c188d6341b1d8fbad76940d436",
         "path": "outstatic/content/posts/why-ergonomics-matter.mdx"
       },
@@ -59,7 +59,7 @@
     },
     {
       "__outstatic": {
-        "commit": "2554e79625c8934c3ad8632c06466a3d65e228eb",
+        "commit": "900bf542b754fad90e97e0b51bda569896b58f3f",
         "hash": "5d78db7965972b9656e404c6ab0e9173",
         "path": "outstatic/content/posts/measure-desk-chair-height.mdx"
       },
@@ -86,7 +86,7 @@
     },
     {
       "__outstatic": {
-        "commit": "2554e79625c8934c3ad8632c06466a3d65e228eb",
+        "commit": "900bf542b754fad90e97e0b51bda569896b58f3f",
         "hash": "0d71ec55431b2ef46876a231a8ac0f08",
         "path": "outstatic/content/posts/reduce-neck-strain-work.mdx"
       },
@@ -113,7 +113,7 @@
     },
     {
       "__outstatic": {
-        "commit": "2554e79625c8934c3ad8632c06466a3d65e228eb",
+        "commit": "900bf542b754fad90e97e0b51bda569896b58f3f",
         "hash": "1136cbb98ae5d9d8498d291b9d001886",
         "path": "outstatic/content/posts/productivity-techniques-remote-work.mdx"
       },
@@ -137,6 +137,14 @@
         "work from home",
         "productivity systems"
       ],
+      "collection": "posts"
+    },
+    {
+      "__outstatic": {
+        "commit": "900bf542b754fad90e97e0b51bda569896b58f3f",
+        "hash": "8e7c6aff445d87ce6f8aae3f08ca50fd",
+        "path": "outstatic/content/posts/distraction-free-workspace.mdx"
+      },
       "collection": "posts"
     }
   ]
