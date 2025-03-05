@@ -6,6 +6,7 @@ import { OstMarkdown } from "@/components/OstMarkdown";
 import { Badge } from "@/components/ui/badge";
 import { CalendarIcon, TagIcon, FolderIcon } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { formatDate } from "@/lib/utils";
 
 export const dynamic = "force-static";
 
@@ -86,39 +87,6 @@ export async function generateMetadata({
   };
 }
 
-// Format date helper function
-function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
-
-// Get first paragraph of content for excerpt
-function getExcerpt(content: string, maxLength: number = 150): string {
-  // Remove markdown formatting and get first paragraph
-  const text = content
-    .replace(/#+\s(.*)/g, "") // Remove headings
-    .replace(/\*\*(.*?)\*\*/g, "$1") // Remove bold
-    .replace(/\*(.*?)\*/g, "$1") // Remove italic
-    .replace(/\[(.*?)\]\(.*?\)/g, "$1") // Remove links
-    .replace(/!\[(.*?)\]\(.*?\)/g, "") // Remove images
-    .replace(/```[\s\S]*?```/g, "") // Remove code blocks
-    .trim();
-
-  // Get first paragraph
-  const firstParagraph = text.split("\n\n")[0];
-
-  // Truncate if needed
-  if (firstParagraph.length <= maxLength) {
-    return firstParagraph;
-  }
-
-  return firstParagraph.substring(0, maxLength) + "...";
-}
-
 // Beautified Blog Post Page with improved layout for link previews
 export default async function PostPage({ params }: { params: Params }) {
   // Await params before accessing slug
@@ -139,20 +107,18 @@ export default async function PostPage({ params }: { params: Params }) {
     notFound();
   }
 
-  const excerpt = getExcerpt(post.content);
-
   return (
     <main className="container py-12">
       <div className="neobrutalist-card p-8">
         {/* Header: Title, Description, and Metadata Bar */}
         <header className="mb-8">
-          <h1 className="text-4xl font-extrabold mb-2">{post.title}</h1>
-          <p className="text-lg text-muted-foreground mb-6">
+          <h1 className="text-4xl font-extrabold mb-4">{post.title}</h1>
+          <p className="text-lg text-muted-foreground mb-4">
             {post.description}
           </p>
 
           {/* Metadata Bar: Author, Date, Categories in a single line */}
-          <div className="flex flex-wrap items-center gap-6 py-3 px-4 bg-muted rounded-md mb-6">
+          <div className="flex flex-wrap items-center gap-4 py-3 px-4 bg-muted rounded-md">
             {/* Author */}
             <div className="flex items-center gap-2">
               <Avatar className="w-8 h-8">
@@ -170,33 +136,22 @@ export default async function PostPage({ params }: { params: Params }) {
               </time>
             </div>
 
-            {/* Categories - limited to first 2 in top bar */}
+            {/* Categories */}
             {post.categories.length > 0 && (
               <div className="flex items-center gap-2">
                 <FolderIcon className="w-4 h-4" />
                 <div className="flex gap-1">
-                  {post.categories.slice(0, 2).map((category, index) => (
+                  {post.categories.slice(0, 3).map((category) => (
                     <Badge
                       key={category}
-                      variant="secondary"
+                      variant="default"
                       className="text-xs py-0.5 px-2">
                       {category}
-                      {index < Math.min(post.categories.length, 2) - 1 && ", "}
                     </Badge>
                   ))}
-                  {post.categories.length > 2 && (
-                    <span className="text-xs text-muted-foreground">
-                      +{post.categories.length - 2} more
-                    </span>
-                  )}
                 </div>
               </div>
             )}
-          </div>
-
-          {/* Excerpt preview */}
-          <div className="border-l-4 pl-4 py-2 bg-muted/30 italic text-muted-foreground rounded-r">
-            {excerpt}
           </div>
         </header>
 
