@@ -1,10 +1,10 @@
 {
-  "commit": "76a0b946fa241e00e851bef5f53b48c0886db95f",
-  "generated": "Wed, 05 Mar 2025 19:21:33 GMT",
+  "commit": "1d10480aaaf92f911dbbb3f2dbef17b46592accf",
+  "generated": "Thu, 06 Mar 2025 04:24:04 GMT",
   "metadata": [
     {
       "__outstatic": {
-        "commit": "76a0b946fa241e00e851bef5f53b48c0886db95f",
+        "commit": "1d10480aaaf92f911dbbb3f2dbef17b46592accf",
         "hash": "bba5648a3af6f8de4556948726c03ecc",
         "path": "outstatic/content/posts/ergonomic-home-office-setup.mdx"
       },
@@ -32,7 +32,7 @@
     },
     {
       "__outstatic": {
-        "commit": "76a0b946fa241e00e851bef5f53b48c0886db95f",
+        "commit": "1d10480aaaf92f911dbbb3f2dbef17b46592accf",
         "hash": "6db3e6c188d6341b1d8fbad76940d436",
         "path": "outstatic/content/posts/why-ergonomics-matter.mdx"
       },
@@ -59,7 +59,7 @@
     },
     {
       "__outstatic": {
-        "commit": "76a0b946fa241e00e851bef5f53b48c0886db95f",
+        "commit": "1d10480aaaf92f911dbbb3f2dbef17b46592accf",
         "hash": "5d78db7965972b9656e404c6ab0e9173",
         "path": "outstatic/content/posts/measure-desk-chair-height.mdx"
       },
@@ -86,7 +86,7 @@
     },
     {
       "__outstatic": {
-        "commit": "76a0b946fa241e00e851bef5f53b48c0886db95f",
+        "commit": "1d10480aaaf92f911dbbb3f2dbef17b46592accf",
         "hash": "0d71ec55431b2ef46876a231a8ac0f08",
         "path": "outstatic/content/posts/reduce-neck-strain-work.mdx"
       },
@@ -113,7 +113,7 @@
     },
     {
       "__outstatic": {
-        "commit": "76a0b946fa241e00e851bef5f53b48c0886db95f",
+        "commit": "1d10480aaaf92f911dbbb3f2dbef17b46592accf",
         "hash": "1136cbb98ae5d9d8498d291b9d001886",
         "path": "outstatic/content/posts/productivity-techniques-remote-work.mdx"
       },
@@ -141,7 +141,7 @@
     },
     {
       "__outstatic": {
-        "commit": "76a0b946fa241e00e851bef5f53b48c0886db95f",
+        "commit": "1d10480aaaf92f911dbbb3f2dbef17b46592accf",
         "hash": "3d5975174e35d507a37e2d55c6c1f631",
         "path": "outstatic/content/posts/distraction-free-workspace.mdx"
       },
@@ -169,7 +169,7 @@
     },
     {
       "__outstatic": {
-        "commit": "76a0b946fa241e00e851bef5f53b48c0886db95f",
+        "commit": "1d10480aaaf92f911dbbb3f2dbef17b46592accf",
         "hash": "834cf077529e1b5e37d2bc5f348ae616",
         "path": "outstatic/content/posts/stay-motivated-wfh.mdx"
       },
@@ -191,6 +191,34 @@
         "work-life balance",
         "home office",
         "focus"
+      ],
+      "collection": "posts"
+    },
+    {
+      "__outstatic": {
+        "commit": "1d10480aaaf92f911dbbb3f2dbef17b46592accf",
+        "hash": "c3c393924209c4e3d714df3b5988e566",
+        "path": "outstatic/content/posts/improve-circulation-remote-work.mdx"
+      },
+      "title": "How to Improve Circulation While Working from Home",
+      "slug": "improve-circulation-remote-work",
+      "description": "Discover practical tips to improve circulation while working from home. Learn simple exercises, ergonomic adjustments, and lifestyle changes to boost blood flow and reduce health risks.",
+      "cover_image": "https://images.unsplash.com/photo-1505692433770-36f19f51681d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTYxNTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDEyMzQ5MjN8&ixlib=rb-4.0.3&q=80&w=1080",
+      "published_at": "2025-03-06T04:22:03.382Z",
+      "author": "J. Staros",
+      "categories": [
+        "Remote Work",
+        "Health",
+        "Ergonomics"
+      ],
+      "tags": [
+        "circulation",
+        "work from home",
+        "desk exercises",
+        "ergonomics",
+        "blood flow",
+        "sitting health",
+        "movement breaks"
       ],
       "collection": "posts"
     }
