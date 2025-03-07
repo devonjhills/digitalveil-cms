@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { CalendarIcon, TagIcon, FolderIcon } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { formatDate } from "@/lib/utils";
+import TableOfContents from "@/components/TableOfContents";
 
 export const dynamic = "force-static";
 
@@ -109,6 +110,7 @@ export default async function PostPage({ params }: { params: Params }) {
 
   return (
     <main className="container py-12">
+      <TableOfContents />
       <div className="neobrutalist-card p-8">
         {/* Header: Title, Description, and Metadata Bar */}
         <header className="mb-8">

@@ -19,6 +19,7 @@ export interface OstMarkdownProps {
 export interface HeadingProps {
   children: React.ReactNode;
   className?: string;
+  id?: string;
 }
 
 export interface LinkProps {

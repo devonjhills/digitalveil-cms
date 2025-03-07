@@ -1,18 +1,19 @@
 "use client";
 
-import React, {
-  useState,
-  useEffect,
-  ReactNode,
-  useMemo,
-  useCallback,
-} from "react";
+import React from "react";
 import Markdown from "markdown-to-jsx";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, BookOpen, Quote, X, ArrowRight } from "lucide-react";
+import {
+  ExternalLink,
+  BookOpen,
+  Quote,
+  X,
+  ArrowRight,
+  Hash,
+} from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import { LinkPreview } from "@/components/ui/link-preview"; // Import from Aceternity UI
+import { LinkPreview } from "@/components/ui/link-preview";
 import {
   BottomBannerCTAProps,
   HeadingProps,
@@ -20,12 +21,11 @@ import {
   OstMarkdownProps,
 } from "./types";
 
-// BottomBannerCTA Component with Neobrutalist styling (memoized for performance)
 const BottomBannerCTA: React.FC<BottomBannerCTAProps> = React.memo(
   function BottomBannerCTA(props) {
     return (
       <div
-        className="fixed bottom-0 left-0 right-0 z-50 p-1 bg-accent text-accent-foreground 
+        className="fixed bottom-0 left-0 right-0 z-50 p-1 bg-accent text-accent-foreground
                  border-t-2 border-black brutal-border animate-slide-up">
         <div className="container mx-auto flex items-center justify-between px-4">
           <div className="flex items-center gap-3">
@@ -56,7 +56,97 @@ const BottomBannerCTA: React.FC<BottomBannerCTAProps> = React.memo(
   }
 );
 
-// Main Markdown Component with Neobrutalist styling
+// --- Header Override Components ---
+
+const H1Override: React.FC<HeadingProps> = ({ children, id, ...props }) => {
+  return (
+    <div className="relative mt-16 mb-8 group">
+      <h1
+        id={id}
+        className="group/header scroll-m-20 text-4xl font-semibold tracking-tight
+                 relative pb-3
+                 text-foreground
+                 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-1/3 after:h-0.5 after:bg-primary group-hover/header:after:w-full transition-all"
+        {...props}>
+        <a
+          href={`#${id}`}
+          className="group-hover/header:text-primary-foreground no-underline" // Removed hover:text-primary-foreground
+        >
+          <Hash className="inline-block mr-2 h-4 w-4 opacity-60 align-middle translate-y-[-1px]" />{" "}
+          {children}
+        </a>
+        <span className="absolute -bottom-1 left-0 right-0 h-[3px] bg-gradient-to-r from-primary to-secondary rounded-full opacity-40"></span>{" "}
+      </h1>
+    </div>
+  );
+};
+
+const H2Override: React.FC<HeadingProps> = ({ children, id, ...props }) => {
+  return (
+    <div className="relative mt-12 mb-6 group">
+      <h2
+        id={id}
+        className="group/header scroll-m-20 text-3xl font-semibold tracking-tight
+                 text-foreground pb-2 relative
+                 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-1/4 after:h-0.5 after:bg-secondary group-hover/header:after:w-full transition-all"
+        {...props}>
+        <a
+          href={`#${id}`}
+          className="group-hover/header:text-primary-foreground no-underline" // Removed hover:text-primary-foreground
+        >
+          <Hash className="inline-block mr-2 h-4 w-4 opacity-60 align-middle translate-y-[-1px]" />{" "}
+          {children}
+        </a>
+        <span className="absolute -bottom-0.5 left-0 right-0 h-[2px] bg-secondary rounded-full opacity-40"></span>{" "}
+      </h2>
+    </div>
+  );
+};
+
+const H3Override: React.FC<HeadingProps> = ({ children, id, ...props }) => {
+  return (
+    <div className="group relative mt-10 mb-4">
+      <h3
+        id={id}
+        className="group/header scroll-m-20 text-2xl font-semibold tracking-tight
+                 text-foreground pb-1.5 relative
+                 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-1/5 after:h-0.5 after:bg-accent group-hover/header:after:w-full transition-all"
+        {...props}>
+        <a
+          href={`#${id}`}
+          className="group-hover/header:text-primary-foreground no-underline" // Removed hover:text-primary-foreground
+        >
+          <Hash className="inline-block mr-2 h-4 w-4 opacity-60 align-middle translate-y-[-1px]" />{" "}
+          {children}
+        </a>
+        <span className="absolute -bottom-0.5 left-0 right-0 h-[1px] bg-accent rounded-full opacity-40"></span>{" "}
+      </h3>
+    </div>
+  );
+};
+
+const H4Override: React.FC<HeadingProps> = ({ children, id, ...props }) => {
+  return (
+    <div className="relative mt-8 mb-4 group">
+      <h4
+        id={id}
+        className="group/header scroll-m-20 text-xl font-semibold tracking-tight
+                text-foreground pl-0 pb-1 relative
+                after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-1/6 after:h-0.5 after:bg-muted-foreground group-hover/header:after:w-full transition-all"
+        {...props}>
+        <a
+          href={`#${id}`}
+          className="group-hover/header:text-primary-foreground no-underline" // Removed hover:text-primary-foreground
+        >
+          <Hash className="inline-block mr-2 h-4 w-4 opacity-60 align-middle translate-y-[-1px]" />{" "}
+          {children}
+        </a>
+        <span className="absolute -bottom-0.5 left-0 right-0 h-[1px] bg-muted-foreground rounded-full opacity-40"></span>{" "}
+      </h4>
+    </div>
+  );
+};
+
 export function OstMarkdown({
   content,
   className,
@@ -64,11 +154,10 @@ export function OstMarkdown({
   bottomCtaLink = "#",
   bottomCtaDelay = 3000,
 }: OstMarkdownProps) {
-  const [showBottomCta, setShowBottomCta] = useState(false);
-  const [hasDismissedCta, setHasDismissedCta] = useState(false);
+  const [showBottomCta, setShowBottomCta] = React.useState(false);
+  const [hasDismissedCta, setHasDismissedCta] = React.useState(false);
 
-  // Show CTA after delay if it hasn’t been dismissed
-  useEffect(() => {
+  React.useEffect(() => {
     const timer = setTimeout(() => {
       if (!hasDismissedCta) {
         setShowBottomCta(true);
@@ -77,52 +166,31 @@ export function OstMarkdown({
     return () => clearTimeout(timer);
   }, [bottomCtaDelay, hasDismissedCta]);
 
-  const dismissCta = useCallback(() => {
+  const dismissCta = React.useCallback(() => {
     setShowBottomCta(false);
     setHasDismissedCta(true);
   }, []);
 
-  // Memoize the markdown overrides to prevent unnecessary re-creations on every render
-  const markdownOverrides = useMemo(
+  const markdownOverrides = React.useMemo(
     () => ({
       h1: {
-        component: ({ children, ...props }: HeadingProps) => (
-          <h1
-            className="scroll-m-20 text-4xl font-black tracking-tight lg:text-5xl mb-8 mt-12 
-                       relative pl-4 py-2 inline-block brutal-border bg-accent text-accent-foreground
-                       brutal-shadow"
-            {...props}>
-            {children}
-            <Separator className="mt-4 h-1 bg-black" />
-          </h1>
-        ),
+        component: H1Override,
       },
       h2: {
-        component: ({ children, ...props }: HeadingProps) => (
-          <h2
-            className="scroll-m-20 text-3xl font-extrabold tracking-tight mt-12 mb-6 pb-2
-                       border-b-4 border-primary text-primary relative"
-            {...props}>
-            <span className="bg-primary/10 px-2">{children}</span>
-          </h2>
-        ),
+        component: H2Override,
       },
       h3: {
-        component: ({ children, ...props }: HeadingProps) => (
-          <h3
-            className="scroll-m-20 text-2xl font-bold tracking-tight mt-8 mb-4 
-                       text-secondary relative pl-4 border-l-4 border-secondary"
-            {...props}>
-            {children}
-          </h3>
-        ),
+        component: H3Override,
+      },
+      h4: {
+        component: H4Override,
       },
       p: {
         component: ({
           children,
           ...props
         }: {
-          children: ReactNode;
+          children: React.ReactNode;
           [key: string]: unknown;
         }) => {
           const childArray = React.Children.toArray(children);
@@ -132,7 +200,7 @@ export function OstMarkdown({
           const Tag = allText ? "p" : "div";
           return (
             <Tag
-              className="leading-7 [&:not(:first-child)]:mt-6 text-lg"
+              className="leading-relaxed [&:not(:first-child)]:mt-4 text-foreground/90"
               {...props}>
               {children}
             </Tag>
@@ -146,13 +214,13 @@ export function OstMarkdown({
             return (
               <a
                 href={href}
-                className="font-bold text-primary text-underline decoration-primary
-                           hover:bg-primary hover:text-primary-foreground px-1 py-0.5 transition-all"
+                // Removed hover:text-primary-foreground
+                className="font-medium text-primary underline-offset-2 transition-colors text-underline decoration-2"
                 {...props}
                 target="_blank"
                 rel="noopener noreferrer">
                 {children}
-                <ExternalLink className="h-3 w-3 ml-1 inline-block" />
+                <ExternalLink className="h-4 w-4 ml-1 inline-block align-baseline" />
               </a>
             );
           }
@@ -165,8 +233,8 @@ export function OstMarkdown({
             <LinkPreview
               url={fullUrl}
               forceCacheReset={true}
-              className="font-bold text-primary text-underline decoration-primary
-                         hover:bg-primary hover:text-primary-foreground px-1 py-0.5 transition-all">
+              // Removed hover:text-primary-foreground
+              className="font-medium text-primary underline-offset-2 transition-colors text-underline decoration-2">
               {children}
             </LinkPreview>
           );
@@ -174,45 +242,43 @@ export function OstMarkdown({
       },
       ul: {
         component: ({ children }: { children: React.ReactNode }) => (
-          <ul className="my-6 ml-6 list-none space-y-3">
+          <ul className="my-6 ml-6 list-disc space-y-3">
             {React.Children.map(children, (child) => {
               if (!React.isValidElement(child)) return child;
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              //eslint-disable-next-line
               return React.cloneElement(child as any, {
                 className: cn(
                   //eslint-disable-next-line
                   (child.props as any).className,
-                  "pl-4 border-l-4 border-primary"
+                  "pl-2"
                 ),
               });
             })}
           </ul>
         ),
       },
-
       ol: {
         props: {
           className:
-            "my-6 ml-6 list-decimal space-y-3 marker:font-bold marker:text-primary",
+            "my-6 ml-6 list-decimal space-y-3 marker:text-foreground/80",
         },
       },
       li: {
         props: {
-          className: "text-foreground font-medium",
+          className: "text-foreground/90 font-medium",
         },
       },
       blockquote: {
         component: ({
           children,
-          ...props
         }: {
-          children: ReactNode;
+          children: React.ReactNode;
           [key: string]: unknown;
         }) => (
-          <blockquote className="mt-6 accent-box italic relative" {...props}>
-            <Quote className="absolute top-2 left-2 text-accent-foreground/30 text-4xl transform scale-x-[-1]" />
-            <div className="ml-6 relative z-10">{children}</div>
-            <Quote className="absolute bottom-2 right-2 text-accent-foreground/30 text-4xl" />
+          <blockquote className="mt-6 border-l-2 border-accent pl-4 italic">
+            {" "}
+            <Quote className="inline-block mr-2 h-4 w-4 text-accent opacity-60 align-top" />
+            {children}
           </blockquote>
         ),
       },
@@ -221,13 +287,12 @@ export function OstMarkdown({
           children,
           ...props
         }: {
-          children: ReactNode;
+          children: React.ReactNode;
           [key: string]: unknown;
         }) => (
-          <div className="w-full overflow-auto my-6 brutal-border brutal-shadow">
-            <table
-              className="w-full border-collapse text-sm bg-card"
-              {...props}>
+          <div className="w-full overflow-auto my-6 rounded-md border border-border">
+            {" "}
+            <table className="w-full border-collapse text-sm" {...props}>
               {children}
             </table>
           </div>
@@ -236,12 +301,12 @@ export function OstMarkdown({
       th: {
         props: {
           className:
-            "border-2 border-black px-4 py-3 text-left font-black bg-primary text-primary-foreground",
+            "border-b font-medium p-4 text-left [&[align=center]]:text-center [&:not(:last-child)]:border-r",
         },
       },
       td: {
         props: {
-          className: "border-2 border-black px-4 py-3 text-foreground",
+          className: "p-4 align-top [&:not(:last-child)]:border-r",
         },
       },
       img: {
@@ -254,17 +319,18 @@ export function OstMarkdown({
           alt?: string;
           [key: string]: unknown;
         }) => (
-          <div className="my-8 brutal-border brutal-shadow overflow-hidden bg-white relative group">
-            <div className="absolute inset-0 bg-secondary/5 -z-10 translate-x-2 translate-y-2 brutal-border" />
+          <div className="my-8 rounded-md shadow-md overflow-hidden bg-card relative group">
+            {" "}
             <img
               src={src}
               alt={alt || ""}
-              className="w-full object-cover transition-transform group-hover:scale-105 duration-300"
+              className="w-full object-cover transition-opacity hover:opacity-90 duration-200"
               loading="lazy"
+              style={{ aspectRatio: "16/9" }}
               {...props}
             />
             {alt && (
-              <div className="brutal-border-t bg-accent px-4 py-2 text-sm font-bold text-accent-foreground">
+              <div className="bg-card px-4 py-2 text-sm text-foreground/80">
                 {alt}
               </div>
             )}
@@ -276,19 +342,25 @@ export function OstMarkdown({
           children,
           ...props
         }: {
-          children: ReactNode;
+          children: React.ReactNode;
           [key: string]: unknown;
         }) => (
-          <div className="my-6 brutal-border brutal-shadow bg-muted overflow-hidden">
-            <div className="flex items-center justify-between px-4 py-2 bg-black text-white font-mono text-xs">
+          <div className="my-6 rounded-md border border-border bg-muted overflow-hidden">
+            {" "}
+            <div className="flex items-center justify-between px-4 py-2 bg-muted-foreground/80 text-foreground font-mono text-xs rounded-t-md">
+              {" "}
+              <span>Code</span>
               <div className="flex space-x-2">
-                <div className="h-3 w-3 rounded-full bg-red-500" />
-                <div className="h-3 w-3 rounded-full bg-yellow-500" />
-                <div className="h-3 w-3 rounded-full bg-green-500" />
+                {" "}
+                <div className="h-2 w-2 rounded-full bg-red-500 opacity-70" />
+                <div className="h-2 w-2 rounded-full bg-yellow-500 opacity-70" />
+                <div className="h-2 w-2 rounded-full bg-green-500 opacity-70" />
               </div>
-              <div>code</div>
             </div>
-            <pre className="p-4 overflow-x-auto font-mono text-sm" {...props}>
+            <pre
+              className="p-4 overflow-x-auto font-mono text-sm text-foreground/90"
+              {...props}>
+              {" "}
               {children}
             </pre>
           </div>
@@ -297,16 +369,11 @@ export function OstMarkdown({
       code: {
         props: {
           className:
-            "font-mono bg-muted px-1.5 py-0.5 brutal-border text-secondary font-bold",
+            "font-mono bg-muted rounded-sm px-1 py-0.5 text-accent/90 font-medium text-sm",
         },
       },
       hr: {
-        component: () => (
-          <div className="my-8 relative">
-            <Separator className="h-1 bg-black" />
-            <div className="absolute right-0 -top-2 h-5 w-5 bg-accent brutal-border transform rotate-45" />
-          </div>
-        ),
+        component: () => <Separator className="my-8 opacity-50" />,
       },
     }),
     []

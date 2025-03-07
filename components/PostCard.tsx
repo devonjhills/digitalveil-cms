@@ -3,19 +3,52 @@ import Image from "next/image";
 import { CalendarIcon, BookOpenIcon, ClockIcon } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 
-// Utility function to calculate reading time
-function getReadingTime(text: string): number {
-  const cleanText = text
-    .replace(
-      /```[\s\S]*?```|`[^`]*?`|\[.*?\]\(.*?\)|!\[.*?\]\(.*?\)|[*_-]+|#+|>/g,
-      ""
-    )
-    .replace(
-      /<[A-Za-z][A-Za-z0-9]*(\s+[^>]*)?\/>|<\/[A-Za-z][A-Za-z0-9]*>|\{.*?\}/g,
-      ""
+function getReadingTime(content: string): number {
+  // First, let's handle the markdown tables which can be hard to parse
+  const withoutTables = content.replace(/\|.*\|/g, "");
+
+  // Remove code blocks
+  const withoutCodeBlocks = withoutTables.replace(/```[\s\S]*?```/g, "");
+
+  // Remove YAML frontmatter
+  const withoutFrontmatter = withoutCodeBlocks.replace(/^---[\s\S]*?---/m, "");
+
+  // Only remove specific sections we don't want to count - using partial matching
+  const sectionsToExcludeKeywords = [
+    "FAQ",
+    "Frequently Asked",
+    "Key Takeaway",
+    "Conclusion",
+  ];
+  let filteredContent = withoutFrontmatter;
+
+  for (const keyword of sectionsToExcludeKeywords) {
+    // This regex looks for headings that contain the keyword and captures all content
+    // until the next heading or end of document
+    const sectionRegex = new RegExp(
+      `## [^#]*${keyword}[^#]*[\\s\\S]*?(## |$)`,
+      "i"
     );
-  const wordsPerMinute = 238;
+    filteredContent = filteredContent.replace(sectionRegex, "$1");
+  }
+
+  // Clean up the text but preserve the actual content words
+  const cleanText = filteredContent
+    .replace(/`[^`]*?`/g, "") // Remove inline code
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1") // Preserve link text, remove only URLs
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, "") // Remove images
+    .replace(/#+ /g, "") // Remove heading markers but keep the text
+    .replace(/\*\*|\*|__|\|/g, "") // Remove bold and italic markers and table separators
+    .replace(/>/g, "") // Remove blockquotes
+    .replace(/<[^>]*>/g, "") // Remove HTML tags
+    .replace(/\s+/g, " ") // Replace multiple spaces with a single space
+    .trim(); // Trim leading and trailing spaces
+
+  // Count words
   const numberOfWords = cleanText.split(/\s+/).length;
+
+  // Calculate reading time
+  const wordsPerMinute = 250;
   return Math.ceil(numberOfWords / wordsPerMinute);
 }
 

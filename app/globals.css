@@ -1,4 +1,4 @@
-/* globals.css */
+/* globals.css - MODERN & PRETTY COLOR SCHEME - GREEN PRIMARY, LAVENDER ACCENT */
 
 @tailwind base;
 @tailwind components;
@@ -6,100 +6,102 @@
 
 @layer base {
   :root {
-    /* --- LIGHT THEME --- */
-    --background: 40 10% 98%;      /* Very light beige - slightly warmer */
-    --foreground: 0 0% 12%;         /* Dark gray, almost black - good contrast */
-    --card: 0 0% 100%;             /* Pure white */
-    --card-foreground: 0 0% 12%;    /* Same as foreground */
+    /* --- LIGHT THEME - Modern & Pretty - Green Primary, Lavender Accent --- */
+    --background: 220 14% 96%; /* Very light, slightly cool gray */
+    --foreground: 240 10% 20%; /* Soft dark gray */
+    --card: 0 0% 100%; /* Pure white */
+    --card-foreground: 240 10% 20%; /* Soft dark gray */
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 12%;
+    --popover-foreground: 240 10% 20%;
 
-    /* Primary - Muted Teal/Green */
-    --primary: 170 50% 45%;          /*  A sophisticated, desaturated green-blue. */
-    --primary-foreground: 0 0% 100%; /* White */
+    /* Primary - Soft Green */
+    --primary: 140 40% 55%; /*  Gentle, nature-inspired green - calming and fresh */
+    --primary-foreground: 0 0% 100%; /* White - good contrast on green */
 
-    /* Secondary - Warm Gray */
-    --secondary: 40 5% 85%;       /*  A light, warm gray.  Subtle, not stark. */
-    --secondary-foreground: 0 0% 12%; /* Dark gray (same as foreground) */
+    /* Secondary - Gentle Gray (unchanged) */
+    --secondary: 270 5% 92%;
+    --secondary-foreground: 240 10% 40%;
 
-    /* Accent -  Mustard Yellow  */
-    --accent: 45 95% 55%;        /*  Brighter, more saturated mustard.  Good contrast. */
-    --accent-foreground: 0 0% 12%;    /* Dark gray (same as foreground) */
+    /* Accent - Soft Lavender */
+    --accent: 260 40% 75%; /*  Soft, muted lavender - elegant and contemporary */
+    --accent-foreground: 0 0% 20%; /* Soft dark gray - grounds the lavender */
 
-    --muted: 40 5% 90%;          /* Slightly darker than secondary */
-    --muted-foreground: 0 0% 35%;   /* Darker gray for muted text - good contrast */
+    --muted: 270 5% 94%; /* Even lighter cool gray */
+    --muted-foreground: 240 8% 60%;
 
-    --destructive: 0 84% 60%;       /* Standard red */
+    --destructive: 0 75% 60%; /* Slightly softer red */
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 15%;            /* Dark gray border - almost black but not quite. */
-    --input: 40 5% 90%;           /* Same as muted */
-    --ring: 170 50% 45%;          /* Same as primary */
+    --border: 240 5% 30%; /* Medium-dark soft gray */
+    --input: 270 5% 94%; /* Matches muted background */
+    --ring: 140 40% 55%; /* Matches primary (green) for focus */ --sidebar-background: 0 0% 98%; --sidebar-foreground: 240 5.3% 26.1%; --sidebar-primary: 240 5.9% 10%; --sidebar-primary-foreground: 0 0% 98%; --sidebar-accent: 240 4.8% 95.9%; --sidebar-accent-foreground: 240 5.9% 10%; --sidebar-border: 220 13% 91%; --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    /* --- DARK THEME --- */
-    --background: 0 0% 10%;         /* Very dark gray, almost black */
-    --foreground: 40 10% 95%;      /* Light beige - good contrast */
-    --card: 0 0% 15%;              /* Slightly lighter gray than background */
-    --card-foreground: 40 10% 95%; /* Same as foreground */
-    --popover: 0 0% 15%;
-    --popover-foreground: 40 10% 95%;
+    /* --- DARK THEME - Modern & Pretty - Green Primary, Lavender Accent --- */
+    --background: 240 10% 12%; /* Soft dark gray */
+    --foreground: 220 14% 94%; /* Very light, slightly cool gray */
+    --card: 240 10% 18%; /* Slightly lighter dark gray */
+    --card-foreground: 220 14% 94%;
+    --popover: 240 10% 18%;
+    --popover-foreground: 220 14% 94%;
 
-    /* Primary - Lighter Teal/Green */
-    --primary: 170 60% 60%;          /*  Brighter, more saturated for dark mode. */
+    /* Primary - Vibrant Green */
+    --primary: 140 50% 65%; /* Brighter green for dark mode, still harmonious */
     --primary-foreground: 0 0% 100%; /* White */
 
-    /* Secondary -  Charcoal Gray  */
-    --secondary: 0 0% 25%;        /*  A medium-dark, neutral gray. */
-    --secondary-foreground: 40 10% 95%;  /* Light beige (same as foreground) */
+    /* Secondary - Medium Gray (unchanged) */
+    --secondary: 240 5% 30%;
+    --secondary-foreground: 220 14% 94%;
 
-    /* Accent -  Brighter Mustard */
-    --accent: 48 98% 60%;       /*  Even brighter and more saturated for dark mode. */
-    --accent-foreground: 0 0% 12%;   /* Dark gray */
+    /* Accent - Soft Lavender (Dark Mode) */
+    --accent: 260 50% 80%; /*  Slightly brighter lavender for dark mode */
+    --accent-foreground: 0 0% 20%; /* Soft dark gray - consistency */
 
-    --muted: 0 0% 20%;          /* Slightly lighter gray than secondary */
-    --muted-foreground: 0 0% 70%;   /* Lighter gray for muted text - good contrast */
+    --muted: 240 5% 24%; /* Slightly lighter dark gray */
+    --muted-foreground: 220 10% 70%;
 
-    --destructive: 0 84% 60%;       /* Standard red */
+    --destructive: 0 75% 60%; /* Slightly softer red */
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 85%;           /* Light gray border - good visibility */
-    --input: 0 0% 20%;           /* Same as muted */
-    --ring: 170 60% 60%;          /* Same as primary */
+    --border: 220 14% 70%; /* Medium cool gray */
+    --input: 240 5% 24%; /* Matches muted background */
+    --ring: 140 50% 65%; /* Matches primary (green) for focus */ --sidebar-background: 240 5.9% 10%; --sidebar-foreground: 240 4.8% 95.9%; --sidebar-primary: 224.3 76.3% 48%; --sidebar-primary-foreground: 0 0% 100%; --sidebar-accent: 240 3.7% 15.9%; --sidebar-accent-foreground: 240 4.8% 95.9%; --sidebar-border: 240 3.7% 15.9%; --sidebar-ring: 217.2 91.2% 59.8%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
 
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: var(--font-inter); /* Use the Inter font for the body */
   }
 
-  /* Neobrutalist typography */
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-extrabold tracking-tight;
-    font-family: 'Inter', system-ui, sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-lora); /* Directly set font-family */
+    @apply font-bold; /* Keep existing Tailwind styles */
   }
 
-  /* Bold button styling */
-  button, .button {
-    @apply font-bold transition-transform active:scale-95;
+  /* Main content container */
+  .container {
+    max-width: 800px; /*Or whatever max-width you prefer*/
   }
 }
 
 @layer components {
-  /* Neobrutalist card styling */
+  /* Neobrutalist card styling - No change */
   .neobrutalist-card {
     @apply bg-card text-card-foreground border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
     hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-shadow duration-200;
   }
 
-  /* Neobrutalist button */
+  /* Neobrutalist button - No change */
   .neobrutalist-button {
     @apply bg-primary text-primary-foreground px-6 py-3 border-2 border-black
     shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]
@@ -107,34 +109,35 @@
     active:translate-y-[4px] transition-all font-bold tracking-wide;
   }
 
-  /* Neobrutalist input */
+  /* Neobrutalist input - No change */
   .neobrutalist-input {
     @apply border-2 border-black bg-background p-3 focus:ring-4 focus:ring-accent/50
     focus:border-accent transition-all;
   }
 
-  /* Neobrutalist blockquote */
+  /* Neobrutalist blockquote - Accent color will update */
   .neobrutalist-blockquote {
     @apply border-l-4 border-accent pl-4 py-1 italic bg-accent/10;
   }
 }
 
 @layer utilities {
+  /*Added this back in, to control max width of content*/
   .container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
-  /* High-contrast focus styles for accessibility */
+  /* High-contrast focus styles for accessibility - No change */
   .focus-visible {
     @apply outline-none ring-4 ring-primary transition-all;
   }
 
-  /* Text underline for links */
+  /* Text underline for links - No change */
   .text-underline {
     @apply underline underline-offset-4 decoration-2;
   }
 
-  /* Brutalist drop shadow */
+  /* Brutalist drop shadow - No change */
   .brutal-shadow {
     @apply shadow-[4px_4px_0px_0px_rgba(0,0,0,1)];
   }
@@ -144,7 +147,7 @@
   }
 }
 
-/* Neobrutalist accent box */
+/* Neobrutalist accent box - Accent color will update */
 .accent-box {
   @apply relative border-2 border-black bg-accent p-6 brutal-shadow;
 }
@@ -154,7 +157,7 @@
   @apply absolute inset-0 bg-accent/20 -translate-x-2 -translate-y-2 -z-10 border-2 border-black;
 }
 
-/* Add brutalist border utility */
+/* Add brutalist border utility - No change */
 .brutal-border {
   @apply border-2 border-black;
 }
