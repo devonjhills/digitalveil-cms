@@ -41,7 +41,7 @@ async function getFeaturedPosts(): Promise<Post[]> {
   const featuredSlugs = [
     "ergonomic-home-office-setup",
     "productivity-techniques-remote-work",
-    "mindful-technology-use", // Example: Add another slug
+    "standing-desks-workstations",
   ];
 
   return posts.filter((post) => featuredSlugs.includes(post.slug));
@@ -134,7 +134,7 @@ export default async function Home() {
                 className="overflow-hidden border-2 border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,0.8)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,0.8)] transition-all duration-300 flex flex-col">
                 <Link
                   href={`/posts/${post.slug}`}
-                  className="block h-full flex flex-col">
+                  className="h-full flex flex-col">
                   {post.cover_image && (
                     <div className="relative w-full h-64">
                       <Image

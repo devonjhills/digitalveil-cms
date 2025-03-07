@@ -1,4 +1,4 @@
-/* globals.css - MODERN & PRETTY COLOR SCHEME - GREEN PRIMARY, LAVENDER ACCENT */
+/* globals.css - WELLNESS BLOG COLOR SCHEME - SAGE PRIMARY, TERRACOTTA ACCENT */
 
 @tailwind base;
 @tailwind components;
@@ -6,67 +6,83 @@
 
 @layer base {
   :root {
-    /* --- LIGHT THEME - Modern & Pretty - Green Primary, Lavender Accent --- */
-    --background: 220 14% 96%; /* Very light, slightly cool gray */
-    --foreground: 240 10% 20%; /* Soft dark gray */
+    /* --- LIGHT THEME - Digital Wellness Blog - Sage Primary, Terracotta Accent --- */
+    --background: 60 30% 98%; /* Very light warm cream background */
+    --foreground: 170 25% 18%; /* Deep teal-gray text */
     --card: 0 0% 100%; /* Pure white */
-    --card-foreground: 240 10% 20%; /* Soft dark gray */
+    --card-foreground: 170 25% 18%; /* Deep teal-gray text */
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 20%;
+    --popover-foreground: 170 25% 18%;
 
-    /* Primary - Soft Green */
-    --primary: 140 40% 55%; /*  Gentle, nature-inspired green - calming and fresh */
-    --primary-foreground: 0 0% 100%; /* White - good contrast on green */
+    /* Primary - Sage Green */
+    --primary: 150 30% 60%; /* Calm, earthy sage - wellness-focused */
+    --primary-foreground: 170 25% 18%; /* Deep teal-gray for contrast */
 
-    /* Secondary - Gentle Gray (unchanged) */
-    --secondary: 270 5% 92%;
-    --secondary-foreground: 240 10% 40%;
+    /* Secondary - Soft Sand */
+    --secondary: 35 40% 90%; /* Warm, inviting sand tone */
+    --secondary-foreground: 30 35% 25%; /* Rich brown */
 
-    /* Accent - Soft Lavender */
-    --accent: 260 40% 75%; /*  Soft, muted lavender - elegant and contemporary */
-    --accent-foreground: 0 0% 20%; /* Soft dark gray - grounds the lavender */
+    /* Accent - Terracotta */
+    --accent: 15 65% 57%; /* Earthy terracotta - grounding energy */
+    --accent-foreground: 0 0% 100%; /* White for readability */
 
-    --muted: 270 5% 94%; /* Even lighter cool gray */
-    --muted-foreground: 240 8% 60%;
+    --muted: 150 15% 94%; /* Very light sage */
+    --muted-foreground: 170 15% 40%; /* Muted teal-gray */
 
-    --destructive: 0 75% 60%; /* Slightly softer red */
+    --destructive: 0 65% 55%; /* Earthy red */
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 5% 30%; /* Medium-dark soft gray */
-    --input: 270 5% 94%; /* Matches muted background */
-    --ring: 140 40% 55%; /* Matches primary (green) for focus */ --sidebar-background: 0 0% 98%; --sidebar-foreground: 240 5.3% 26.1%; --sidebar-primary: 240 5.9% 10%; --sidebar-primary-foreground: 0 0% 98%; --sidebar-accent: 240 4.8% 95.9%; --sidebar-accent-foreground: 240 5.9% 10%; --sidebar-border: 220 13% 91%; --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 150 20% 85%; /* Light sage border */
+    --input: 60 20% 96%; /* Slightly warm input background */
+    --ring: 150 30% 60%; /* Matches primary (sage) */
+    --sidebar-background: 60 30% 98%;
+    --sidebar-foreground: 170 25% 18%;
+    --sidebar-primary: 150 30% 60%;
+    --sidebar-primary-foreground: 170 25% 18%;
+    --sidebar-accent: 15 65% 57%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 150 20% 85%;
+    --sidebar-ring: 150 30% 60%;
   }
 
   .dark {
-    /* --- DARK THEME - Modern & Pretty - Green Primary, Lavender Accent --- */
-    --background: 240 10% 12%; /* Soft dark gray */
-    --foreground: 220 14% 94%; /* Very light, slightly cool gray */
-    --card: 240 10% 18%; /* Slightly lighter dark gray */
-    --card-foreground: 220 14% 94%;
-    --popover: 240 10% 18%;
-    --popover-foreground: 220 14% 94%;
+    /* --- DARK THEME - Digital Wellness Blog - Sage Primary, Terracotta Accent --- */
+    --background: 170 30% 12%; /* Deep teal-gray background */
+    --foreground: 60 20% 95%; /* Light warm text */
+    --card: 170 25% 18%; /* Slightly lighter teal-gray */
+    --card-foreground: 60 20% 95%;
+    --popover: 170 25% 18%;
+    --popover-foreground: 60 20% 95%;
 
-    /* Primary - Vibrant Green */
-    --primary: 140 50% 65%; /* Brighter green for dark mode, still harmonious */
+    /* Primary - Sage Green */
+    --primary: 150 30% 55%; /* Slightly adjusted sage for dark mode */
     --primary-foreground: 0 0% 100%; /* White */
 
-    /* Secondary - Medium Gray (unchanged) */
-    --secondary: 240 5% 30%;
-    --secondary-foreground: 220 14% 94%;
+    /* Secondary - Warm Earth */
+    --secondary: 35 25% 35%; /* Deep, earthy tone */
+    --secondary-foreground: 35 40% 90%; /* Light sand */
 
-    /* Accent - Soft Lavender (Dark Mode) */
-    --accent: 260 50% 80%; /*  Slightly brighter lavender for dark mode */
-    --accent-foreground: 0 0% 20%; /* Soft dark gray - consistency */
+    /* Accent - Terracotta */
+    --accent: 15 60% 55%; /* Slightly adjusted terracotta for dark mode */
+    --accent-foreground: 0 0% 100%; /* White */
 
-    --muted: 240 5% 24%; /* Slightly lighter dark gray */
-    --muted-foreground: 220 10% 70%;
+    --muted: 170 20% 20%; /* Dark muted teal-gray */
+    --muted-foreground: 60 15% 80%; /* Light muted warm gray */
 
-    --destructive: 0 75% 60%; /* Slightly softer red */
+    --destructive: 0 60% 50%; /* Slightly darker red for dark mode */
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 14% 70%; /* Medium cool gray */
-    --input: 240 5% 24%; /* Matches muted background */
-    --ring: 140 50% 65%; /* Matches primary (green) for focus */ --sidebar-background: 240 5.9% 10%; --sidebar-foreground: 240 4.8% 95.9%; --sidebar-primary: 224.3 76.3% 48%; --sidebar-primary-foreground: 0 0% 100%; --sidebar-accent: 240 3.7% 15.9%; --sidebar-accent-foreground: 240 4.8% 95.9%; --sidebar-border: 240 3.7% 15.9%; --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 170 25% 25%; /* Dark teal-gray border */
+    --input: 170 20% 20%; /* Matches muted background */
+    --ring: 150 30% 55%; /* Matches primary (sage) */
+    --sidebar-background: 170 30% 12%;
+    --sidebar-foreground: 60 20% 95%;
+    --sidebar-primary: 150 30% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 15 60% 55%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 170 25% 25%;
+    --sidebar-ring: 150 30% 55%;
   }
 
   * {
