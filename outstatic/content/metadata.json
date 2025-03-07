@@ -1,10 +1,10 @@
 {
-  "commit": "079e1802112ee5c71ccaefc270dc22e047f3e0dd",
-  "generated": "Fri, 07 Mar 2025 06:31:09 GMT",
+  "commit": "2c92759dde22237038abec0acd8b5d9257b0968c",
+  "generated": "Fri, 07 Mar 2025 07:05:41 GMT",
   "metadata": [
     {
       "__outstatic": {
-        "commit": "079e1802112ee5c71ccaefc270dc22e047f3e0dd",
+        "commit": "2c92759dde22237038abec0acd8b5d9257b0968c",
         "hash": "bba5648a3af6f8de4556948726c03ecc",
         "path": "outstatic/content/posts/ergonomic-home-office-setup.mdx"
       },
@@ -14,7 +14,11 @@
       "cover_image": "https://images.unsplash.com/photo-1594732832278-abd644401426?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTYxNTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDA4MjgwNzd8&ixlib=rb-4.0.3&q=80&w=1080",
       "published_at": "2025-02-28T11:58Z",
       "author": "J. Staros",
-      "categories": ["Home Office", "Ergonomics", "Workplace Wellness"],
+      "categories": [
+        "Home Office",
+        "Ergonomics",
+        "Workplace Wellness"
+      ],
       "tags": [
         "ergonomic setup",
         "home office",
@@ -28,7 +32,7 @@
     },
     {
       "__outstatic": {
-        "commit": "079e1802112ee5c71ccaefc270dc22e047f3e0dd",
+        "commit": "2c92759dde22237038abec0acd8b5d9257b0968c",
         "hash": "6db3e6c188d6341b1d8fbad76940d436",
         "path": "outstatic/content/posts/why-ergonomics-matter.mdx"
       },
@@ -38,7 +42,10 @@
       "cover_image": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?q=80&w=1080",
       "published_at": "2025-03-03T06:34:39.736Z",
       "author": "J. Staros",
-      "categories": ["Remote Work", "Health and Wellness"],
+      "categories": [
+        "Remote Work",
+        "Health and Wellness"
+      ],
       "tags": [
         "ergonomics",
         "remote work",
@@ -52,7 +59,7 @@
     },
     {
       "__outstatic": {
-        "commit": "079e1802112ee5c71ccaefc270dc22e047f3e0dd",
+        "commit": "2c92759dde22237038abec0acd8b5d9257b0968c",
         "hash": "5d78db7965972b9656e404c6ab0e9173",
         "path": "outstatic/content/posts/measure-desk-chair-height.mdx"
       },
@@ -62,7 +69,10 @@
       "cover_image": "https://images.unsplash.com/photo-1605858447293-8b2432084eb2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTYxNTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDEwNTIyODN8&ixlib=rb-4.0.3&q=80&w=1080",
       "published_at": "2025-03-04T01:38:03.562Z",
       "author": "J. Staros",
-      "categories": ["Ergonomics", "Home Office"],
+      "categories": [
+        "Ergonomics",
+        "Home Office"
+      ],
       "tags": [
         "Desk Height",
         "Chair Height",
@@ -76,7 +86,7 @@
     },
     {
       "__outstatic": {
-        "commit": "079e1802112ee5c71ccaefc270dc22e047f3e0dd",
+        "commit": "2c92759dde22237038abec0acd8b5d9257b0968c",
         "hash": "0d71ec55431b2ef46876a231a8ac0f08",
         "path": "outstatic/content/posts/reduce-neck-strain-work.mdx"
       },
@@ -86,7 +96,10 @@
       "cover_image": "https://images.unsplash.com/photo-1599817878414-43ef36677cf0?q=80&w=1080",
       "published_at": "2025-03-04T04:12:39.058Z",
       "author": "J. Staros",
-      "categories": ["Ergonomics", "Workplace Health"],
+      "categories": [
+        "Ergonomics",
+        "Workplace Health"
+      ],
       "tags": [
         "neck strain",
         "ergonomics",
@@ -100,7 +113,7 @@
     },
     {
       "__outstatic": {
-        "commit": "079e1802112ee5c71ccaefc270dc22e047f3e0dd",
+        "commit": "2c92759dde22237038abec0acd8b5d9257b0968c",
         "hash": "1136cbb98ae5d9d8498d291b9d001886",
         "path": "outstatic/content/posts/productivity-techniques-remote-work.mdx"
       },
@@ -110,7 +123,11 @@
       "cover_image": "https://images.unsplash.com/photo-1528297506728-9533d2ac3fa4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTYxNTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDEwNzY3OTZ8&ixlib=rb-4.0.3&q=80&w=1080",
       "published_at": "2025-03-04T08:26:36.816Z",
       "author": "J. Staros",
-      "categories": ["Remote Work", "Productivity", "Work-Life Balance"],
+      "categories": [
+        "Remote Work",
+        "Productivity",
+        "Work-Life Balance"
+      ],
       "tags": [
         "remote work productivity",
         "time management",
@@ -124,7 +141,7 @@
     },
     {
       "__outstatic": {
-        "commit": "079e1802112ee5c71ccaefc270dc22e047f3e0dd",
+        "commit": "2c92759dde22237038abec0acd8b5d9257b0968c",
         "hash": "3d5975174e35d507a37e2d55c6c1f631",
         "path": "outstatic/content/posts/distraction-free-workspace.mdx"
       },
@@ -134,7 +151,11 @@
       "cover_image": "https://images.unsplash.com/photo-1447797732940-b9a11dc5aa53?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTYxNTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDExMzY0Nzh8&ixlib=rb-4.0.3&q=80&w=1080",
       "published_at": "2025-03-05T01:01:18.582Z",
       "author": "J. Staros",
-      "categories": ["Productivity", "Workspace Design", "Remote Work"],
+      "categories": [
+        "Productivity",
+        "Workspace Design",
+        "Remote Work"
+      ],
       "tags": [
         "distraction-free workspace",
         "focus environment",
@@ -148,7 +169,7 @@
     },
     {
       "__outstatic": {
-        "commit": "079e1802112ee5c71ccaefc270dc22e047f3e0dd",
+        "commit": "2c92759dde22237038abec0acd8b5d9257b0968c",
         "hash": "834cf077529e1b5e37d2bc5f348ae616",
         "path": "outstatic/content/posts/stay-motivated-wfh.mdx"
       },
@@ -158,7 +179,10 @@
       "cover_image": "https://images.unsplash.com/photo-1502921451607-29fa99d270d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTYxNTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDEyMDIzNzV8&ixlib=rb-4.0.3&q=80&w=1080",
       "published_at": "2025-03-05T19:19:35.261Z",
       "author": "J. Staros",
-      "categories": ["Remote Work", "Productivity"],
+      "categories": [
+        "Remote Work",
+        "Productivity"
+      ],
       "tags": [
         "work from home",
         "motivation",
@@ -172,7 +196,7 @@
     },
     {
       "__outstatic": {
-        "commit": "079e1802112ee5c71ccaefc270dc22e047f3e0dd",
+        "commit": "2c92759dde22237038abec0acd8b5d9257b0968c",
         "hash": "c3c393924209c4e3d714df3b5988e566",
         "path": "outstatic/content/posts/improve-circulation-remote-work.mdx"
       },
@@ -182,7 +206,11 @@
       "cover_image": "https://images.unsplash.com/photo-1505692433770-36f19f51681d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTYxNTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDEyMzQ5MjN8&ixlib=rb-4.0.3&q=80&w=1080",
       "published_at": "2025-03-06T04:22:03.382Z",
       "author": "J. Staros",
-      "categories": ["Remote Work", "Health", "Ergonomics"],
+      "categories": [
+        "Remote Work",
+        "Health",
+        "Ergonomics"
+      ],
       "tags": [
         "circulation",
         "work from home",
@@ -196,7 +224,7 @@
     },
     {
       "__outstatic": {
-        "commit": "079e1802112ee5c71ccaefc270dc22e047f3e0dd",
+        "commit": "2c92759dde22237038abec0acd8b5d9257b0968c",
         "hash": "13c4087c4537a029e226ec0f8802b961",
         "path": "outstatic/content/posts/pomodoro-technique-remote-work.mdx"
       },
@@ -206,7 +234,11 @@
       "cover_image": "https://images.unsplash.com/photo-1461773518188-b3e86f98242f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTYxNTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDEyOTg3NDl8&ixlib=rb-4.0.3&q=80&w=1080",
       "published_at": "2025-03-06T22:05:49.842Z",
       "author": "J. Staros",
-      "categories": ["Productivity", "Remote Work", "Time Management"],
+      "categories": [
+        "Productivity",
+        "Remote Work",
+        "Time Management"
+      ],
       "tags": [
         "Pomodoro Technique",
         "Focus Methods",
@@ -220,8 +252,8 @@
     },
     {
       "__outstatic": {
-        "commit": "079e1802112ee5c71ccaefc270dc22e047f3e0dd",
-        "hash": "c3ae2ae26d5253753bfbf5417418e77d",
+        "commit": "2c92759dde22237038abec0acd8b5d9257b0968c",
+        "hash": "5d8c91f6cd63ef85f0e7124f64a41219",
         "path": "outstatic/content/posts/standing-desks-workstations.mdx"
       },
       "title": "Standing Desks & Adjustable Workstations",
@@ -230,7 +262,11 @@
       "cover_image": "https://images.unsplash.com/photo-1623679799651-ad774745c6fa?q=80&w=1080",
       "published_at": "2025-03-07T06:28:08.708Z",
       "author": "J. Staros",
-      "categories": ["Ergonomics", "Home Office", "Productivity"],
+      "categories": [
+        "Ergonomics",
+        "Home Office",
+        "Productivity"
+      ],
       "tags": [
         "standing desks",
         "adjustable workstations",
