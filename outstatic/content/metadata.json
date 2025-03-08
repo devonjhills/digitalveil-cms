@@ -1,10 +1,10 @@
 {
-  "commit": "d338974c8305e3bd9058ab8fa1c72747639b1e1f",
-  "generated": "Fri, 07 Mar 2025 23:28:49 GMT",
+  "commit": "c1725bce77e344c34a82b74570a160f8459d905d",
+  "generated": "Sat, 08 Mar 2025 00:02:13 GMT",
   "metadata": [
     {
       "__outstatic": {
-        "commit": "d338974c8305e3bd9058ab8fa1c72747639b1e1f",
+        "commit": "c1725bce77e344c34a82b74570a160f8459d905d",
         "hash": "bba5648a3af6f8de4556948726c03ecc",
         "path": "outstatic/content/posts/ergonomic-home-office-setup.mdx"
       },
@@ -32,7 +32,7 @@
     },
     {
       "__outstatic": {
-        "commit": "d338974c8305e3bd9058ab8fa1c72747639b1e1f",
+        "commit": "c1725bce77e344c34a82b74570a160f8459d905d",
         "hash": "6db3e6c188d6341b1d8fbad76940d436",
         "path": "outstatic/content/posts/why-ergonomics-matter.mdx"
       },
@@ -59,7 +59,7 @@
     },
     {
       "__outstatic": {
-        "commit": "d338974c8305e3bd9058ab8fa1c72747639b1e1f",
+        "commit": "c1725bce77e344c34a82b74570a160f8459d905d",
         "hash": "5d78db7965972b9656e404c6ab0e9173",
         "path": "outstatic/content/posts/measure-desk-chair-height.mdx"
       },
@@ -86,7 +86,7 @@
     },
     {
       "__outstatic": {
-        "commit": "d338974c8305e3bd9058ab8fa1c72747639b1e1f",
+        "commit": "c1725bce77e344c34a82b74570a160f8459d905d",
         "hash": "0d71ec55431b2ef46876a231a8ac0f08",
         "path": "outstatic/content/posts/reduce-neck-strain-work.mdx"
       },
@@ -113,7 +113,7 @@
     },
     {
       "__outstatic": {
-        "commit": "d338974c8305e3bd9058ab8fa1c72747639b1e1f",
+        "commit": "c1725bce77e344c34a82b74570a160f8459d905d",
         "hash": "1136cbb98ae5d9d8498d291b9d001886",
         "path": "outstatic/content/posts/productivity-techniques-remote-work.mdx"
       },
@@ -141,7 +141,7 @@
     },
     {
       "__outstatic": {
-        "commit": "d338974c8305e3bd9058ab8fa1c72747639b1e1f",
+        "commit": "c1725bce77e344c34a82b74570a160f8459d905d",
         "hash": "3d5975174e35d507a37e2d55c6c1f631",
         "path": "outstatic/content/posts/distraction-free-workspace.mdx"
       },
@@ -169,7 +169,7 @@
     },
     {
       "__outstatic": {
-        "commit": "d338974c8305e3bd9058ab8fa1c72747639b1e1f",
+        "commit": "c1725bce77e344c34a82b74570a160f8459d905d",
         "hash": "834cf077529e1b5e37d2bc5f348ae616",
         "path": "outstatic/content/posts/stay-motivated-wfh.mdx"
       },
@@ -196,7 +196,7 @@
     },
     {
       "__outstatic": {
-        "commit": "d338974c8305e3bd9058ab8fa1c72747639b1e1f",
+        "commit": "c1725bce77e344c34a82b74570a160f8459d905d",
         "hash": "c3c393924209c4e3d714df3b5988e566",
         "path": "outstatic/content/posts/improve-circulation-remote-work.mdx"
       },
@@ -224,7 +224,7 @@
     },
     {
       "__outstatic": {
-        "commit": "d338974c8305e3bd9058ab8fa1c72747639b1e1f",
+        "commit": "c1725bce77e344c34a82b74570a160f8459d905d",
         "hash": "13c4087c4537a029e226ec0f8802b961",
         "path": "outstatic/content/posts/pomodoro-technique-remote-work.mdx"
       },
@@ -252,7 +252,7 @@
     },
     {
       "__outstatic": {
-        "commit": "d338974c8305e3bd9058ab8fa1c72747639b1e1f",
+        "commit": "c1725bce77e344c34a82b74570a160f8459d905d",
         "hash": "5d8c91f6cd63ef85f0e7124f64a41219",
         "path": "outstatic/content/posts/standing-desks-workstations.mdx"
       },
@@ -280,10 +280,29 @@
     },
     {
       "__outstatic": {
-        "commit": "d338974c8305e3bd9058ab8fa1c72747639b1e1f",
-        "hash": "715e45de8791f11f0655047b59f6cec8",
+        "commit": "c1725bce77e344c34a82b74570a160f8459d905d",
+        "hash": "da22f54e7efa88aabadc06d1f0fc61ea",
         "path": "outstatic/content/posts/prioritize-tasks-effectively.mdx"
       },
+      "title": "How to Prioritize Tasks Effectively",
+      "slug": "prioritize-tasks-effectively",
+      "description": "Discover proven strategies to prioritize tasks effectively, boost productivity, and reduce stress. Learn the Eisenhower Matrix, time blocking, and more!",
+      "cover_image": "https://images.unsplash.com/photo-1723562818201-511a10cf007a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTYxNTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDEzOTAwMDJ8&ixlib=rb-4.0.3&q=80&w=1080",
+      "published_at": "2025-03-07T23:26:42.899Z",
+      "author": "J. Staros",
+      "categories": [
+        "Productivity",
+        "Time Management"
+      ],
+      "tags": [
+        "task prioritization",
+        "time management",
+        "productivity tips",
+        "Eisenhower matrix",
+        "task management",
+        "work efficiency",
+        "remote work"
+      ],
       "collection": "posts"
     }
   ]
