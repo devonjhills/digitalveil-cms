@@ -1,10 +1,10 @@
 {
-  "commit": "dbc025ddc7ca76362c9ce68c0e37bb2d73cd1dae",
-  "generated": "Mon, 10 Mar 2025 18:13:49 GMT",
+  "commit": "f8ee003ead817fa8d27c7763b74f62ce028c1e69",
+  "generated": "Tue, 11 Mar 2025 06:11:39 GMT",
   "metadata": [
     {
       "__outstatic": {
-        "commit": "dbc025ddc7ca76362c9ce68c0e37bb2d73cd1dae",
+        "commit": "f8ee003ead817fa8d27c7763b74f62ce028c1e69",
         "hash": "bba5648a3af6f8de4556948726c03ecc",
         "path": "outstatic/content/posts/ergonomic-home-office-setup.mdx"
       },
@@ -32,7 +32,7 @@
     },
     {
       "__outstatic": {
-        "commit": "dbc025ddc7ca76362c9ce68c0e37bb2d73cd1dae",
+        "commit": "f8ee003ead817fa8d27c7763b74f62ce028c1e69",
         "hash": "6db3e6c188d6341b1d8fbad76940d436",
         "path": "outstatic/content/posts/why-ergonomics-matter.mdx"
       },
@@ -59,7 +59,7 @@
     },
     {
       "__outstatic": {
-        "commit": "dbc025ddc7ca76362c9ce68c0e37bb2d73cd1dae",
+        "commit": "f8ee003ead817fa8d27c7763b74f62ce028c1e69",
         "hash": "5d78db7965972b9656e404c6ab0e9173",
         "path": "outstatic/content/posts/measure-desk-chair-height.mdx"
       },
@@ -86,7 +86,7 @@
     },
     {
       "__outstatic": {
-        "commit": "dbc025ddc7ca76362c9ce68c0e37bb2d73cd1dae",
+        "commit": "f8ee003ead817fa8d27c7763b74f62ce028c1e69",
         "hash": "0d71ec55431b2ef46876a231a8ac0f08",
         "path": "outstatic/content/posts/reduce-neck-strain-work.mdx"
       },
@@ -113,7 +113,7 @@
     },
     {
       "__outstatic": {
-        "commit": "dbc025ddc7ca76362c9ce68c0e37bb2d73cd1dae",
+        "commit": "f8ee003ead817fa8d27c7763b74f62ce028c1e69",
         "hash": "1136cbb98ae5d9d8498d291b9d001886",
         "path": "outstatic/content/posts/productivity-techniques-remote-work.mdx"
       },
@@ -141,7 +141,7 @@
     },
     {
       "__outstatic": {
-        "commit": "dbc025ddc7ca76362c9ce68c0e37bb2d73cd1dae",
+        "commit": "f8ee003ead817fa8d27c7763b74f62ce028c1e69",
         "hash": "3d5975174e35d507a37e2d55c6c1f631",
         "path": "outstatic/content/posts/distraction-free-workspace.mdx"
       },
@@ -169,7 +169,7 @@
     },
     {
       "__outstatic": {
-        "commit": "dbc025ddc7ca76362c9ce68c0e37bb2d73cd1dae",
+        "commit": "f8ee003ead817fa8d27c7763b74f62ce028c1e69",
         "hash": "834cf077529e1b5e37d2bc5f348ae616",
         "path": "outstatic/content/posts/stay-motivated-wfh.mdx"
       },
@@ -196,7 +196,7 @@
     },
     {
       "__outstatic": {
-        "commit": "dbc025ddc7ca76362c9ce68c0e37bb2d73cd1dae",
+        "commit": "f8ee003ead817fa8d27c7763b74f62ce028c1e69",
         "hash": "c3c393924209c4e3d714df3b5988e566",
         "path": "outstatic/content/posts/improve-circulation-remote-work.mdx"
       },
@@ -224,7 +224,7 @@
     },
     {
       "__outstatic": {
-        "commit": "dbc025ddc7ca76362c9ce68c0e37bb2d73cd1dae",
+        "commit": "f8ee003ead817fa8d27c7763b74f62ce028c1e69",
         "hash": "13c4087c4537a029e226ec0f8802b961",
         "path": "outstatic/content/posts/pomodoro-technique-remote-work.mdx"
       },
@@ -252,7 +252,7 @@
     },
     {
       "__outstatic": {
-        "commit": "dbc025ddc7ca76362c9ce68c0e37bb2d73cd1dae",
+        "commit": "f8ee003ead817fa8d27c7763b74f62ce028c1e69",
         "hash": "5d8c91f6cd63ef85f0e7124f64a41219",
         "path": "outstatic/content/posts/standing-desks-workstations.mdx"
       },
@@ -280,7 +280,7 @@
     },
     {
       "__outstatic": {
-        "commit": "dbc025ddc7ca76362c9ce68c0e37bb2d73cd1dae",
+        "commit": "f8ee003ead817fa8d27c7763b74f62ce028c1e69",
         "hash": "da22f54e7efa88aabadc06d1f0fc61ea",
         "path": "outstatic/content/posts/prioritize-tasks-effectively.mdx"
       },
@@ -307,7 +307,7 @@
     },
     {
       "__outstatic": {
-        "commit": "dbc025ddc7ca76362c9ce68c0e37bb2d73cd1dae",
+        "commit": "f8ee003ead817fa8d27c7763b74f62ce028c1e69",
         "hash": "4aa01b8985fcf7c5988dfc72be3f9078",
         "path": "outstatic/content/posts/best-desk-height.mdx"
       },
@@ -335,7 +335,7 @@
     },
     {
       "__outstatic": {
-        "commit": "dbc025ddc7ca76362c9ce68c0e37bb2d73cd1dae",
+        "commit": "f8ee003ead817fa8d27c7763b74f62ce028c1e69",
         "hash": "eb030ec905696003f98b97593f87669e",
         "path": "outstatic/content/posts/common-ergonomic-mistakes.mdx"
       },
@@ -363,7 +363,7 @@
     },
     {
       "__outstatic": {
-        "commit": "dbc025ddc7ca76362c9ce68c0e37bb2d73cd1dae",
+        "commit": "f8ee003ead817fa8d27c7763b74f62ce028c1e69",
         "hash": "182f0c595dcd8b0a0bb44f0a06b1025b",
         "path": "outstatic/content/posts/adjust-office-chair-posture.mdx"
       },
@@ -388,7 +388,7 @@
     },
     {
       "__outstatic": {
-        "commit": "dbc025ddc7ca76362c9ce68c0e37bb2d73cd1dae",
+        "commit": "f8ee003ead817fa8d27c7763b74f62ce028c1e69",
         "hash": "25f67e5eec6876ae19ed86a450a6da31",
         "path": "outstatic/content/posts/standing-desk-benefits.mdx"
       },
@@ -408,6 +408,33 @@
         "posture improvement",
         "productivity tips",
         "health at work"
+      ],
+      "collection": "posts"
+    },
+    {
+      "__outstatic": {
+        "commit": "f8ee003ead817fa8d27c7763b74f62ce028c1e69",
+        "hash": "8524dfa74bfb4fed6532c238fafbae6d",
+        "path": "outstatic/content/posts/monitor-setups-ergonomics.mdx"
+      },
+      "title": "Monitor Setups & Screen Ergonomics",
+      "slug": "monitor-setups-ergonomics",
+      "description": "Optimize your workspace with science-backed monitor ergonomics! Learn screen positioning hacks, eye strain solutions, and setup ideas for any space. Boost productivity & health.",
+      "cover_image": "https://images.unsplash.com/photo-1527443195645-1133f7f28990?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MTYxNTN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDE2NzMyODN8&ixlib=rb-4.0.3&q=80&w=1080",
+      "published_at": "2025-03-11T06:08:03.167Z",
+      "author": "J. Staros",
+      "categories": [
+        "Remote Work",
+        "Health & Wellness"
+      ],
+      "tags": [
+        "ergonomic monitor setup",
+        "screen positioning",
+        "eye strain prevention",
+        "home office ergonomics",
+        "monitor height guide",
+        "dual monitor ergonomics",
+        "workspace optimization"
       ],
       "collection": "posts"
     }
